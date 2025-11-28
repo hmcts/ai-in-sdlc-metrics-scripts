@@ -1,0 +1,417 @@
+{
+  "Week 5": {
+    "period": "Nov 3-7",
+    "manualCompactions": 16,
+    "autoCompactions": 0,
+    "totalCompactions": 16,
+    "sessionsWithCompactions": 4,
+    "avgTimeToContextWindow": 101.53,
+    "details": [
+      {
+        "type": "manual",
+        "timestamp": "2025-11-04T09:41:44.465Z",
+        "sessionId": "0a4850ea-60f6-464f-b38b-f1c355e85cf5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-04T15:28:49.296Z",
+        "sessionId": "0a4850ea-60f6-464f-b38b-f1c355e85cf5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-04T16:19:30.900Z",
+        "sessionId": "0a4850ea-60f6-464f-b38b-f1c355e85cf5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-04T17:01:19.662Z",
+        "sessionId": "0a4850ea-60f6-464f-b38b-f1c355e85cf5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-04T17:46:56.753Z",
+        "sessionId": "0a4850ea-60f6-464f-b38b-f1c355e85cf5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-04T18:46:37.164Z",
+        "sessionId": "0a4850ea-60f6-464f-b38b-f1c355e85cf5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-04T19:15:02.365Z",
+        "sessionId": "0a4850ea-60f6-464f-b38b-f1c355e85cf5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-05T09:56:42.130Z",
+        "sessionId": "0a4850ea-60f6-464f-b38b-f1c355e85cf5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-03T14:36:08.186Z",
+        "sessionId": "545e1a1e-0b9a-4be0-894f-9871d812305a",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-05T12:26:55.002Z",
+        "sessionId": "ab1502df-b889-4073-97a6-e7a0a7857af5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-05T14:45:31.879Z",
+        "sessionId": "ab1502df-b889-4073-97a6-e7a0a7857af5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-05T16:19:49.021Z",
+        "sessionId": "ab1502df-b889-4073-97a6-e7a0a7857af5",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-06T14:52:39.914Z",
+        "sessionId": "c30a2597-3f81-41fd-a967-77e94bec7c80",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-06T16:09:39.790Z",
+        "sessionId": "c30a2597-3f81-41fd-a967-77e94bec7c80",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-06T18:12:05.198Z",
+        "sessionId": "c30a2597-3f81-41fd-a967-77e94bec7c80",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-06T19:42:00.519Z",
+        "sessionId": "c30a2597-3f81-41fd-a967-77e94bec7c80",
+        "role": "system",
+        "excerpt": "System compaction event"
+      }
+    ]
+  },
+  "Week 6": {
+    "period": "Nov 10-14",
+    "manualCompactions": 11,
+    "autoCompactions": 0,
+    "totalCompactions": 11,
+    "sessionsWithCompactions": 6,
+    "avgTimeToContextWindow": 88.6,
+    "details": [
+      {
+        "type": "manual",
+        "timestamp": "2025-11-10T16:53:14.855Z",
+        "sessionId": "f4887ece-8653-44f2-8b9b-d1440d5689d4",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-14T14:55:51.951Z",
+        "sessionId": "046a735a-d356-4dfd-8b14-52faf14801ee",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-13T12:30:57.144Z",
+        "sessionId": "27054e16-32e8-40dd-b54c-4cc80e524272",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-13T15:30:35.025Z",
+        "sessionId": "27054e16-32e8-40dd-b54c-4cc80e524272",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-13T17:02:24.763Z",
+        "sessionId": "27054e16-32e8-40dd-b54c-4cc80e524272",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-14T11:40:02.547Z",
+        "sessionId": "2a2a2635-d5ad-4800-8ec8-797224c47f66",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-13T18:19:03.165Z",
+        "sessionId": "44c20a55-595d-4be7-bb6d-b93e345adbe9",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-13T19:49:20.362Z",
+        "sessionId": "44c20a55-595d-4be7-bb6d-b93e345adbe9",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-13T20:18:55.708Z",
+        "sessionId": "44c20a55-595d-4be7-bb6d-b93e345adbe9",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-12T16:09:42.667Z",
+        "sessionId": "5917a09a-12e7-4233-82fc-8e5788b2f7e2",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-12T17:28:21.756Z",
+        "sessionId": "5917a09a-12e7-4233-82fc-8e5788b2f7e2",
+        "role": "system",
+        "excerpt": "System compaction event"
+      }
+    ]
+  },
+  "Week 7": {
+    "period": "Nov 17-21",
+    "manualCompactions": 28,
+    "autoCompactions": 0,
+    "totalCompactions": 28,
+    "sessionsWithCompactions": 10,
+    "avgTimeToContextWindow": 93.8,
+    "details": [
+      {
+        "type": "manual",
+        "timestamp": "2025-11-17T11:19:43.042Z",
+        "sessionId": "5f697ebe-fcbb-4c58-a7c9-a6fd7c9ed00e",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-21T10:50:00.104Z",
+        "sessionId": "7469e0c4-c6fd-47aa-8d30-1516962e06e3",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-21T12:29:47.610Z",
+        "sessionId": "7469e0c4-c6fd-47aa-8d30-1516962e06e3",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-18T16:15:42.158Z",
+        "sessionId": "7587148b-f0e1-4394-9235-93f757871495",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-18T16:15:44.452Z",
+        "sessionId": "7587148b-f0e1-4394-9235-93f757871495",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-18T16:15:46.948Z",
+        "sessionId": "7587148b-f0e1-4394-9235-93f757871495",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-18T16:15:50.755Z",
+        "sessionId": "7587148b-f0e1-4394-9235-93f757871495",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-18T16:46:11.805Z",
+        "sessionId": "7587148b-f0e1-4394-9235-93f757871495",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-20T13:37:56.288Z",
+        "sessionId": "78c9d286-2688-4faf-84e2-a68e0bca0b68",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-20T14:19:06.035Z",
+        "sessionId": "78c9d286-2688-4faf-84e2-a68e0bca0b68",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-20T15:49:44.988Z",
+        "sessionId": "78c9d286-2688-4faf-84e2-a68e0bca0b68",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-20T15:49:46.803Z",
+        "sessionId": "78c9d286-2688-4faf-84e2-a68e0bca0b68",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-20T15:49:49.046Z",
+        "sessionId": "78c9d286-2688-4faf-84e2-a68e0bca0b68",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-20T15:57:26.850Z",
+        "sessionId": "78c9d286-2688-4faf-84e2-a68e0bca0b68",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-18T19:31:54.154Z",
+        "sessionId": "825d67a1-09f9-49b2-b080-8e78e89c90b0",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-20T10:48:35.147Z",
+        "sessionId": "91ec5fbd-f702-4005-919c-3af517eb50f9",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-19T14:56:35.511Z",
+        "sessionId": "9bc382dd-ef01-4844-9681-a985969da3b8",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-19T16:04:27.971Z",
+        "sessionId": "9bc382dd-ef01-4844-9681-a985969da3b8",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-19T16:44:12.905Z",
+        "sessionId": "9bc382dd-ef01-4844-9681-a985969da3b8",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-19T21:07:26.539Z",
+        "sessionId": "9bc382dd-ef01-4844-9681-a985969da3b8",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-19T21:50:23.231Z",
+        "sessionId": "9bc382dd-ef01-4844-9681-a985969da3b8",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-20T17:50:30.776Z",
+        "sessionId": "a968654d-9c57-4ae8-848f-45a7e06e3e22",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-20T18:13:06.202Z",
+        "sessionId": "a968654d-9c57-4ae8-848f-45a7e06e3e22",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-18T11:35:23.649Z",
+        "sessionId": "cab72972-28fa-4100-8345-6eb820f25071",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-18T13:36:44.912Z",
+        "sessionId": "cab72972-28fa-4100-8345-6eb820f25071",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-17T07:56:43.114Z",
+        "sessionId": "dee5e71b-a6d1-4785-b3fe-22965341ba8f",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-17T08:01:42.726Z",
+        "sessionId": "dee5e71b-a6d1-4785-b3fe-22965341ba8f",
+        "role": "system",
+        "excerpt": "System compaction event"
+      },
+      {
+        "type": "manual",
+        "timestamp": "2025-11-17T09:12:26.287Z",
+        "sessionId": "dee5e71b-a6d1-4785-b3fe-22965341ba8f",
+        "role": "system",
+        "excerpt": "System compaction event"
+      }
+    ]
+  }
+}

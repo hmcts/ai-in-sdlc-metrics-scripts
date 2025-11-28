@@ -1,0 +1,167 @@
+{
+  "Week 5": {
+    "period": "Nov 3-7",
+    "totalPrompts": 336,
+    "avgPromptLength": 80,
+    "topCategory": "general",
+    "topCategoryCount": 130,
+    "categories": {
+      "bug_fix": {
+        "count": 52,
+        "subcategories": {
+          "debugging": 52
+        }
+      },
+      "general": {
+        "count": 130,
+        "subcategories": {
+          "other": 130
+        }
+      },
+      "version_control": {
+        "count": 10,
+        "subcategories": {
+          "git_operations": 10
+        }
+      },
+      "feature_development": {
+        "count": 84,
+        "subcategories": {
+          "implementation": 84
+        }
+      },
+      "code_review": {
+        "count": 2,
+        "subcategories": {
+          "quality_check": 2
+        }
+      },
+      "testing": {
+        "count": 43,
+        "subcategories": {
+          "test_writing": 43
+        }
+      },
+      "code_understanding": {
+        "count": 3,
+        "subcategories": {
+          "code_exploration": 3
+        }
+      },
+      "configuration": {
+        "count": 7,
+        "subcategories": {
+          "environment_setup": 7
+        }
+      },
+      "documentation": {
+        "count": 5,
+        "subcategories": {
+          "code_documentation": 5
+        }
+      }
+    }
+  },
+  "Week 6": {
+    "period": "Nov 10-14",
+    "totalPrompts": 68,
+    "avgPromptLength": 87,
+    "topCategory": "general",
+    "topCategoryCount": 30,
+    "categories": {
+      "feature_development": {
+        "count": 23,
+        "subcategories": {
+          "implementation": 23
+        }
+      },
+      "bug_fix": {
+        "count": 10,
+        "subcategories": {
+          "debugging": 10
+        }
+      },
+      "general": {
+        "count": 30,
+        "subcategories": {
+          "other": 30
+        }
+      },
+      "version_control": {
+        "count": 1,
+        "subcategories": {
+          "git_operations": 1
+        }
+      },
+      "testing": {
+        "count": 2,
+        "subcategories": {
+          "test_writing": 2
+        }
+      },
+      "code_review": {
+        "count": 1,
+        "subcategories": {
+          "quality_check": 1
+        }
+      },
+      "code_understanding": {
+        "count": 1,
+        "subcategories": {
+          "code_exploration": 1
+        }
+      }
+    }
+  },
+  "Week 7": {
+    "period": "Nov 17-21",
+    "totalPrompts": 175,
+    "avgPromptLength": 81,
+    "topCategory": "general",
+    "topCategoryCount": 63,
+    "categories": {
+      "general": {
+        "count": 63,
+        "subcategories": {
+          "other": 63
+        }
+      },
+      "feature_development": {
+        "count": 53,
+        "subcategories": {
+          "implementation": 53
+        }
+      },
+      "bug_fix": {
+        "count": 47,
+        "subcategories": {
+          "debugging": 47
+        }
+      },
+      "testing": {
+        "count": 7,
+        "subcategories": {
+          "test_writing": 7
+        }
+      },
+      "documentation": {
+        "count": 1,
+        "subcategories": {
+          "code_documentation": 1
+        }
+      },
+      "code_review": {
+        "count": 1,
+        "subcategories": {
+          "quality_check": 1
+        }
+      },
+      "version_control": {
+        "count": 3,
+        "subcategories": {
+          "git_operations": 3
+        }
+      }
+    }
+  }
+}

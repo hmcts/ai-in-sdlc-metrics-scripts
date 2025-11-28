@@ -1,0 +1,9 @@
+{
+  "name": "analytics-scripts",
+  "version": "1.0.0",
+  "description": "Analytics scripts for Claude Code metrics",
+  "private": true,
+  "scripts": {
+    "generate-dashboard": "node generate_dashboard_data.js"
+  }
+}
