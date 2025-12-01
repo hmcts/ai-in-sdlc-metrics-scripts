@@ -1,15 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * Weekly Metrics Visualization
- *
- * Generates comprehensive charts of all metrics across weekly periods
- * for AI-assisted development analysis.
- *
- * Usage:
- *   node weekly_metrics_plot.js [--output metrics.html]
- */
-
 const fs = require('fs');
 const path = require('path');
 
@@ -24,33 +14,33 @@ for (let i = 0; i < args.length; i++) {
   }
 }
 
-// Comprehensive weekly data - all metrics including WIP
+// All weekly data (currently hard coded). TODO: reverse the hardcode 
 const weeklyData = [
   {
-    week: 'Week 6',
-    period: 'Nov 10-14',
-    featurePRs: 5,
-    locPerPR: 1878,
-    locPerDev: 3130,
+    week: 'Week 1',
+    period: 'Oct 7-10',
+    featurePRs: 0,
+    locPerPR: null,
+    locPerDev: 0,
     locPerToken: null,
-    commentsPerPR: 1.60,
-    testCoverage: 87.5,
-    cves: 0,
-    duplicatedLines: 0,
-    maintainability: 1,
-    reliability: 1,
-    security: 1,
-    codeSmells: 2,
-    nkt: 60.35,
-    cycleTime: 2.44,
+    commentsPerPR: 0,
+    testCoverage: null,
+    cves: null,
+    duplicatedLines: null,
+    maintainability: null,
+    reliability: null,
+    security: null,
+    codeSmells: null,
+    nkt: null,
+    cycleTime: null,
     tokensPerSP: null,
     tokensPerCycleTime: undefined,
-    costPerLOC: 0.0282,
-    costPerPR: 52.91,
-    costPerSP: 16.53,
-    storyPoints: 16,
+    costPerLOC: null,
+    costPerPR: null,
+    costPerSP: null,
+    storyPoints: null,
     wipSP: null,
-    totalCost: 264.53,
+    totalCost: 38.71,
     timeToContextWindow: null,
     autoCompactions: 0,
     manualCompactions: 0,
@@ -64,30 +54,30 @@ const weeklyData = [
     note: ''
   },
   {
-    week: 'Week 7',
-    period: 'Nov 17-21',
-    featurePRs: 4,
-    locPerPR: 4051,
-    locPerDev: 8102,
+    week: 'Week 2',
+    period: 'Oct 13-17',
+    featurePRs: 5,
+    locPerPR: 2488,
+    locPerDev: 6220,
     locPerToken: null,
-    commentsPerPR: 1.25,
-    testCoverage: 92.13,
-    cves: 0,
-    duplicatedLines: 0.23,
-    maintainability: 1,
-    reliability: 1,
-    security: 1,
-    codeSmells: 5.33,
-    nkt: 136.58,
-    cycleTime: 1.24,
+    commentsPerPR: 2,
+    testCoverage: null,
+    cves: null,
+    duplicatedLines: null,
+    maintainability: null,
+    reliability: null,
+    security: null,
+    codeSmells: null,
+    nkt: 51.92,
+    cycleTime: 0.43,
     tokensPerSP: null,
     tokensPerCycleTime: undefined,
-    costPerLOC: 0.0229,
-    costPerPR: 92.83,
-    costPerSP: 23.21,
-    storyPoints: 16,
+    costPerLOC: 0.0132,
+    costPerPR: 32.82,
+    costPerSP: 13.68,
+    storyPoints: 12,
     wipSP: null,
-    totalCost: 371.31,
+    totalCost: 164.12,
     timeToContextWindow: null,
     autoCompactions: 0,
     manualCompactions: 0,
@@ -98,6 +88,217 @@ const weeklyData = [
     topSubcategory: null,
     topSubcategoryCount: 0,
     promptCategories: {},
+    note: ''
+  },
+  {
+    week: 'Week 3',
+    period: 'Oct 20-24',
+    featurePRs: 6,
+    locPerPR: 1536,
+    locPerDev: 4608,
+    locPerToken: null,
+    commentsPerPR: 1.00,
+    testCoverage: 79.86,
+    cves: 0,
+    duplicatedLines: 0,
+    maintainability: 1,
+    reliability: 1,
+    security: 1,
+    codeSmells: 5.2,
+    nkt: 125.55,
+    cycleTime: 0.96,
+    tokensPerSP: null,
+    tokensPerCycleTime: undefined,
+    costPerLOC: 0.02,
+    costPerPR: 30.65,
+    costPerSP: 9.2,
+    storyPoints: 20,
+    wipSP: null,
+    totalCost: 183.92,
+    timeToContextWindow: null,
+    autoCompactions: 0,
+    manualCompactions: 0,
+    totalPrompts: 0,
+    avgPromptLength: 0,
+    topCategory: null,
+    topCategoryCount: 0,
+    topSubcategory: null,
+    topSubcategoryCount: 0,
+    promptCategories: {},
+    note: ''
+  },
+  {
+    week: 'Week 4',
+    period: 'Oct 27-31',
+    featurePRs: 5,
+    locPerPR: 1154,
+    locPerDev: 1442,
+    locPerToken: null,
+    commentsPerPR: 1.00,
+    testCoverage: 85.23,
+    cves: 0,
+    duplicatedLines: 0,
+    maintainability: 1,
+    reliability: 1,
+    security: 1,
+    codeSmells: 2.2,
+    nkt: 31.81,
+    cycleTime: 3.08,
+    tokensPerSP: null,
+    tokensPerCycleTime: undefined,
+    costPerLOC: 0.0399,
+    costPerPR: 46.06,
+    costPerSP: 19.19,
+    storyPoints: 12,
+    wipSP: null,
+    totalCost: 230.29,
+    timeToContextWindow: null,
+    autoCompactions: 0,
+    manualCompactions: 0,
+    totalPrompts: 0,
+    avgPromptLength: 0,
+    topCategory: null,
+    topCategoryCount: 0,
+    topSubcategory: null,
+    topSubcategoryCount: 0,
+    promptCategories: {},
+    note: ''
+  },
+  {
+    week: 'Week 5',
+    period: 'Nov 3-7',
+    featurePRs: 4,
+    locPerPR: 1948,
+    locPerDev: 3895,
+    locPerToken: 0.00001167,
+    commentsPerPR: 1.00,
+    testCoverage: 89.77,
+    cves: 0,
+    duplicatedLines: 0,
+    maintainability: 1,
+    reliability: 1,
+    security: 1,
+    codeSmells: 3.25,
+    nkt: 51.16,
+    cycleTime: 1.61,
+    tokensPerSP: 51333342,
+    tokensPerCycleTime: 103602211,
+    costPerLOC: 0.0498,
+    costPerPR: 96.9,
+    costPerSP: 27.69,
+    storyPoints: 14,
+    wipSP: null,
+    totalCost: 387.59,
+    timeToContextWindow: 101.53,
+    autoCompactions: 0,
+    manualCompactions: 16,
+    totalPrompts: 336,
+    avgPromptLength: 80,
+    topCategory: 'general',
+    topCategoryCount: 130,
+    topSubcategory: null,
+    topSubcategoryCount: 0,
+    promptCategories: {
+      general: { count: 130 },
+      feature_development: { count: 84 },
+      bug_fix: { count: 52 },
+      testing: { count: 43 },
+      version_control: { count: 10 },
+      configuration: { count: 7 },
+      documentation: { count: 5 },
+      code_understanding: { count: 3 },
+      code_review: { count: 2 }
+    },
+    note: ''
+  },
+  {
+    week: 'Week 6',
+    period: 'Nov 10-14',
+    featurePRs: 5,
+    locPerPR: 1878,
+    locPerDev: 3130,
+    locPerToken: 0.00005129,
+    commentsPerPR: 1.60,
+    testCoverage: 87.5,
+    cves: 0,
+    duplicatedLines: 0,
+    maintainability: 1,
+    reliability: 1,
+    security: 1,
+    codeSmells: 2,
+    nkt: 60.35,
+    cycleTime: 2.44,
+    tokensPerSP: 11442603,
+    tokensPerCycleTime: 15006692,
+    costPerLOC: 0.0282,
+    costPerPR: 52.91,
+    costPerSP: 16.53,
+    storyPoints: 16,
+    wipSP: null,
+    totalCost: 264.53,
+    timeToContextWindow: 88.60,
+    autoCompactions: 0,
+    manualCompactions: 11,
+    totalPrompts: 68,
+    avgPromptLength: 87,
+    topCategory: 'general',
+    topCategoryCount: 30,
+    topSubcategory: null,
+    topSubcategoryCount: 0,
+    promptCategories: {
+      general: { count: 30 },
+      feature_development: { count: 23 },
+      bug_fix: { count: 10 },
+      testing: { count: 2 },
+      version_control: { count: 1 },
+      code_review: { count: 1 },
+      code_understanding: { count: 1 }
+    },
+    note: ''
+  },
+  {
+    week: 'Week 7',
+    period: 'Nov 17-21',
+    featurePRs: 4,
+    locPerPR: 4051,
+    locPerDev: 8102,
+    locPerToken: 0.00001649,
+    commentsPerPR: 1.25,
+    testCoverage: 92.13,
+    cves: 0,
+    duplicatedLines: 0.23,
+    maintainability: 1,
+    reliability: 1,
+    security: 1,
+    codeSmells: 5.33,
+    nkt: 136.58,
+    cycleTime: 1.24,
+    tokensPerSP: 61419773,
+    tokensPerCycleTime: 198128301,
+    costPerLOC: 0.0229,
+    costPerPR: 92.83,
+    costPerSP: 23.21,
+    storyPoints: 16,
+    wipSP: null,
+    totalCost: 371.31,
+    timeToContextWindow: 93.80,
+    autoCompactions: 0,
+    manualCompactions: 28,
+    totalPrompts: 175,
+    avgPromptLength: 81,
+    topCategory: 'general',
+    topCategoryCount: 63,
+    topSubcategory: null,
+    topSubcategoryCount: 0,
+    promptCategories: {
+      general: { count: 63 },
+      feature_development: { count: 53 },
+      bug_fix: { count: 47 },
+      testing: { count: 7 },
+      version_control: { count: 3 },
+      documentation: { count: 1 },
+      code_review: { count: 1 }
+    },
     note: ''
   }
 ];
@@ -255,10 +456,11 @@ const html = `<!DOCTYPE html>
       opacity: 0.9;
       font-size: 14px;
     }
-    .category-header.efficiency { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-    .category-header.satisfaction { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-    .category-header.adoption { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-    .category-header.quality { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+    .category-header.efficiency { background: #1f2a48; }
+    .category-header.satisfaction { background: #1f2a48; }
+    .category-header.adoption { background: #1f2a48; }
+    .category-header.quality { background: #1f2a48; }
+
 
     /* Token chart filter */
     .filter-bar {
@@ -330,45 +532,34 @@ const html = `<!DOCTYPE html>
     <div class="subtitle">Performance Analysis Period: October 7 - November 11, 2025</div>
   </div>
 
-  <!-- EFFICIENCY METRICS -->
-  <div class="category-section">
-    <div class="category-header efficiency">
-      <h2>Efficiency Metrics</h2>
+<!-- EFFICIENCY METRICS -->
+<div class="category-section">
+  <div class="category-header efficiency">
+    <h2>Efficiency Metrics</h2>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-container"><div id="tokensPerSPChart"></div></div>
+    <div class="chart-container"><div id="locPerTokenChart"></div></div>
+    <div class="chart-container"><div id="locPerPRChart"></div></div>
+    <div class="chart-container"><div id="locPerDevChart"></div></div>
+    <div class="chart-container"><div id="tokensPerPRTimeChart"></div></div>
+
+    <div class="chart-container" style="grid-column: span 2;">
+      <div id="tokensPerTicketScatterChart"></div>
     </div>
-    <div class="chart-grid">
-      <div class="chart-container">
-        <div id="tokensPerSPChart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="locPerTokenChart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="locPerPRChart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="locPerDevChart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="tokensPerPRTimeChart"></div>
-      </div>
-      <div class="chart-container" style="grid-column: span 2;">
-        <div id="tokensPerTicketScatterChart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="costPerLOCChart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="costPerPRChart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="costPerSPChart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="storyPointsChart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="featurePRsChart"></div>
-      </div>
+
+    <div class="chart-container"><div id="costPerLOCChart"></div></div>
+    <div class="chart-container"><div id="costPerPRChart"></div></div>
+    <div class="chart-container"><div id="costPerSPChart"></div></div>
+    <div class="chart-container"><div id="storyPointsChart"></div></div>
+    <div class="chart-container"><div id="featurePRsChart"></div></div>
+  </div>
+</div> <!-- closes Efficiency Metrics section -->
+
+  <div class="chart-grid">
+    <div class="chart-container full-width">
+      <div id="promptCategoriesChart"></div>
     </div>
   </div>
 
@@ -435,34 +626,6 @@ const html = `<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- COST BREAKDOWN -->
-  <div class="category-section">
-    <div class="category-header" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-      <h2>Cost Breakdown</h2>
-      <p>AWS Bedrock spending analysis by model and infrastructure</p>
-    </div>
-    <div class="chart-grid">
-      <div class="chart-container">
-        <div id="costModelChart"></div>
-      </div>
-      <div class="chart-container">
-        <div id="costCategoryChart"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DEVELOPER ACTIVITY -->
-  <div class="category-section">
-    <div class="category-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-      <h2>Developer Activity & Usage Patterns</h2>
-    </div>
-    <div class="chart-grid">
-      <div class="chart-container full-width">
-        <div id="promptCategoriesChart"></div>
-      </div>
-    </div>
-  </div>
-
   <script>
     const weeklyData = ${JSON.stringify(weeklyData)};
     const allWeeks = weeklyData; // Include ALL weeks, even Week 1 with 0s
@@ -502,182 +665,76 @@ const html = `<!DOCTYPE html>
     }
 
     // 1. Log-Log Plot: log(NK) vs log(T)
-    const weeksWithData = allWeeks.filter(d => d.nkt !== null && d.cycleTime !== null && d.featurePRs > 0);
+    const weeksWithData = allWeeks.filter(
+      d => d.nkt !== null && d.cycleTime !== null && d.featurePRs > 0
+    );
 
-    // Calculate NK and use actual cycle time T for each week
-    const logLogData = weeksWithData.map((d, index) => {
-      const T = d.cycleTime; // Actual cycle time in days
-      const NK = d.nkt * T; // NK = (NK/T) * T = parallel work capacity
+    // Compute log(T) and log(NK)
+    const logLogData = weeksWithData.map(d => {
+      const T = d.cycleTime;
+      const NK = d.nkt * T;
       return {
         period: d.period,
-        week: index + 2, // Week 2, 3, 4, 5
-        T: T,
-        NK: NK,
+        T,
+        NK,
         logT: Math.log10(T),
         logNK: Math.log10(NK)
       };
     });
 
-    // Calculate linear regression for trend line
-    const n = logLogData.length;
-    const sumX = logLogData.reduce((sum, d) => sum + d.logT, 0);
-    const sumY = logLogData.reduce((sum, d) => sum + d.logNK, 0);
-    const sumXY = logLogData.reduce((sum, d) => sum + d.logT * d.logNK, 0);
-    const sumX2 = logLogData.reduce((sum, d) => sum + d.logT * d.logT, 0);
-
-    const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
-    const intercept = (sumY - slope * sumX) / n;
-
-    // Generate trend line points
-    const minLogT = Math.min(...logLogData.map(d => d.logT));
-    const maxLogT = Math.max(...logLogData.map(d => d.logT));
-    const trendLine = [
-      { x: minLogT, y: slope * minLogT + intercept },
-      { x: maxLogT, y: slope * maxLogT + intercept }
-    ];
-
-    const logLogTrace = {
+    // SCATTER POINTS (actual data)
+    const scatterTrace = {
       x: logLogData.map(d => d.logT),
       y: logLogData.map(d => d.logNK),
-      type: 'scatter',
-      mode: 'markers+text',
+      mode: "markers",
+      type: "scatter",
       marker: {
-        size: 14,
-        color: logLogData.map(d => d.week),
-        colorscale: 'Viridis',
-        showscale: true,
-        colorbar: {
-          title: 'Week',
-          titleside: 'right',
-          tickmode: 'array',
-          tickvals: [2, 3, 4, 5]
-        }
-      },
-      text: logLogData.map(d => 'Week ' + d.week),
-      textposition: 'top center',
-      textfont: {
         size: 10,
-        color: '#333'
+        color: "#2196F3"
       },
-      hovertemplate: '<b>%{customdata[3]}</b><br>log(T): %{x:.3f} (T=%{customdata[0]} days)<br>log(NK): %{y:.3f} (NK=%{customdata[1]:.0f})<br>NK/T: %{customdata[2]:.1f}<extra></extra>',
-      customdata: logLogData.map(d => [d.T, d.NK, d.NK / d.T, d.period]),
-      name: 'Weeks'
+      name: "Weeks",
+      hovertemplate:
+        "<b>%{customdata}</b><br>" +
+        "log(T): %{x:.3f}<br>" +
+        "log(NK): %{y:.3f}<extra></extra>",
+      customdata: logLogData.map(d => d.period)
     };
 
-    const trendTrace = {
-      x: trendLine.map(d => d.x),
-      y: trendLine.map(d => d.y),
-      type: 'scatter',
-      mode: 'lines',
-      line: { color: '#FF5722', width: 2, dash: 'dash' },
-      name: \`Trend (slope: \${slope.toFixed(3)})\`,
-      hovertemplate: 'Trend line<br>Slope: ' + slope.toFixed(3) + '<extra></extra>'
+    // REFERENCE LINE x = y
+    const minVal = Math.min(
+      ...logLogData.map(d => d.logT),
+      ...logLogData.map(d => d.logNK)
+    );
+    const maxVal = Math.max(
+      ...logLogData.map(d => d.logT),
+      ...logLogData.map(d => d.logNK)
+    );
+
+    const xyLineTrace = {
+      x: [minVal, maxVal],
+      y: [minVal, maxVal],
+      mode: "lines",
+      type: "scatter",
+      line: { color: "#FF5722", width: 2, dash: "dash" },
+      name: "x = y (log NK = log T)",
+      hoverinfo: "skip"
     };
 
-    Plotly.newPlot('logNKvsLogTChart', [logLogTrace, trendTrace], {
-      ...commonLayout,
-      title: '📈 Scaling Analysis: log(NK) vs log(T) with Trend',
-      xaxis: {
-        title: 'log(T) - Cycle Time (log days)',
-        gridcolor: '#e0e0e0'
+    // FINAL PLOT
+    Plotly.newPlot(
+      "logNKvsLogTChart",
+      [scatterTrace, xyLineTrace],
+      {
+        ...commonLayout,
+        title: "log(NK) vs log(T)",
+        xaxis: { title: "log(T)", gridcolor: "#e0e0e0" },
+        yaxis: { title: "log(NK)", gridcolor: "#e0e0e0" },
+        showlegend: true,
+        height: 400
       },
-      yaxis: {
-        title: 'log(NK) - Parallel Work Capacity',
-        gridcolor: '#e0e0e0'
-      },
-      annotations: [{
-        text: \`Slope = \${slope.toFixed(3)}<br>Scaling: NK ∝ T<sup>\${slope.toFixed(2)}</sup><br>\${slope > 1 ? 'Super-linear' : slope > 0.8 ? 'Linear' : slope > 0 ? 'Sub-linear' : 'Negative'} scaling\`,
-        xref: 'paper',
-        yref: 'paper',
-        x: 0.02,
-        y: 0.98,
-        xanchor: 'left',
-        yanchor: 'top',
-        showarrow: false,
-        font: { size: 11, color: '#666' },
-        bgcolor: 'rgba(255,255,255,0.8)',
-        borderpad: 4
-      }, {
-        text: \`Slope indicates how parallel work capacity scales with cycle time.<br>\${slope > 1 ? 'Slope > 1: Increasing cycle time leads to proportionally greater parallel work capacity.' : slope > 0.8 ? 'Slope ≈ 1: Linear relationship - parallel work scales proportionally with cycle time.' : 'Slope < 1: Diminishing returns - longer cycles show less proportional increase in parallel work.'}\`,
-        xref: 'paper',
-        yref: 'paper',
-        x: 0.5,
-        y: -0.22,
-        xanchor: 'center',
-        yanchor: 'top',
-        showarrow: false,
-        font: { size: 10, color: '#666', style: 'italic' },
-        bgcolor: 'rgba(255,255,255,0.9)',
-        borderpad: 6
-      }],
-      showlegend: true,
-      legend: {
-        x: 0.98,
-        y: 0.02,
-        xanchor: 'right',
-        yanchor: 'bottom',
-        bgcolor: 'rgba(255,255,255,0.8)',
-        bordercolor: '#e0e0e0',
-        borderwidth: 1
-      },
-      height: 400,
-    }, { responsive: true });
+      { responsive: true }
+    );
 
-    // 2a. Cost Breakdown by Model (Pie Chart)
-    const costModelTrace = {
-      labels: ['Claude Sonnet 4.5', 'Claude Haiku'],
-      values: [625.61, 4.43],
-      type: 'pie',
-      marker: {
-        colors: ['#2196F3', '#4CAF50']
-      },
-      textinfo: 'label+percent',
-      textposition: 'inside',
-      insidetextorientation: 'radial',
-      hovertemplate: '<b>%{label}</b><br>Cost: $%{value:.2f}<br>%{percent}<extra></extra>'
-    };
-
-    Plotly.newPlot('costModelChart', [costModelTrace], {
-      ...commonLayout,
-      title: {
-        text: 'Cost by Model (All Weeks)',
-        y: 0.95
-      },
-      showlegend: true,
-      height: 450,
-      margin: { l: 40, r: 40, t: 80, b: 40 }
-    }, { responsive: true });
-
-    // 2b. Cost Breakdown by Category (Pie Chart with Infrastructure Breakdown)
-    const infraBreakdown = 'Key Management: $2.47 (33.9%)<br>Security Hub: $0.00 (0.0%)<br>CloudWatch: $0.77 (10.6%)<br>Config: $2.71 (37.2%)<br>Tax: $0.87 (12.0%)<br>Other: $0.46 (6.3%)';
-
-    const costCategoryTrace = {
-      labels: ['Claude API', 'Infrastructure'],
-      values: [630.03, 7.28],
-      type: 'pie',
-      marker: {
-        colors: ['#2196F3', '#FF9800']
-      },
-      textinfo: 'label+percent',
-      textposition: 'inside',
-      insidetextorientation: 'radial',
-      customdata: [
-        ['Sonnet 4.5: $625.61 (99.3%)<br>Haiku: $4.43 (0.7%)'],
-        [infraBreakdown]
-      ],
-      hovertemplate: '<b>%{label}</b><br>Cost: $%{value:.2f}<br>%{percent}<br><br>Breakdown:<br>%{customdata[0]}<extra></extra>'
-    };
-
-    Plotly.newPlot('costCategoryChart', [costCategoryTrace], {
-      ...commonLayout,
-      title: {
-        text: 'Cost by Category (All Weeks)',
-        y: 0.95
-      },
-      showlegend: true,
-      height: 450,
-      margin: { l: 40, r: 40, t: 80, b: 40 }
-    }, { responsive: true });
 
     // 2c. Tokens per Story Point (Weeks 5, 6, 7 have transcript data)
     const tokensPerSPTrace = {
@@ -888,7 +945,7 @@ const html = `<!DOCTYPE html>
       ...commonLayout,
       title: 'Time to Hit Context Window - Active Conversation',
       xaxis: { title: 'Week' },
-      yaxis: { title: 'Minutes (Active Use)', gridcolor: '#e0e0e0', rangemode: 'tozero' },
+      yaxis: { title: 'Minutes (Active Use)', gridcolor: '#e0e0e0', range: [80, 105] },
       height: 350,
       annotations: [{
         text: 'Active time excludes idle gaps >30 minutes',
@@ -987,7 +1044,7 @@ const html = `<!DOCTYPE html>
       yaxis: {
         title: 'Duplicated Lines (%)',
         gridcolor: '#e0e0e0',
-        range: [0, 5]
+        range: [0, 0.6]
       },
       height: 350,
     }, { responsive: true });
