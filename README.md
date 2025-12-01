@@ -1,5 +1,9 @@
 # AI in SDLC metrics
 
+## Pre-requisits: npm installs
+
+
+
 ## Current Workflow to fetch data and query
 ## Part 1 - retrieving metrics from transcripts
 1. Ensure transcripts are located within 'Transcript-conversion' folder
