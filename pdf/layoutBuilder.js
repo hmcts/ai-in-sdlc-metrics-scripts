@@ -10,7 +10,7 @@ function createDoc(outputPath) {
 
 function drawSectionHeader(doc, title) {
   const margin = 40;
-  const headerHeight = 40;
+  const headerHeight = 35;
   const radius = 10;
   const pageWidth = doc.page.width - margin * 2;
   const y = doc.y;
