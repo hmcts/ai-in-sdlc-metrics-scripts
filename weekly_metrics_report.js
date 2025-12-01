@@ -3,7 +3,7 @@
 const path = require('path');
 const { weeklyData, labels } = require('./data/weeklyData');
 const { makeLineChart, makeStackedBar } = require('./charts/chartFactory');
-const { createDoc, drawSectionHeader, addChartsGrid } = require('./pdf/layout');
+const { createDoc, drawSectionHeader, addChartsGrid } = require('./pdf/layoutBuilder');
 
 const args = process.argv.slice(2);
 let outputFile = 'weekly_metrics.pdf';
@@ -42,15 +42,15 @@ const efficiencyCharts = [
   },
   {
     label: 'Cost per LoC',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.costPerLOC), { title: 'Cost per LOC', yLabel: 'Cost per LOC ($)', datasetLabel: 'Cost/LOC' })
+    buffer: makeLineChart(labels, weeklyData.map(d => d.costPerLOC * 0.750), { title: 'Cost per LOC', yLabel: 'Cost per LOC (£)', datasetLabel: 'Cost/LOC' })
   },
   {
     label: 'Cost per PR',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.costPerPR), { title: 'Cost per PR', yLabel: 'Cost per PR ($)', datasetLabel: 'Cost/PR' })
+    buffer: makeLineChart(labels, weeklyData.map(d => d.costPerPR * 0.750), { title: 'Cost per PR', yLabel: 'Cost per PR (£)', datasetLabel: 'Cost/PR' })
   },
   {
     label: 'Cost per Story Point',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.costPerSP), { title: 'Cost per Story Point', yLabel: 'Cost per SP ($)', datasetLabel: 'Cost/SP' })
+    buffer: makeLineChart(labels, weeklyData.map(d => d.costPerSP * 0.750), { title: 'Cost per Story Point', yLabel: 'Cost per SP (£)', datasetLabel: 'Cost/SP' })
   },
 ];
 
@@ -119,6 +119,12 @@ const adoptionCharts = [
 ];
 
 const { doc, stream } = createDoc(pdfOutputPath);
+
+// Title Page
+doc.addPage();
+doc.fontSize(24).fillColor('#182549').text('Weekly Metrics Report', { align: 'center', valign: 'center' });
+doc.moveDown();
+doc.fontSize(16).fillColor('black').text(`Generated on ${new Date().toLocaleDateString()}`, { align: 'center' });
 
 // Efficiency section
 doc.addPage();
