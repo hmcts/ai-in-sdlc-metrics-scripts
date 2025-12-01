@@ -1,15 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * Weekly Metrics Visualization
- *
- * Generates comprehensive charts of all metrics across weekly periods
- * for AI-assisted development analysis.
- *
- * Usage:
- *   node weekly_metrics_plot.js [--output metrics.html]
- */
-
 const fs = require('fs');
 const path = require('path');
 
@@ -24,7 +14,7 @@ for (let i = 0; i < args.length; i++) {
   }
 }
 
-// Comprehensive weekly data - all metrics including WIP
+// All weekly data (currently hard coded). TODO: reverse the hardcode 
 const weeklyData = [
   {
     week: 'Week 1',

@@ -406,30 +406,22 @@ function makeStackedBar(labels, datasets, { title, yLabel }) {
   doc.moveDown();
   doc.fontSize(14).text('Performance Analysis Period: October 7 - November 21, 2025');
 
-function addChartsGrid(title, charts) {
+function addChartsGrid(charts) {
   const margin = 40;
   const cellWidthGap = margin;
-  const chartsPerPage = 8;
   const cols = 2;
 
   const cellWidth = (doc.page.width - margin * (cols + 1)) / cols;
-  const cellHeight = 180;
+  const cellHeight = 170;
+
+  const startY = doc.y;
 
   charts.forEach((chart, index) => {
-    const pageIndex = Math.floor(index / chartsPerPage);
-    const indexOnPage = index % chartsPerPage;
-    const col = indexOnPage % cols;
-    const row = Math.floor(indexOnPage / cols);
+    const col = index % cols;
+    const row = Math.floor(index / cols);
 
-    if (indexOnPage === 0) {
-      doc.addPage();
-      doc.fontSize(18).text(title, { align: 'left' });
-      doc.moveDown(0.5);
-    }
-
-    const startY = doc.y;
     const x = margin + col * (cellWidth + cellWidthGap);
-    const y = startY + row * (cellHeight);
+    const y = startY + row * cellHeight;
 
     doc.image(chart.buffer, x, y, {
       fit: [cellWidth, cellHeight],
@@ -437,6 +429,28 @@ function addChartsGrid(title, charts) {
       valign: 'top'
     });
   });
+}
+
+function drawSectionHeader(title) {
+  const margin = 40;
+  const headerHeight = 40;
+  const radius = 5;
+  const pageWidth = doc.page.width - margin * 2;
+  const startY = doc.y;
+
+  doc
+    .save()
+    .roundedRect(margin, startY, pageWidth, headerHeight, radius)
+    .fill('#182549'); 
+  doc.restore();
+
+  doc
+    .fillColor('white')
+    .fontSize(18)
+    .text(title, margin + 15, startY + 10);
+
+  doc.moveDown(2);
+  doc.fillColor('black');
 }
 
   // Efficiency metrics
@@ -610,39 +624,53 @@ function addChartsGrid(title, charts) {
     title: 'Prompt Categories Breakdown by Week',
     yLabel: 'Number of Prompts',
   });
+// Efficiency section
+doc.addPage();
+drawSectionHeader('Efficiency Metrics');
+addChartsGrid([
+  { label: 'Tokens per Story Point', buffer: tokensPerStoryPoint},
+  { label: 'LOC per Token', buffer: locPerToken},
+  { label: 'LOC per Merged PR', buffer: locPerPR},
+  { label: 'LOC per Developer', buffer: locPerDev },
+  { label: 'Tokens per Time to Pass PR', buffer: tokensPerCycleTime},
+  { label: 'Cost per LoC', buffer: costPerLOC },
+  { label: 'Cost per PR', buffer: costPerPR },
+  { label: 'Cost per Story Point', buffer: costPerSP },
+]);
+doc.addPage();
+addChartsGrid([
+  { label: 'Story Point Velocity', buffer: storyPointVelocity },
+  { label: 'Number of PRs', buffer: featurePRs },
+]);
 
-  addChartsGrid('Efficiency', [
-    { label: 'Tokens per Story Point', buffer: tokensPerStoryPoint},
-    { label: 'LOC per Token', buffer: locPerToken},
-    { label: 'LOC per Merged PR', buffer: locPerPR},
-    { label: 'LOC per Developer', buffer: locPerDev },
-    { label: 'Tokens per Time to Pass PR', buffer: tokensPerCycleTime},
-    { label: 'Cost per LoC', buffer: costPerLOC },
-    { label: 'Cost per PR', buffer: costPerPR },
-    { label: 'Cost per Story Point', buffer: costPerSP },
-    { label: 'Story Point Velocity', buffer: storyPointVelocity },
-    { label: 'Number of PRs', buffer: featurePRs },
-  ]);
-  
-  addChartsGrid('Satisfaction and Trust', [
-    { label: 'Comments per PR', buffer: commentsPerPR },
-  ]);
+// Satisfaction & trust
+doc.addPage();
+drawSectionHeader('Satisfaction and Trust Metrics');
+addChartsGrid([
+  { label: 'Comments per PR', buffer: commentsPerPR },
+]);
 
-  addChartsGrid('Adoption & maturity', [
-    { label: 'Time to Context Window', buffer: timeToContext },
-    { label: 'Auto Compactions', buffer: autoComp },
-    { label: 'Prompt Categories', buffer: promptCategoriesBuf },
-  ]);
-  
-  addChartsGrid('Quality', [
-    { label: 'Test Coverage', buffer: testCoverage },
-    { label: 'CVEs', buffer: cves },
-    { label: 'Duplicated Lines', buffer: dupLines },
-    { label: 'Maintainability', buffer: maintain },
-    { label: 'Reliability', buffer: reliab },
-    { label: 'Security', buffer: security },
-    { label: 'Code Smells', buffer: codeSmells },
-  ]);
+// Adoption & maturity
+doc.addPage();
+drawSectionHeader('Adoption and Maturity Metric');
+addChartsGrid([
+  { label: 'Time to Context Window', buffer: timeToContext },
+  { label: 'Auto Compactions', buffer: autoComp },
+  { label: 'Prompt Categories', buffer: promptCategoriesBuf },
+]);
+
+// Quality
+doc.addPage();
+drawSectionHeader('Quality Metric');
+addChartsGrid([
+  { label: 'Test Coverage', buffer: testCoverage },
+  { label: 'CVEs', buffer: cves },
+  { label: 'Duplicated Lines', buffer: dupLines },
+  { label: 'Maintainability', buffer: maintain },
+  { label: 'Reliability', buffer: reliab },
+  { label: 'Security', buffer: security },
+  { label: 'Code Smells', buffer: codeSmells },
+]);
 
   doc.end();
 
