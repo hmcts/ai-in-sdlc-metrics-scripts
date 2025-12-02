@@ -34,7 +34,20 @@ const efficiencyCharts = [
   },
   {
     label: 'LOC per Developer',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.locPerDev), { title: 'LOC per Dev', yLabel: 'LOC per Dev', datasetLabel: 'LOC per Dev' })
+    buffer: makeLineChart(
+      labels,
+      weeklyData.map(d => d.locPerDev),
+      {
+        title: 'LOC per Dev',
+        yLabel: 'LOC per Dev',
+        datasetLabel: 'LOC per Dev',
+        horizontalLines: [
+          { value: 622, label: 'Pre-agentic CaTH', color: '#7f2c2cff' },
+          { value: 345, label: 'HMCTS Standard', color: '#256525ff' },
+          { value: 2280, label: 'Agentic Industry Standard', color: '#303094ff' }
+        ]
+      }
+    )
   },
   {
     label: 'Tokens per Time to Pass PR',
