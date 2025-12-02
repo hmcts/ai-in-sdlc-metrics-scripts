@@ -1,5 +1,17 @@
 # AI in SDLC metrics
 
+## Pre-requisits: npm installs
+```
+npm install canvas chart.js pdfkit
+```
+
+## How to run
+Inside ai-in-sdlc-metrics scripts run:
+```
+node weekly_metrics_reports.js
+```
+
+
 ## Current Workflow to fetch data and query
 ## Part 1 - retrieving metrics from transcripts
 1. Ensure transcripts are located within 'Transcript-conversion' folder
