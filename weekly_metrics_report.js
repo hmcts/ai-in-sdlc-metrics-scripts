@@ -5,6 +5,16 @@ const { weeklyData, labels } = require('./data/weeklyData');
 const { makeLineChart, makeStackedBar } = require('./charts/chartFactory');
 const { createDoc, drawSectionHeader, addChartsGrid } = require('./pdf/layoutBuilder');
 
+// Filter out Week 1-3 from transcript-related metrics (incomplete transcript data)
+const TRANSCRIPT_EXCLUDE_WEEKS = ['Week 1', 'Week 2', 'Week 3'];
+
+function filterTranscriptData(data) {
+  return data.map((value, index) => {
+    const week = weeklyData[index];
+    return TRANSCRIPT_EXCLUDE_WEEKS.includes(week.week) ? null : value;
+  });
+}
+
 const args = process.argv.slice(2);
 let outputFile = 'weekly_metrics.pdf';
 for (let i = 0; i < args.length; i++) {
@@ -16,17 +26,26 @@ for (let i = 0; i < args.length; i++) {
 const pdfOutputPath = path.resolve(__dirname, outputFile);
 
 const { makePromptCategoryChart } = require('./charts/chartFactory');
-const promptCategories = makePromptCategoryChart(labels, weeklyData);
+
+// Filter weeklyData for prompt categories (exclude Week 3)
+const filteredWeeklyDataForPrompts = weeklyData.map((week, index) => {
+  if (TRANSCRIPT_EXCLUDE_WEEKS.includes(week.week)) {
+    return { ...week, promptCategories: {} }; // Empty categories for excluded weeks
+  }
+  return week;
+});
+
+const promptCategories = makePromptCategoryChart(labels, filteredWeeklyDataForPrompts);
 
 // Grouped chart definitions
 const efficiencyCharts = [
   {
     label: 'Tokens per Story Point',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.tokensPerSP), { title: 'Tokens per Story Points', yLabel: 'Tokens per SPs', datasetLabel: 'Tokens/SP' })
+    buffer: makeLineChart(labels, filterTranscriptData(weeklyData.map(d => d.tokensPerSP)), { title: 'Tokens per Story Points', yLabel: 'Tokens per SPs', datasetLabel: 'Tokens/SP' })
   },
   {
     label: 'LOC per Token',
-    buffer: makeLineChart(labels, weeklyData.map(d => 10000 * d.locPerToken), { title: 'LOC per 10,0000 Tokens', yLabel: 'Lines of Code per 10K Tokens', datasetLabel: 'LOC/10000Token' })
+    buffer: makeLineChart(labels, filterTranscriptData(weeklyData.map(d => 10000 * d.locPerToken)), { title: 'LOC per 10,0000 Tokens', yLabel: 'Lines of Code per 10K Tokens', datasetLabel: 'LOC/10000Token' })
   },
   {
     label: 'LOC per Merged PR',
@@ -34,11 +53,24 @@ const efficiencyCharts = [
   },
   {
     label: 'LOC per Developer',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.locPerDev), { title: 'LOC per Dev', yLabel: 'LOC per Dev', datasetLabel: 'LOC per Dev' })
+    buffer: makeLineChart(
+      labels,
+      weeklyData.map(d => d.locPerDev),
+      {
+        title: 'LOC per Dev',
+        yLabel: 'LOC per Dev',
+        datasetLabel: 'LOC per Dev',
+        horizontalLines: [
+          { value: 622, label: 'Pre-agentic CaTH', color: '#7f2c2cff' },
+          { value: 345, label: 'HMCTS Standard', color: '#256525ff' },
+          { value: 2280, label: 'Agentic Industry Standard', color: '#303094ff' }
+        ]
+      }
+    )
   },
   {
     label: 'Tokens per Time to Pass PR',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.tokensPerCycleTime), { title: 'Tokens per Time to Pass PR', yLabel: 'Tokens Per Day', datasetLabel: 'Tokens/Day' })
+    buffer: makeLineChart(labels, filterTranscriptData(weeklyData.map(d => d.tokensPerCycleTime)), { title: 'Tokens per Time to Pass PR', yLabel: 'Tokens Per Day', datasetLabel: 'Tokens/Day' })
   },
   {
     label: 'Cost per LoC',
@@ -106,11 +138,22 @@ const satisfactionCharts = [
 const adoptionCharts = [
   {
     label: 'Time to Context Window',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.timeToContextWindow), { title: 'Time to Hit Context Window', yLabel: 'Minutes', datasetLabel: 'Minutes' })
+    buffer: makeLineChart(labels, filterTranscriptData(weeklyData.map(d => d.timeToContextWindow)), { title: 'Time to Hit Context Window', yLabel: 'Minutes', datasetLabel: 'Minutes' })
   },
   {
-    label: 'Manual Compactions',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.manualCompactions), { title: 'Manual Compactions', yLabel: 'Count', datasetLabel: 'Manual Compactions' })
+    label: 'Compactions',
+    buffer: makeStackedBar(labels, [
+      {
+        label: 'Auto Compactions',
+        data: filterTranscriptData(weeklyData.map(d => d.autoCompactions)),
+        backgroundColor: '#4472C4'
+      },
+      {
+        label: 'Manual Compactions',
+        data: filterTranscriptData(weeklyData.map(d => d.manualCompactions)),
+        backgroundColor: '#ED7D31'
+      }
+    ], { title: 'Context Window Compactions', yLabel: 'Count' })
   },
   {
     label: 'Prompt Categories',

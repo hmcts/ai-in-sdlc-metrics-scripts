@@ -1,6 +1,7 @@
 const { createCanvas } = require('canvas');
 const { Chart, registerables } = require('chart.js');
-Chart.register(...registerables);
+const annotationPlugin = require('chartjs-plugin-annotation');
+Chart.register(...registerables, annotationPlugin);
 
 const CHART_WIDTH = 500;
 const CHART_HEIGHT = 250;
@@ -13,24 +14,68 @@ function renderChartToBuffer(config) {
 }
 
 function makeLineChart(labels, data, opts) {
-  const { title, yLabel } = opts;
+  const { title, yLabel, datasetLabel, horizontalLines } = opts;
+  let annotationConfig = {};
+  let dummyLineDatasets = [];
+  if (horizontalLines && Array.isArray(horizontalLines)) {
+    annotationConfig = {
+      annotation: {
+        annotations: horizontalLines.map((line, idx) => ({
+          type: 'line',
+          yMin: line.value,
+          yMax: line.value,
+          borderColor: line.color,
+          borderWidth: 2
+        }))
+      }
+    };
+    // Add dummy datasets for legend
+    dummyLineDatasets = horizontalLines.map((line, idx) => ({
+      label: line.label,
+      data: Array(labels.length).fill(null),
+      borderColor: line.color,
+      borderWidth: 2,
+      pointRadius: 0,
+      fill: false,
+      borderDash: [8, 4],
+      showLine: false,
+      hidden: false
+    }));
+  }
+  let mainLineColor = '#7798f1ff';
+  if (horizontalLines && Array.isArray(horizontalLines)) {
+    const usedColors = horizontalLines.map(l => l.color);
+    if (!usedColors.includes(mainLineColor)) {
+      mainLineColor = mainLineColor;
+    } else {
+      // Pick a color not in usedColors
+      const palette = ['#182549', '#FF9800', '#4CAF50', '#9C27B0', '#607D8B'];
+      mainLineColor = palette.find(c => !usedColors.includes(c)) || '#182549';
+    }
+  }
   return renderChartToBuffer({
     type: 'line',
     data: {
       labels,
-      datasets: [{
-        data,
-        borderWidth: 2,
-        fill: false,
-        tension: 0.2,
-        pointRadius: 3
-      }]
+      datasets: [
+        {
+          label: datasetLabel || undefined,
+          data,
+          borderColor: mainLineColor,
+          borderWidth: 2,
+          fill: false,
+          tension: 0.2,
+          pointRadius: 3
+        },
+        ...dummyLineDatasets
+      ]
     },
     options: {
       responsive: false,
       plugins: {
         title: { display: !!title, text: title },
-        legend: { display: false }
+        legend: { display: true },
+        ...annotationConfig
       },
       scales: {
         x: { title: { display: true, text: 'Week' } },
