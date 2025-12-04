@@ -1,3 +1,4 @@
+
 const { createCanvas } = require('canvas');
 const { Chart, registerables } = require('chart.js');
 const annotationPlugin = require('chartjs-plugin-annotation');
@@ -14,7 +15,7 @@ function renderChartToBuffer(config) {
 }
 
 function makeLineChart(labels, data, opts) {
-  const { title, yLabel, datasetLabel, horizontalLines } = opts;
+  const { title, yLabel, horizontalLines } = opts;
   let annotationConfig = {};
   let dummyLineDatasets = [];
   if (horizontalLines && Array.isArray(horizontalLines)) {
@@ -59,7 +60,7 @@ function makeLineChart(labels, data, opts) {
       labels,
       datasets: [
         {
-          label: datasetLabel || undefined,
+          label: opts.datasetLabel || undefined,
           data,
           borderColor: mainLineColor,
           borderWidth: 2,
