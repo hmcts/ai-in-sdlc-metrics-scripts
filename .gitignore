@@ -1,0 +1,21 @@
+# Environment variables (sensitive data)
+.env
+
+# Transcript files (may contain sensitive data)
+data/transcripts/files/**/*.jsonl
+data/transcripts/files/
+
+# Node modules
+node_modules/
+
+# Backup files
+*.backup
+*.bak
+.backup/
+
+# Old scripts and analysis in .claude directory
+.claude/
+
+# Baseline LOC metrics
+data/baseline_loc_metrics.json
+baseline/
