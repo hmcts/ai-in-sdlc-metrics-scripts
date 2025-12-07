@@ -93,6 +93,9 @@ for (const week of CONFIG.WEEKS) {
       metrics.tokensPerSP = tokenSPData.tokensPerSP;
       metrics.totalTokens = tokenSPData.totalTokens;
 
+      // Save ticket-level details for scatter plots and detailed analysis
+      metrics.ticketDetails = tokenSPData.ticketDetails || {};
+
       // Calculate derived metrics (tokens per LOC, LOC per token, etc.)
       if (tokenSPData.totalTokens && metrics.featurePRs && metrics.locPerPR) {
         const totalLOC = metrics.featurePRs * metrics.locPerPR;
@@ -109,6 +112,7 @@ for (const week of CONFIG.WEEKS) {
       }
     } catch (err) {
       console.log(`    ⚠ Tokens/SP calculation: ${err.message}`);
+      metrics.ticketDetails = {};
     }
 
     // Cost metrics (from Bedrock costs CSV)

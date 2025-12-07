@@ -41,6 +41,7 @@ function buildWeeklyData(weeklyMetrics) {
     topSubcategory: ${w.topSubcategory ? `'${w.topSubcategory}'` : 'null'},
     topSubcategoryCount: ${w.topSubcategoryCount !== undefined ? w.topSubcategoryCount : 0},
     promptCategories: ${w.promptCategories ? JSON.stringify(w.promptCategories) : 'null'},
+    ticketDetails: ${w.ticketDetails ? JSON.stringify(w.ticketDetails) : '{}'},
     note: '${w.note || ''}'
   }`).join(',\n');
 

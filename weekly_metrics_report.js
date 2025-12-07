@@ -2,7 +2,7 @@
 
 const path = require('path');
 const { weeklyData, labels } = require('./data/weeklyData');
-const { makeLineChart, makeStackedBar } = require('./charts/chartFactory');
+const { makeLineChart, makeStackedBar, makeTokensPerSPScatter, makeNKTLogScatter } = require('./charts/chartFactory');
 const { createDoc, drawSectionHeader, addChartsGrid } = require('./pdf/layoutBuilder');
 
 // Filter out Week 1-3 from transcript-related metrics (incomplete transcript data)
@@ -36,6 +36,12 @@ const filteredWeeklyDataForPrompts = weeklyData.map((week, index) => {
 });
 
 const promptCategories = makePromptCategoryChart(labels, filteredWeeklyDataForPrompts);
+
+// Tokens per SP scatter chart (only weeks with transcript data)
+const tokensPerSPScatter = makeTokensPerSPScatter(weeklyData);
+
+// NK/T log scatter chart
+const nktLogScatter = makeNKTLogScatter(weeklyData);
 
 // Grouped chart definitions
 const efficiencyCharts = [
@@ -94,6 +100,14 @@ const efficiencyCharts2 = [
   {
     label: 'Number of PRs',
     buffer: makeLineChart(labels, weeklyData.map(d => d.featurePRs), { title: 'Number of PRs', yLabel: 'PRs', datasetLabel: 'Number of PRs' })
+  },
+  {
+    label: 'Tokens per SP (by Ticket)',
+    buffer: tokensPerSPScatter
+  },
+  {
+    label: 'log(NK) vs log(T)',
+    buffer: nktLogScatter
   },
 ];
 

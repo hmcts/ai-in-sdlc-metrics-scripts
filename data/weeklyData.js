@@ -34,6 +34,7 @@ const weeklyData = [
     topSubcategory: null,
     topSubcategoryCount: 0,
     promptCategories: {},
+    ticketDetails: {},
     note: ''
   },
   {
@@ -51,8 +52,8 @@ const weeklyData = [
     reliability: null,
     security: null,
     codeSmells: null,
-    nkt: 4.71,
-    cycleTime: 2.12,
+    nkt: 8.13,
+    cycleTime: 1.6,
     tokensPerSP: null,
     tokensPerCycleTime: undefined,
     costPerLOC: 0.0131,
@@ -71,6 +72,7 @@ const weeklyData = [
     topSubcategory: null,
     topSubcategoryCount: 0,
     promptCategories: {},
+    ticketDetails: {"VIBE-153":{"prNumber":19,"createdAt":"2025-10-17T16:46:04Z","mergedAt":"2025-10-22T16:32:41Z","week":"Week 2","storyPoints":3},"VIBE-150":{"prNumber":13,"createdAt":"2025-10-15T17:48:33Z","mergedAt":"2025-10-16T12:11:56Z","week":"Week 2","storyPoints":2},"VIBE-146":{"prNumber":12,"createdAt":"2025-10-15T16:24:48Z","mergedAt":"2025-10-16T12:11:34Z","week":"Week 2","storyPoints":5},"VIBE-149":{"prNumber":8,"createdAt":"2025-10-14T12:32:06Z","mergedAt":"2025-10-15T14:16:29Z","week":"Week 2","storyPoints":2}},
     note: ''
   },
   {
@@ -88,10 +90,10 @@ const weeklyData = [
     reliability: 1,
     security: 1,
     codeSmells: 5.2,
-    nkt: 1.68,
-    cycleTime: 7.14,
+    nkt: 2.36,
+    cycleTime: 5.5,
     tokensPerSP: 4336050,
-    tokensPerCycleTime: 1214580,
+    tokensPerCycleTime: 1576745,
     costPerLOC: 0.0198,
     costPerPR: 30.36,
     costPerSP: 9.11,
@@ -108,6 +110,7 @@ const weeklyData = [
     topSubcategory: null,
     topSubcategoryCount: 0,
     promptCategories: {"general":{"count":25},"configuration":{"count":3}},
+    ticketDetails: {"VIBE-159":{"prNumber":43,"createdAt":"2025-10-24T12:53:46Z","mergedAt":"2025-11-06T12:08:49Z","week":"Week 3","storyPoints":2,"tokens":8672100},"VIBE-157":{"prNumber":38,"createdAt":"2025-10-23T15:30:59Z","mergedAt":"2025-10-29T13:12:27Z","week":"Week 3","storyPoints":2},"VIBE-155":{"prNumber":36,"createdAt":"2025-10-23T09:39:39Z","mergedAt":"2025-10-29T11:09:17Z","week":"Week 3","storyPoints":3},"VIBE-191":{"prNumber":33,"createdAt":"2025-10-22T15:07:37Z","mergedAt":"2025-10-30T12:12:51Z","week":"Week 3","storyPoints":2},"VIBE-139":{"prNumber":27,"createdAt":"2025-10-21T14:54:38Z","mergedAt":"2025-10-23T09:20:34Z","week":"Week 3","storyPoints":3},"VIBE-154":{"prNumber":26,"createdAt":"2025-10-21T10:44:23Z","mergedAt":"2025-10-29T16:45:40Z","week":"Week 3","storyPoints":8}},
     note: ''
   },
   {
@@ -125,10 +128,10 @@ const weeklyData = [
     reliability: 1,
     security: 1,
     codeSmells: 2.2,
-    nkt: 2.28,
-    cycleTime: 5.25,
+    nkt: 2.89,
+    cycleTime: 4.5,
     tokensPerSP: 34411728,
-    tokensPerCycleTime: 32773074,
+    tokensPerCycleTime: 38235253,
     costPerLOC: 0.0394,
     costPerPR: 56.77,
     costPerSP: 22.71,
@@ -145,6 +148,7 @@ const weeklyData = [
     topSubcategory: null,
     topSubcategoryCount: 0,
     promptCategories: {"general":{"count":10},"feature_development":{"count":3},"bug_fix":{"count":2},"configuration":{"count":4},"refactoring":{"count":2},"testing":{"count":1}},
+    ticketDetails: {"VIBE-149":{"prNumber":59,"createdAt":"2025-10-30T14:47:15Z","mergedAt":"2025-11-04T08:45:07Z","week":"Week 4","storyPoints":2},"VIBE-150":{"prNumber":58,"createdAt":"2025-10-30T11:59:34Z","mergedAt":"2025-10-30T14:51:52Z","week":"Week 4","storyPoints":2},"VIBE-153":{"prNumber":57,"createdAt":"2025-10-30T09:19:59Z","mergedAt":"2025-10-31T13:57:59Z","week":"Week 4","storyPoints":3},"VIBE-204":{"prNumber":56,"createdAt":"2025-10-29T15:52:27Z","mergedAt":"2025-11-05T16:37:41Z","week":"Week 4","storyPoints":2,"tokens":111496536},"VIBE-158":{"prNumber":54,"createdAt":"2025-10-29T10:57:51Z","mergedAt":"2025-11-06T11:53:00Z","week":"Week 4","storyPoints":3,"tokens":60562104}},
     note: ''
   },
   {
@@ -162,10 +166,10 @@ const weeklyData = [
     reliability: 1,
     security: 1,
     codeSmells: 3.25,
-    nkt: 3.7,
-    cycleTime: 2.16,
+    nkt: 6.5,
+    cycleTime: 2,
     tokensPerSP: 101127312,
-    tokensPerCycleTime: 608636602,
+    tokensPerCycleTime: 657327531,
     costPerLOC: 0.0492,
     costPerPR: 95.86,
     costPerSP: 27.39,
@@ -182,6 +186,7 @@ const weeklyData = [
     topSubcategory: null,
     topSubcategoryCount: 0,
     promptCategories: {"bug_fix":{"count":96},"general":{"count":304},"version_control":{"count":24},"testing":{"count":98},"feature_development":{"count":118},"code_review":{"count":4},"configuration":{"count":16},"code_understanding":{"count":2},"documentation":{"count":10}},
+    ticketDetails: {"VIBE-203":{"prNumber":74,"createdAt":"2025-11-06T11:59:35Z","mergedAt":"2025-11-10T10:28:11Z","week":"Week 5","storyPoints":1},"VIBE-201":{"prNumber":67,"createdAt":"2025-11-04T16:41:10Z","mergedAt":"2025-11-07T09:27:15Z","week":"Week 5","storyPoints":8,"tokens":1298967957},"VIBE-160":{"prNumber":66,"createdAt":"2025-11-04T15:49:34Z","mergedAt":"2025-11-06T14:56:09Z","week":"Week 5","storyPoints":5,"tokens":15687104}},
     note: ''
   },
   {
@@ -199,10 +204,10 @@ const weeklyData = [
     reliability: 1,
     security: 1,
     codeSmells: 2,
-    nkt: 2.45,
-    cycleTime: 3.26,
+    nkt: 4.73,
+    cycleTime: 2.75,
     tokensPerSP: 17573863,
-    tokensPerCycleTime: 86252086,
+    tokensPerCycleTime: 102247927,
     costPerLOC: 0.0331,
     costPerPR: 65.22,
     costPerSP: 16.3,
@@ -219,6 +224,7 @@ const weeklyData = [
     topSubcategory: null,
     topSubcategoryCount: 0,
     promptCategories: {"feature_development":{"count":28},"bug_fix":{"count":21},"general":{"count":68},"version_control":{"count":2},"testing":{"count":3},"code_review":{"count":2}},
+    ticketDetails: {"VIBE-216":{"prNumber":99,"createdAt":"2025-11-13T16:36:24Z","mergedAt":"2025-11-20T16:33:13Z","week":"Week 6","storyPoints":8,"tokens":64080730},"VIBE-140":{"prNumber":92,"createdAt":"2025-11-11T11:07:43Z","mergedAt":"2025-11-17T09:14:54Z","week":"Week 6","storyPoints":8,"tokens":217101070},"VIBE-222":{"prNumber":88,"createdAt":"2025-11-10T11:18:57Z","mergedAt":"2025-11-10T14:06:10Z","week":"Week 6"}},
     note: ''
   },
   {
@@ -236,10 +242,10 @@ const weeklyData = [
     reliability: 1,
     security: 1,
     codeSmells: 5.33,
-    nkt: 0.6,
-    cycleTime: 4.98,
+    nkt: 3.25,
+    cycleTime: 4,
     tokensPerSP: 123911253,
-    tokensPerCycleTime: 398108442,
+    tokensPerCycleTime: 495645010,
     costPerLOC: 0.0244,
     costPerPR: 122.49,
     costPerSP: 22.97,
@@ -256,6 +262,7 @@ const weeklyData = [
     topSubcategory: null,
     topSubcategoryCount: 0,
     promptCategories: {"general":{"count":148},"testing":{"count":30},"bug_fix":{"count":84},"code_review":{"count":4},"feature_development":{"count":74},"version_control":{"count":8},"documentation":{"count":2}},
+    ticketDetails: {"VIBE-240":{"prNumber":121,"createdAt":"2025-11-20T17:14:14Z","mergedAt":"2025-11-21T14:26:25Z","week":"Week 7"},"VIBE-143":{"prNumber":116,"createdAt":"2025-11-20T16:02:04Z","mergedAt":"2025-11-24T14:36:33Z","week":"Week 7","storyPoints":3,"tokens":189244082},"VIBE-180":{"prNumber":106,"createdAt":"2025-11-18T14:32:45Z","mergedAt":"2025-11-26T09:30:40Z","week":"Week 7","storyPoints":8,"tokens":1578459232},"VIBE-169":{"prNumber":102,"createdAt":"2025-11-17T11:32:25Z","mergedAt":"2025-11-20T16:34:15Z","week":"Week 7","storyPoints":5,"tokens":214876727}},
     note: ''
   },
   {
@@ -273,10 +280,10 @@ const weeklyData = [
     reliability: 1,
     security: 1,
     codeSmells: 4.2,
-    nkt: 5.72,
-    cycleTime: 1.75,
+    nkt: 7.22,
+    cycleTime: 1.8,
     tokensPerSP: 81494197,
-    tokensPerCycleTime: 512249237,
+    tokensPerCycleTime: 498020091,
     costPerLOC: 0.0243,
     costPerPR: 78.56,
     costPerSP: 35.71,
@@ -293,6 +300,7 @@ const weeklyData = [
     topSubcategory: null,
     topSubcategoryCount: 0,
     promptCategories: {"general":{"count":79},"feature_development":{"count":33},"bug_fix":{"count":23},"testing":{"count":7},"code_review":{"count":1},"version_control":{"count":1}},
+    ticketDetails: {"VIBE-175":{"prNumber":137,"createdAt":"2025-11-27T12:51:14Z","mergedAt":"2025-12-01T10:16:26Z","week":"Week 8","storyPoints":3,"tokens":64874959},"VIBE-209":{"prNumber":136,"createdAt":"2025-11-26T18:04:20Z","mergedAt":"2025-11-28T11:36:10Z","week":"Week 8","storyPoints":3,"tokens":211896922},"VIBE-192":{"prNumber":130,"createdAt":"2025-11-24T17:13:56Z","mergedAt":"2025-11-27T17:11:26Z","week":"Week 8","storyPoints":5,"tokens":619664283}},
     note: ''
   }
 ];
