@@ -1,43 +1,43 @@
 [
     {
       "Month": "Sep",
-      "The AI tools help me complete my tasks faster": 4,
-      "The AI tools reduces the amount of repetitive work I have to do": 3.5,
-      "Using the AI tools reduces my cognitive load (the mental effort required to complete a task)": 3.75,
-      "I am enjoying using AI tools as part of my work": 4,
-      "I am confident in my ability to effectively apply AI to my work tasks": 3.5,
-      "I am confident in my judgement about which tasks are appropriate for AI and which require human oversight": 3.25,
-      "I am confident in the quality of the output from the AI tools that I use": 2.75
+      "completeTasksFaster": 4,
+      "reduceRepetitiveWork": 3.5,
+      "reduceCognitiveLoad": 3.75,
+      "enjoyment": 4,
+      "confidenceInAbility": 3.5,
+      "confidenceInJudgement": 3.25,
+      "confidenceInQuality": 2.75
 
     },
     {
       "Month": "Oct",
-      "The AI tools help me complete my tasks faster": 3,
-      "The AI tools reduces the amount of repetitive work I have to do": 3,
-      "Using the AI tools reduces my cognitive load (the mental effort required to complete a task)": 3.5,
-      "I am enjoying using AI tools as part of my work": 4.5,
-      "I am confident in my ability to effectively apply AI to my work tasks": 4,
-      "I am confident in my judgement about which tasks are appropriate for AI and which require human oversight": 4,
-      "I am confident in the quality of the output from the AI tools that I use": 3
+      "completeTasksFaster": 3,
+      "reduceRepetitiveWork": 3,
+      "reduceCognitiveLoad": 3.5,
+      "enjoyment": 4.5,
+      "confidenceInAbility": 4,
+      "confidenceInJudgement": 4,
+      "confidenceInQuality": 3
     }, 
     {
       "Month": "Nov",
-      "The AI tools help me complete my tasks faster": 4,
-      "The AI tools reduces the amount of repetitive work I have to do": 3.5,
-      "Using the AI tools reduces my cognitive load (the mental effort required to complete a task)": 4,
-      "I am enjoying using AI tools as part of my work": 4,
-      "I am confident in my ability to effectively apply AI to my work tasks": 4.5,
-      "I am confident in my judgement about which tasks are appropriate for AI and which require human oversight": 4,
-      "I am confident in the quality of the output from the AI tools that I use": 3.5
+      "completeTasksFaster": 4,
+      "reduceRepetitiveWork": 3.5,
+      "reduceCognitiveLoad": 4,
+      "enjoyment": 4,
+      "confidenceInAbility": 4.5,
+      "confidenceInJudgement": 4,
+      "confidenceInQuality": 3.5
     },
     {
       "Month": "Dec",
-      "The AI tools help me complete my tasks faster": 3,
-      "The AI tools reduces the amount of repetitive work I have to do": 3,
-      "Using the AI tools reduces my cognitive load (the mental effort required to complete a task)": 3,
-      "I am enjoying using AI tools as part of my work": 5,
-      "I am confident in my ability to effectively apply AI to my work tasks": 4,
-      "I am confident in my judgement about which tasks are appropriate for AI and which require human oversight": 4,
-      "I am confident in the quality of the output from the AI tools that I use": 3
+      "completeTasksFaster": 3,
+      "reduceRepetitiveWork": 3,
+      "reduceCognitiveLoad": 3,
+      "enjoyment": 5,
+      "confidenceInAbility": 4,
+      "confidenceInJudgement": 4,
+      "confidenceInQuality": 3
     }
 ]
