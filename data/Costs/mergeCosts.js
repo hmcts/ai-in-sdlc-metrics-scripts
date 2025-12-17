@@ -44,7 +44,8 @@ function mergeCostFiles() {
     'costs(2).csv',
     'costs(3).csv',
     'costs(4).csv',
-    'costs(5).csv'
+    'costs(5).csv',
+    'costs(7).csv'
   ];
 
   const allHeaders = new Set();

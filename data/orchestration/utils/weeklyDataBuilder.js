@@ -41,6 +41,13 @@ function buildWeeklyData(weeklyMetrics) {
     topSubcategory: ${w.topSubcategory ? `'${w.topSubcategory}'` : 'null'},
     topSubcategoryCount: ${w.topSubcategoryCount !== undefined ? w.topSubcategoryCount : 0},
     promptCategories: ${w.promptCategories ? JSON.stringify(w.promptCategories) : 'null'},
+    ticketDetails: ${w.ticketDetails ? JSON.stringify(w.ticketDetails) : '{}'},
+    interruptions: ${w.interruptions !== undefined ? w.interruptions : 0},
+    interruptionRate: ${w.interruptionRate !== undefined ? w.interruptionRate : 0},
+    interruptionPrompts: ${w.prompts !== undefined ? w.prompts : 0},
+    toolUses: ${w.toolUses !== undefined ? w.toolUses : 0},
+    toolErrors: ${w.toolErrors !== undefined ? w.toolErrors : 0},
+    errorRate: ${w.errorRate !== undefined ? w.errorRate : 0},
     note: '${w.note || ''}'
   }`).join(',\n');
 

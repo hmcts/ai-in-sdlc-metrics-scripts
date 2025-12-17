@@ -8,7 +8,8 @@ const EXCLUDED_DEVELOPERS = [
   'linus-norton',
   'linusnorton',
   'ashwini-mv',
-  'melvchance'
+  'melvchance',
+  'jla1002'
 ];
 
 /**
@@ -132,6 +133,11 @@ function filterPRsForWeek(allPRs, week) {
 
     // Skip excluded developers
     if (pr.author && isExcludedDeveloper(pr.author.login)) {
+      return false;
+    }
+
+    // Only include PRs with JIRA ticket IDs
+    if (!extractJiraTicket(pr.title)) {
       return false;
     }
 
