@@ -26,6 +26,7 @@ for (let i = 0; i < args.length; i++) {
 const pdfOutputPath = path.resolve(__dirname, outputFile);
 
 const { makePromptCategoryChart } = require('./charts/chartFactory');
+const { surveyData } = require('./data/surveyData');
 
 // Filter weeklyData for prompt categories (exclude Week 3)
 const filteredWeeklyDataForPrompts = weeklyData.map((week, index) => {
@@ -148,8 +149,24 @@ const qualityCharts = [
 const satisfactionCharts = [
   {
     label: 'Comments per PR',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.commentsPerPR), { title: 'Comments per PR', yLabel: 'Comments per PR', datasetLabel: 'Comments/PR' })
+    buffer: makeLineChart(
+      labels,
+      weeklyData.map(d => d.commentsPerPR),
+      { title: 'Comments per PR', yLabel: 'Comments per PR', datasetLabel: 'Comments/PR' }
+    )
   },
+  {
+    label: 'Business Satisfaction',
+    buffer: makeLineChart(
+      labels,
+      labels.map(month => {
+        const devs = surveyData[month]?.developers || [];
+        const values = devs.map(d => d.iAmEnjoyingUsingAIToolsAsPartOfTheSDLC).filter(v => v != null);
+        return values.length ? values.reduce((a, b) => a + b, 0) / values.length : null;
+      }),
+      { title: 'Enjoyment of AI Tools', yLabel: 'Enjoyment', datasetLabel: 'Enjoyment/Month' }
+    )
+  }
 ];
 
 const adoptionCharts = [
