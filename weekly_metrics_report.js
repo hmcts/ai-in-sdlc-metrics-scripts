@@ -2,7 +2,7 @@
 
 const path = require('path');
 const { weeklyData, labels } = require('./data/weeklyData');
-const { makeLineChart, makeStackedBar, makeTokensPerSPScatter, makeNKTLogScatter } = require('./charts/chartFactory');
+const { makeLineChart, makeStackedBar, makeTokensPerSPScatter, makeNKTLogScatter, makeInterruptionRateChart } = require('./charts/chartFactory');
 const { createDoc, drawSectionHeader, addChartsGrid } = require('./pdf/layoutBuilder');
 
 // Filter out Week 1-3 from transcript-related metrics (incomplete transcript data)
@@ -42,6 +42,9 @@ const tokensPerSPScatter = makeTokensPerSPScatter(weeklyData);
 
 // NK/T log scatter chart
 const nktLogScatter = makeNKTLogScatter(weeklyData);
+
+// Interruption rate chart
+const interruptionRateChart = makeInterruptionRateChart(labels, weeklyData);
 
 // Grouped chart definitions
 const efficiencyCharts = [
@@ -106,7 +109,7 @@ const efficiencyCharts2 = [
     buffer: tokensPerSPScatter
   },
   {
-    label: 'log(NK) vs log(T)',
+    label: 'NK vs T',
     buffer: nktLogScatter
   },
 ];
@@ -150,6 +153,10 @@ const satisfactionCharts = [
 ];
 
 const adoptionCharts = [
+  {
+    label: 'Interruption Rate',
+    buffer: interruptionRateChart
+  },
   {
     label: 'Time to Context Window',
     buffer: makeLineChart(labels, filterTranscriptData(weeklyData.map(d => d.timeToContextWindow)), { title: 'Time to Hit Context Window', yLabel: 'Minutes', datasetLabel: 'Minutes' })

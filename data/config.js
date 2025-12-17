@@ -33,7 +33,7 @@ const CONFIG = {
 
   // File paths
   BEDROCK_COSTS_FILE: path.join(__dirname, 'Costs/merged-bedrock-costs.csv'),
-  TRANSCRIPTS_DIR: path.join(__dirname, 'transcripts/files/Junaid-Transcripts'),
+  TRANSCRIPTS_DIR: path.join(__dirname, 'transcripts/files'),
   ANALYTICS_DIR: path.join(__dirname, '../.claude/analytics-v2'),
 
   // Metrics
@@ -54,7 +54,8 @@ const CONFIG = {
     { name: 'Week 5', start: '2025-11-03', end: '2025-11-07', period: 'Nov 3-7' },
     { name: 'Week 6', start: '2025-11-10', end: '2025-11-14', period: 'Nov 10-14' },
     { name: 'Week 7', start: '2025-11-17', end: '2025-11-21', period: 'Nov 17-21' },
-    { name: 'Week 8', start: '2025-11-24', end: '2025-11-28', period: 'Nov 24-28' }
+    { name: 'Week 8', start: '2025-11-24', end: '2025-11-28', period: 'Nov 24-28' },
+    { name: 'Week 9', start: '2025-12-01', end: '2025-12-05', period: 'Dec 1-5' }
   ]
 };
 

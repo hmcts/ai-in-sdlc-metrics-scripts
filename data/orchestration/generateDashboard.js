@@ -3,6 +3,7 @@
 const CONFIG = require('../config');
 const { analyzeCompactionsForWeek } = require('../transcripts/utils/compactionUtils');
 const { analyzePromptCategoriesForWeek } = require('../transcripts/utils/categoryUtils');
+const { calculateInterruptionsForWeek } = require('../transcripts/utils/interruptionMetrics');
 const { fetchSonarMetricsForWeek } = require('../quality/utils/sonarUtils');
 const { analyzePRsForWeek } = require('../github/utils/prAnalysis');
 const { calculateNKTForWeek } = require('../github/utils/nktMetrics');
@@ -44,6 +45,14 @@ for (const week of CONFIG.WEEKS) {
       console.log(`    ✓ Prompts: ${categories.totalPrompts} total, top: ${categories.topCategory}`);
     } catch (err) {
       console.log(`    ⚠ Prompt categories: ${err.message}`);
+    }
+
+    try {
+      const interruptions = await calculateInterruptionsForWeek(week, CONFIG.TRANSCRIPTS_DIR);
+      Object.assign(metrics, interruptions);
+      console.log(`    ✓ Interruptions: ${interruptions.interruptions}/${interruptions.prompts} prompts (${interruptions.interruptionRate}%), Errors: ${interruptions.toolErrors}/${interruptions.toolUses} (${interruptions.errorRate}%)`);
+    } catch (err) {
+      console.log(`    ⚠ Interruptions: ${err.message}`);
     }
 
     // GitHub/PR metrics
