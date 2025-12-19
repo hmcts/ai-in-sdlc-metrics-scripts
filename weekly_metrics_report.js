@@ -158,6 +158,31 @@ const adoptionCharts = [
     buffer: interruptionRateChart
   },
   {
+    label: 'Token Type Breakdown',
+    buffer: makeStackedBar(labels, [
+      {
+        label: 'Input',
+        data: filterTranscriptData(weeklyData.map(d => d.inputTokens)),
+        backgroundColor: '#4472C4'
+      },
+      {
+        label: 'Cache Creation',
+        data: filterTranscriptData(weeklyData.map(d => d.cacheCreationTokens)),
+        backgroundColor: '#ED7D31'
+      },
+      {
+        label: 'Cache Read',
+        data: filterTranscriptData(weeklyData.map(d => d.cacheReadTokens)),
+        backgroundColor: '#70AD47'
+      },
+      {
+        label: 'Output',
+        data: filterTranscriptData(weeklyData.map(d => d.outputTokens)),
+        backgroundColor: '#FFC000'
+      }
+    ], { title: 'Token Type Breakdown by Week', yLabel: 'Tokens' })
+  },
+  {
     label: 'Time to Context Window',
     buffer: makeLineChart(labels, filterTranscriptData(weeklyData.map(d => d.timeToContextWindow)), { title: 'Time to Hit Context Window', yLabel: 'Minutes', datasetLabel: 'Minutes' })
   },

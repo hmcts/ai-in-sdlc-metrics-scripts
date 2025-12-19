@@ -10,6 +10,7 @@ const { calculateNKTForWeek } = require('../github/utils/nktMetrics');
 const { calculateTokensPerSPForWeek, calculateCostMetrics } = require('../analytics/utils/tokensPerSP');
 const { getStoryPointsCompletedForWeek } = require('../jira/utils/jiraApi');
 const { buildWeeklyData } = require('./utils/weeklyDataBuilder');
+const { calculateTokenBreakdownForWeek } = require('../costForecasting/tokenBreakdownUtils');
 
 console.log('='.repeat(80));
 console.log('GENERATING DASHBOARD DATA');
@@ -53,6 +54,16 @@ for (const week of CONFIG.WEEKS) {
       console.log(`    ✓ Interruptions: ${interruptions.interruptions}/${interruptions.prompts} prompts (${interruptions.interruptionRate}%), Errors: ${interruptions.toolErrors}/${interruptions.toolUses} (${interruptions.errorRate}%)`);
     } catch (err) {
       console.log(`    ⚠ Interruptions: ${err.message}`);
+    }
+
+    try {
+      const tokenBreakdown = await calculateTokenBreakdownForWeek(week);
+      Object.assign(metrics, tokenBreakdown);
+      if (tokenBreakdown.totalTokensBreakdown) {
+        console.log(`    ✓ Token breakdown: ${tokenBreakdown.totalTokensBreakdown.toLocaleString()} total (Input: ${tokenBreakdown.inputTokens.toLocaleString()}, Cache Read: ${tokenBreakdown.cacheReadTokens.toLocaleString()})`);
+      }
+    } catch (err) {
+      console.log(`    ⚠ Token breakdown: ${err.message}`);
     }
 
     // GitHub/PR metrics
