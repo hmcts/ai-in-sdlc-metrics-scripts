@@ -41,6 +41,10 @@ const weeklyData = [
     toolUses: 0,
     toolErrors: 0,
     errorRate: 0,
+    inputTokens: 0,
+    cacheCreationTokens: 0,
+    cacheReadTokens: 0,
+    outputTokens: 0,
     note: ''
   },
   {
@@ -85,6 +89,10 @@ const weeklyData = [
     toolUses: 105,
     toolErrors: 10,
     errorRate: 9.52,
+    inputTokens: 4334,
+    cacheCreationTokens: 1143953,
+    cacheReadTokens: 12386188,
+    outputTokens: 27215,
     note: ''
   },
   {
@@ -129,6 +137,10 @@ const weeklyData = [
     toolUses: 2128,
     toolErrors: 134,
     errorRate: 6.3,
+    inputTokens: 315601,
+    cacheCreationTokens: 33223788,
+    cacheReadTokens: 308080895,
+    outputTokens: 1084012,
     note: ''
   },
   {
@@ -173,6 +185,10 @@ const weeklyData = [
     toolUses: 1548,
     toolErrors: 90,
     errorRate: 5.81,
+    inputTokens: 212398,
+    cacheCreationTokens: 27277399,
+    cacheReadTokens: 277072083,
+    outputTokens: 632408,
     note: ''
   },
   {
@@ -217,6 +233,10 @@ const weeklyData = [
     toolUses: 11427,
     toolErrors: 792,
     errorRate: 6.93,
+    inputTokens: 974208,
+    cacheCreationTokens: 217342040,
+    cacheReadTokens: 2237251981,
+    outputTokens: 3802152,
     note: ''
   },
   {
@@ -261,6 +281,10 @@ const weeklyData = [
     toolUses: 7770,
     toolErrors: 558,
     errorRate: 7.18,
+    inputTokens: 853990,
+    cacheCreationTokens: 125263588,
+    cacheReadTokens: 1422301521,
+    outputTokens: 4599024,
     note: ''
   },
   {
@@ -305,6 +329,10 @@ const weeklyData = [
     toolUses: 13035,
     toolErrors: 822,
     errorRate: 6.31,
+    inputTokens: 1848654,
+    cacheCreationTokens: 230509426,
+    cacheReadTokens: 2806021293,
+    outputTokens: 5115161,
     note: ''
   },
   {
@@ -349,6 +377,10 @@ const weeklyData = [
     toolUses: 8552,
     toolErrors: 695,
     errorRate: 8.13,
+    inputTokens: 894946,
+    cacheCreationTokens: 135983403,
+    cacheReadTokens: 1527819248,
+    outputTokens: 3425350,
     note: ''
   },
   {
@@ -393,6 +425,10 @@ const weeklyData = [
     toolUses: 6180,
     toolErrors: 523,
     errorRate: 8.46,
+    inputTokens: 1235794,
+    cacheCreationTokens: 102023736,
+    cacheReadTokens: 1102447860,
+    outputTokens: 2746070,
     note: ''
   }
 ];
