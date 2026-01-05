@@ -55,7 +55,11 @@ const CONFIG = {
     { name: 'Week 6', start: '2025-11-10', end: '2025-11-14', period: 'Nov 10-14' },
     { name: 'Week 7', start: '2025-11-17', end: '2025-11-21', period: 'Nov 17-21' },
     { name: 'Week 8', start: '2025-11-24', end: '2025-11-28', period: 'Nov 24-28' },
-    { name: 'Week 9', start: '2025-12-01', end: '2025-12-05', period: 'Dec 1-5' }
+    { name: 'Week 9', start: '2025-12-01', end: '2025-12-05', period: 'Dec 1-5' },
+    { name: 'Week 10', start: '2025-12-08', end: '2025-12-12', period: 'Dec 8-12' },
+    { name: 'Week 11', start: '2025-12-15', end: '2025-12-19', period: 'Dec 15-19' },
+    { name: 'Week 12', start: '2025-12-22', end: '2025-12-26', period: 'Dec 22-26' },
+    { name: 'Week 13', start: '2025-12-29', end: '2026-01-02', period: 'Dec 29-Jan 2' }
   ]
 };
 
