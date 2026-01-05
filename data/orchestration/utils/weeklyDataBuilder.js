@@ -48,6 +48,10 @@ function buildWeeklyData(weeklyMetrics) {
     toolUses: ${w.toolUses !== undefined ? w.toolUses : 0},
     toolErrors: ${w.toolErrors !== undefined ? w.toolErrors : 0},
     errorRate: ${w.errorRate !== undefined ? w.errorRate : 0},
+    inputTokens: ${w.inputTokens !== undefined ? w.inputTokens : 'null'},
+    cacheCreationTokens: ${w.cacheCreationTokens !== undefined ? w.cacheCreationTokens : 'null'},
+    cacheReadTokens: ${w.cacheReadTokens !== undefined ? w.cacheReadTokens : 'null'},
+    outputTokens: ${w.outputTokens !== undefined ? w.outputTokens : 'null'},
     note: '${w.note || ''}'
   }`).join(',\n');
 

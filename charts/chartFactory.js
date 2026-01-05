@@ -81,7 +81,7 @@ function makeLineChart(labels, data, opts) {
       responsive: false,
       plugins: {
         title: { display: !!title, text: title },
-        legend: { display: true },
+        legend: { display: dummyLineDatasets.length > 0 }, // Only show legend if there are horizontal lines
         ...annotationConfig
       },
       scales: {
