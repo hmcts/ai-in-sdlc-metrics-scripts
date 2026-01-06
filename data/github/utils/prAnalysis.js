@@ -91,14 +91,14 @@ function analyzePRsForWeek(week) {
     locPerPR: avgLocPerPR,
     locPerDev: locMetrics.avgLOCPerDev,
     commentsPerPR: avgComments ? parseFloat(avgComments.toFixed(2)) : null,
-    testCoverage: sonarMetrics.testCoverage ? parseFloat(sonarMetrics.testCoverage.toFixed(2)) : null,
+    testCoverage: sonarMetrics.testCoverage !== null ? parseFloat(sonarMetrics.testCoverage.toFixed(2)) : null,
     cves: sonarMetrics.cves !== null ? Math.round(sonarMetrics.cves) : null,
-    duplicatedLines: sonarMetrics.duplicatedLines ? parseFloat(sonarMetrics.duplicatedLines.toFixed(2)) : null,
-    maintainability: sonarMetrics.maintainability ? parseFloat(sonarMetrics.maintainability.toFixed(2)) : null,
-    reliability: sonarMetrics.reliability ? parseFloat(sonarMetrics.reliability.toFixed(2)) : null,
-    security: sonarMetrics.security ? parseFloat(sonarMetrics.security.toFixed(2)) : null,
-    bugs: sonarMetrics.bugs ? parseFloat(sonarMetrics.bugs.toFixed(2)) : null,
-    codeSmells: sonarMetrics.codeSmells ? parseFloat(sonarMetrics.codeSmells.toFixed(2)) : null,
+    duplicatedLines: sonarMetrics.duplicatedLines !== null ? parseFloat(sonarMetrics.duplicatedLines.toFixed(2)) : null,
+    maintainability: sonarMetrics.maintainability !== null ? parseFloat(sonarMetrics.maintainability.toFixed(2)) : null,
+    reliability: sonarMetrics.reliability !== null ? parseFloat(sonarMetrics.reliability.toFixed(2)) : null,
+    security: sonarMetrics.security !== null ? parseFloat(sonarMetrics.security.toFixed(2)) : null,
+    bugs: sonarMetrics.bugs !== null ? parseFloat(sonarMetrics.bugs.toFixed(2)) : null,
+    codeSmells: sonarMetrics.codeSmells !== null ? parseFloat(sonarMetrics.codeSmells.toFixed(2)) : null,
     prTickets: prTickets // Add tickets for JIRA story points lookup
   };
 }
