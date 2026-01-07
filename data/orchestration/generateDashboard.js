@@ -159,7 +159,7 @@ for (const week of CONFIG.WEEKS) {
       metrics.costPerSP = null;
     }
 
-    // Quality metrics (SonarCloud) - hardcoded for Weeks 1-7, per-PR averages for Week 8+
+    // Quality metrics (SonarCloud) - hardcoded for Weeks 1-8, per-PR averages for Week 9+
     console.log(`  Fetching quality metrics...`);
 
     // Hardcoded historical SonarCloud metrics (per-PR averages from old weekly_metrics_plot.js)
@@ -170,11 +170,12 @@ for (const week of CONFIG.WEEKS) {
       'Week 4': { testCoverage: 85.23, cves: 0, duplicatedLines: 0, maintainability: 1, reliability: 1, security: 1, codeSmells: 2.2 },
       'Week 5': { testCoverage: 89.77, cves: 0, duplicatedLines: 0, maintainability: 1, reliability: 1, security: 1, codeSmells: 3.25 },
       'Week 6': { testCoverage: 87.5, cves: 0, duplicatedLines: 0, maintainability: 1, reliability: 1, security: 1, codeSmells: 2 },
-      'Week 7': { testCoverage: 92.13, cves: 0, duplicatedLines: 0.23, maintainability: 1, reliability: 1, security: 1, codeSmells: 5.33 }
+      'Week 7': { testCoverage: 92.13, cves: 0, duplicatedLines: 0.23, maintainability: 1, reliability: 1, security: 1, codeSmells: 5.33 },
+      'Week 8': { testCoverage: 89.83, cves: 0, duplicatedLines: 0.83, maintainability: 1, reliability: 1, security: 1, codeSmells: 5.25 }
     };
 
     try {
-      // Use hardcoded values for Weeks 1-7 (per-PR averages from old system)
+      // Use hardcoded values for Weeks 1-8 (per-PR averages from old system)
       if (hardcodedQualityMetrics[week.name]) {
         const quality = hardcodedQualityMetrics[week.name];
         metrics.testCoverage = quality.testCoverage;
@@ -191,7 +192,7 @@ for (const week of CONFIG.WEEKS) {
           console.log(`    ⚠ No quality metrics available (hardcoded)`);
         }
       } else {
-        // For Week 8 and beyond, use per-PR averages already calculated in analyzePRsForWeek()
+        // For Week 9 and beyond, use per-PR averages already calculated in analyzePRsForWeek()
         // These were calculated using aggregateSonarMetrics() in prAnalysis.js
         if (metrics.testCoverage !== null) {
           console.log(`    ✓ Coverage: ${metrics.testCoverage?.toFixed(1)}%, Code Smells: ${metrics.codeSmells?.toFixed(1)} (per-PR avg)`);

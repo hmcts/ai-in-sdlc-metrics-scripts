@@ -13,6 +13,71 @@ Chart.defaults.plugins.datalabels = {
 const CHART_WIDTH = 500;
 const CHART_HEIGHT = 250;
 
+// Common chart configuration
+const DEFAULT_CHART_OPTIONS = {
+  responsive: false,
+  plugins: {
+    title: { display: false },
+    legend: { display: false }
+  },
+  scales: {
+    x: { title: { display: true, text: 'Week' } },
+    y: { beginAtZero: true }
+  }
+};
+
+// Color palettes
+const SP_COLOR_MAP = {
+  1: '#00FF00',  // Bright Green
+  2: '#0000FF',  // Blue
+  3: '#FF00FF',  // Magenta
+  5: '#FFA500',  // Orange
+  8: '#FF0000',  // Red
+  13: '#800080', // Purple
+  default: '#000000' // Black
+};
+
+const CATEGORY_COLORS = {
+  feature_development: '#4CAF50',
+  bug_fix: '#FF5722',
+  general: '#9E9E9E',
+  code_understanding: '#2196F3',
+  testing: '#FF9800',
+  refactoring: '#9C27B0',
+  documentation: '#00BCD4',
+  code_review: '#607D8B',
+  version_control: '#795548',
+  configuration: '#E91E63',
+};
+
+const CATEGORY_LABELS = {
+  feature_development: 'Feature Development',
+  bug_fix: 'Bug Fix',
+  general: 'General',
+  code_understanding: 'Code Understanding',
+  testing: 'Testing',
+  refactoring: 'Refactoring',
+  documentation: 'Documentation',
+  code_review: 'Code Review',
+  version_control: 'Version Control',
+  configuration: 'Configuration',
+};
+
+// Helper function to deep merge chart options
+function mergeOptions(customOptions) {
+  return {
+    responsive: false,
+    plugins: {
+      ...DEFAULT_CHART_OPTIONS.plugins,
+      ...(customOptions.plugins || {})
+    },
+    scales: {
+      ...DEFAULT_CHART_OPTIONS.scales,
+      ...(customOptions.scales || {})
+    }
+  };
+}
+
 function renderChartToBuffer(config) {
   const canvas = createCanvas(CHART_WIDTH, CHART_HEIGHT);
   const ctx = canvas.getContext('2d');
@@ -77,18 +142,17 @@ function makeLineChart(labels, data, opts) {
         ...dummyLineDatasets
       ]
     },
-    options: {
-      responsive: false,
+    options: mergeOptions({
       plugins: {
         title: { display: !!title, text: title },
-        legend: { display: dummyLineDatasets.length > 0 }, // Only show legend if there are horizontal lines
+        legend: { display: dummyLineDatasets.length > 0 },
         ...annotationConfig
       },
       scales: {
         x: { title: { display: true, text: 'Week' } },
         y: { beginAtZero: true, title: { display: !!yLabel, text: yLabel } }
       }
-    }
+    })
   });
 }
 
@@ -97,8 +161,7 @@ function makeStackedBar(labels, datasets, opts) {
   return renderChartToBuffer({
     type: 'bar',
     data: { labels, datasets },
-    options: {
-      responsive: false,
+    options: mergeOptions({
       plugins: {
         title: { display: !!title, text: title },
         legend: { display: true }
@@ -107,37 +170,12 @@ function makeStackedBar(labels, datasets, opts) {
         x: { stacked: true, title: { display: true, text: 'Week' } },
         y: { stacked: true, beginAtZero: true, title: { display: !!yLabel, text: yLabel } }
       }
-    }
+    })
   });
 }
 
-function makePromptCategoryChart(labels, weeklyData) {
-  const categoryColors = {
-    feature_development: '#4CAF50',
-    bug_fix: '#FF5722',
-    general: '#9E9E9E',
-    code_understanding: '#2196F3',
-    testing: '#FF9800',
-    refactoring: '#9C27B0',
-    documentation: '#00BCD4',
-    code_review: '#607D8B',
-    version_control: '#795548',
-    configuration: '#E91E63',
-  };
-
-  const categoryLabels = {
-    feature_development: 'Feature Development',
-    bug_fix: 'Bug Fix',
-    general: 'General',
-    code_understanding: 'Code Understanding',
-    testing: 'Testing',
-    refactoring: 'Refactoring',
-    documentation: 'Documentation',
-    code_review: 'Code Review',
-    version_control: 'Version Control',
-    configuration: 'Configuration',
-  };
-
+// Helper: Prepare prompt category datasets
+function preparePromptCategoryData(weeklyData) {
   const allCategories = new Set();
   weeklyData.forEach(d => {
     if (d.promptCategories) {
@@ -145,45 +183,37 @@ function makePromptCategoryChart(labels, weeklyData) {
     }
   });
 
-  const stackedDatasets = Array.from(allCategories).map(cat => ({
-    label: categoryLabels[cat] || cat,
+  return Array.from(allCategories).map(cat => ({
+    label: CATEGORY_LABELS[cat] || cat,
     data: weeklyData.map(d =>
       d.promptCategories && d.promptCategories[cat]
         ? d.promptCategories[cat].count || 0
         : 0
     ),
-    backgroundColor: categoryColors[cat] || '#999999',
+    backgroundColor: CATEGORY_COLORS[cat] || '#999999',
   }));
+}
 
-  return makeStackedBar(labels, stackedDatasets, {
+function makePromptCategoryChart(labels, weeklyData) {
+  const datasets = preparePromptCategoryData(weeklyData);
+
+  return makeStackedBar(labels, datasets, {
     title: 'Prompt Categories Breakdown by Week',
     yLabel: 'Number of Prompts',
   });
 }
 
-function makeTokensPerSPScatter(weeklyData) {
-  // High contrast color palette for different story point values
-  const spColorMap = {
-    1: '#00FF00',  // Bright Green
-    2: '#0000FF',  // Blue
-    3: '#FF00FF',  // Magenta
-    5: '#FFA500',  // Orange
-    8: '#FF0000',  // Red
-    13: '#800080', // Purple
-    default: '#000000' // Black for other values
-  };
+// Helper: Get color for story point value
+function getColorForSP(sp) {
+  return SP_COLOR_MAP[sp] || SP_COLOR_MAP.default;
+}
 
-  const getColorForSP = (sp) => {
-    return spColorMap[sp] || spColorMap.default;
-  };
-
-  // Collect all tickets with both tokens and story points
-  // Exclude Week 1-3 (incomplete transcript data), start from Week 4 (index 3)
-  const datasets = [];
+// Helper: Prepare tokens per SP scatter plot data
+function prepareTokensPerSPData(weeklyData) {
   const spGroups = {};
 
   weeklyData.forEach((week, weekIndex) => {
-    // Skip weeks 1-3 (indices 0-2)
+    // Skip weeks 1-3 (incomplete transcript data)
     if (weekIndex < 3) return;
     if (!week.ticketDetails) return;
 
@@ -202,7 +232,7 @@ function makeTokensPerSPScatter(weeklyData) {
           };
         }
 
-        // Adjust x-axis: Week 4 (index 3) becomes x=0, Week 5 becomes x=1, etc.
+        // Adjust x-axis: Week 4 (index 3) becomes x=0, Week 5 becomes x=1
         spGroups[sp].data.push({
           x: weekIndex - 3,
           y: details.tokens
@@ -211,17 +241,18 @@ function makeTokensPerSPScatter(weeklyData) {
     });
   });
 
-  // Convert spGroups to datasets array and sort by SP
+  // Convert spGroups to sorted datasets array
   const sortedSPs = Object.keys(spGroups).map(Number).sort((a, b) => a - b);
-  sortedSPs.forEach(sp => {
-    datasets.push(spGroups[sp]);
-  });
+  return sortedSPs.map(sp => spGroups[sp]);
+}
+
+function makeTokensPerSPScatter(weeklyData) {
+  const datasets = prepareTokensPerSPData(weeklyData);
 
   return renderChartToBuffer({
     type: 'scatter',
     data: { datasets },
-    options: {
-      responsive: false,
+    options: mergeOptions({
       plugins: {
         title: {
           display: true,
@@ -243,12 +274,10 @@ function makeTokensPerSPScatter(weeklyData) {
         datalabels: {
           display: true,
           align: function(context) {
-            // Alternate alignment to reduce overlap
             return context.dataIndex % 2 === 0 ? 'top' : 'bottom';
           },
           offset: 8,
           formatter: function(value) {
-            // Show tokens in millions with 1 decimal place
             return (value.y / 1000000).toFixed(1) + 'M';
           },
           color: '#000',
@@ -273,7 +302,6 @@ function makeTokensPerSPScatter(weeklyData) {
           ticks: {
             stepSize: 1,
             callback: function(value) {
-              // Week 4 is x=0, Week 5 is x=1, etc.
               return `W${Math.floor(value) + 4}`;
             }
           }
@@ -288,12 +316,14 @@ function makeTokensPerSPScatter(weeklyData) {
           }
         }
       }
-    }
+    })
   });
 }
 
-function makeNKTLogScatter(weeklyData) {
-  // Filter weeks with valid NK/T and cycle time data
+// Helper: Prepare NK vs T scatter plot data
+function prepareNKTData(weeklyData) {
+  const NK = 13; // N * K = 13 * 1
+
   const validWeeks = weeklyData
     .map((week, index) => ({
       week: week.week,
@@ -303,28 +333,30 @@ function makeNKTLogScatter(weeklyData) {
     }))
     .filter(w => w.nkt && w.cycleTime && w.nkt > 0 && w.cycleTime > 0);
 
-  if (validWeeks.length === 0) {
-    // Return empty chart if no data
-    return renderChartToBuffer({
-      type: 'scatter',
-      data: { datasets: [] },
-      options: {
-        responsive: false,
-        plugins: {
-          title: { display: true, text: 'NK vs T - No Data' }
-        }
-      }
-    });
-  }
-
-  // Plot NK (constant = 13) against T (cycle time)
-  const NK = 13; // N * K = 13 * 1
   const dataPoints = validWeeks.map(w => ({
     x: w.cycleTime, // T (cycle time in days)
     y: NK,          // NK (constant = 13)
     week: w.week,
     weekIndex: w.weekIndex
   }));
+
+  return { dataPoints, hasData: validWeeks.length > 0 };
+}
+
+function makeNKTLogScatter(weeklyData) {
+  const { dataPoints, hasData } = prepareNKTData(weeklyData);
+
+  if (!hasData) {
+    return renderChartToBuffer({
+      type: 'scatter',
+      data: { datasets: [] },
+      options: mergeOptions({
+        plugins: {
+          title: { display: true, text: 'NK vs T - No Data' }
+        }
+      })
+    });
+  }
 
   return renderChartToBuffer({
     type: 'scatter',
@@ -338,8 +370,7 @@ function makeNKTLogScatter(weeklyData) {
         pointHoverRadius: 8
       }]
     },
-    options: {
-      responsive: false,
+    options: mergeOptions({
       plugins: {
         title: {
           display: true,
@@ -360,7 +391,6 @@ function makeNKTLogScatter(weeklyData) {
           display: true,
           align: 'top',
           formatter: function(value, context) {
-            // Show week label instead of NK (which is constant at 13)
             const point = dataPoints[context.dataIndex];
             return point.week.replace('Week ', 'W');
           },
@@ -398,7 +428,7 @@ function makeNKTLogScatter(weeklyData) {
           }
         }
       }
-    }
+    })
   });
 }
 

@@ -45,13 +45,13 @@ function analyzePromptCategoriesForWeek(week) {
   files.forEach(filePath => {
     const entries = readJSONL(filePath);
 
-    // Determine if this file is in the target week by checking first entry timestamp
     if (entries.length === 0) return;
-    const firstEntry = entries[0];
-    if (!firstEntry.timestamp) return;
-    if (!isInWeek(firstEntry.timestamp, week)) return;
 
     entries.forEach(entry => {
+      // Skip entries without timestamps or not in target week
+      if (!entry.timestamp) return;
+      if (!isInWeek(entry.timestamp, week)) return;
+
       // Check for user message (NOT entry.role, but entry.message.role)
       if (!entry.message || entry.message.role !== 'user') return;
       if (!entry.message.content) return;
