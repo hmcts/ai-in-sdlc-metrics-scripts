@@ -10,18 +10,18 @@ const TRANSCRIPT_EXCLUDE_WEEKS = ['Week 1', 'Week 2', 'Week 3'];
 // Filter out Week 11-13 from all metrics (w/c 15th, 22nd, 29th December onwards)
 const DECEMBER_EXCLUDE_WEEKS = ['Week 11', 'Week 12', 'Week 13'];
 
+// Create filtered labels array (only weeks 1-10)
+const filteredLabels = labels.slice(0, 10);
+
 function filterTranscriptData(data) {
-  return data.map((value, index) => {
+  return data.slice(0, 10).map((value, index) => {
     const week = weeklyData[index];
     return TRANSCRIPT_EXCLUDE_WEEKS.includes(week.week) ? null : value;
   });
 }
 
 function filterDecemberData(data) {
-  return data.map((value, index) => {
-    const week = weeklyData[index];
-    return DECEMBER_EXCLUDE_WEEKS.includes(week.week) ? null : value;
-  });
+  return data.slice(0, 10);
 }
 
 const args = process.argv.slice(2);
@@ -36,51 +36,46 @@ const pdfOutputPath = path.resolve(__dirname, outputFile);
 
 const { makePromptCategoryChart } = require('./charts/chartFactory');
 
-// Filter weeklyData for prompt categories (exclude Week 3)
-const filteredWeeklyDataForPrompts = weeklyData.map((week, index) => {
+// Filter weeklyData for prompt categories (exclude Week 1-3 and 11-13)
+const filteredWeeklyDataForPrompts = weeklyData.slice(0, 10).map((week, index) => {
   if (TRANSCRIPT_EXCLUDE_WEEKS.includes(week.week)) {
     return { ...week, promptCategories: {} }; // Empty categories for excluded weeks
   }
   return week;
 });
 
-const promptCategories = makePromptCategoryChart(labels, filteredWeeklyDataForPrompts);
+const promptCategories = makePromptCategoryChart(filteredLabels, filteredWeeklyDataForPrompts);
 
 // Tokens per SP bar chart with mean ± std dev (no December filtering per user request)
 const tokensPerSPScatter = makeTokensPerSPWithStdDev(weeklyData);
 
-// Filter weeklyData for December exclusion (Week 11-13)
-const filteredWeeklyDataForDecember = weeklyData.map((week, index) => {
-  if (DECEMBER_EXCLUDE_WEEKS.includes(week.week)) {
-    return { ...week, nkt: null, cycleTime: null, totalPrompts: 0, interruptions: 0 };
-  }
-  return week;
-});
+// Filter weeklyData for December exclusion (only include weeks 1-10)
+const filteredWeeklyDataForDecember = weeklyData.slice(0, 10);
 
 // NK/T log scatter chart (exclude December weeks)
 const nktLogScatter = makeNKTLogScatter(filteredWeeklyDataForDecember);
 
 // Interruption rate chart (exclude December weeks)
-const interruptionRateChart = makeInterruptionRateChart(labels, filteredWeeklyDataForDecember);
+const interruptionRateChart = makeInterruptionRateChart(filteredLabels, filteredWeeklyDataForDecember);
 
 // Grouped chart definitions
 const efficiencyCharts = [
   {
     label: 'Tokens per Story Point',
-    buffer: makeLineChart(labels, filterTranscriptData(weeklyData.map(d => d.tokensPerSP)), { title: 'Tokens per Story Points', yLabel: 'Tokens per SPs', datasetLabel: 'Tokens/SP' })
+    buffer: makeLineChart(filteredLabels, filterTranscriptData(weeklyData.map(d => d.tokensPerSP)), { title: 'Tokens per Story Points', yLabel: 'Tokens per SPs', datasetLabel: 'Tokens/SP' })
   },
   {
     label: 'LOC per Token',
-    buffer: makeLineChart(labels, filterTranscriptData(weeklyData.map(d => 10000 * d.locPerToken)), { title: 'LOC per 10,0000 Tokens', yLabel: 'Lines of Code per 10K Tokens', datasetLabel: 'LOC/10000Token' })
+    buffer: makeLineChart(filteredLabels, filterTranscriptData(weeklyData.map(d => 10000 * d.locPerToken)), { title: 'LOC per 10,0000 Tokens', yLabel: 'Lines of Code per 10K Tokens', datasetLabel: 'LOC/10000Token' })
   },
   {
     label: 'LOC per Merged PR',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.locPerPR)), { title: 'LOC per Merged PR', yLabel: 'LOC per Merged PR', datasetLabel: 'LOC/PR' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.locPerPR)), { title: 'LOC per Merged PR', yLabel: 'LOC per Merged PR', datasetLabel: 'LOC/PR' })
   },
   {
     label: 'LOC per Developer',
     buffer: makeLineChart(
-      labels,
+      filteredLabels,
       filterDecemberData(weeklyData.map(d => d.locPerDev)),
       {
         title: 'LOC per Dev',
@@ -96,30 +91,30 @@ const efficiencyCharts = [
   },
   {
     label: 'Tokens per Time to Pass PR',
-    buffer: makeLineChart(labels, filterTranscriptData(weeklyData.map(d => d.tokensPerCycleTime)), { title: 'Tokens per Time to Pass PR', yLabel: 'Tokens Per Day', datasetLabel: 'Tokens/Day' })
+    buffer: makeLineChart(filteredLabels, filterTranscriptData(weeklyData.map(d => d.tokensPerCycleTime)), { title: 'Tokens per Time to Pass PR', yLabel: 'Tokens Per Day', datasetLabel: 'Tokens/Day' })
   },
   {
     label: 'Cost per LoC',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.costPerLOC * 0.750)), { title: 'Cost per LOC', yLabel: 'Cost per LOC (£)', datasetLabel: 'Cost/LOC' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.costPerLOC * 0.750)), { title: 'Cost per LOC', yLabel: 'Cost per LOC (£)', datasetLabel: 'Cost/LOC' })
   },
   {
     label: 'Cost per PR',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.costPerPR * 0.750)), { title: 'Cost per PR', yLabel: 'Cost per PR (£)', datasetLabel: 'Cost/PR' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.costPerPR * 0.750)), { title: 'Cost per PR', yLabel: 'Cost per PR (£)', datasetLabel: 'Cost/PR' })
   },
   {
     label: 'Cost per Story Point',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.costPerSP * 0.750)), { title: 'Cost per Story Point', yLabel: 'Cost per SP (£)', datasetLabel: 'Cost/SP' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.costPerSP * 0.750)), { title: 'Cost per Story Point', yLabel: 'Cost per SP (£)', datasetLabel: 'Cost/SP' })
   },
 ];
 
 const efficiencyCharts2 = [
   {
     label: 'Story Point Velocity',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.storyPoints)), { title: 'Story Point Velocity', yLabel: 'Story Points', datasetLabel: 'Story Point Velocity' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.storyPoints)), { title: 'Story Point Velocity', yLabel: 'Story Points', datasetLabel: 'Story Point Velocity' })
   },
   {
     label: 'Number of PRs',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.featurePRs)), { title: 'Number of PRs', yLabel: 'PRs', datasetLabel: 'Number of PRs' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.featurePRs)), { title: 'Number of PRs', yLabel: 'PRs', datasetLabel: 'Number of PRs' })
   },
   {
     label: 'Tokens per SP (by Ticket)',
@@ -134,38 +129,38 @@ const efficiencyCharts2 = [
 const qualityCharts = [
   {
     label: 'Test Coverage',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.testCoverage)), { title: 'Test Coverage', yLabel: 'Test Coverage (%)', datasetLabel: 'Test Coverage (%)' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.testCoverage)), { title: 'Test Coverage', yLabel: 'Test Coverage (%)', datasetLabel: 'Test Coverage (%)' })
   },
   {
     label: 'CVEs',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.cves)), { title: 'CVEs', yLabel: 'CVEs', datasetLabel: 'CVEs' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.cves)), { title: 'CVEs', yLabel: 'CVEs', datasetLabel: 'CVEs' })
   },
   {
     label: 'Duplicated Lines',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.duplicatedLines)), { title: 'Duplicated Lines', yLabel: 'Duplicated Lines (%)', datasetLabel: 'Duplicated Lines (%)' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.duplicatedLines)), { title: 'Duplicated Lines', yLabel: 'Duplicated Lines (%)', datasetLabel: 'Duplicated Lines (%)' })
   },
   {
     label: 'Maintainability',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.maintainability)), { title: 'Maintainability Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Maintainability' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.maintainability)), { title: 'Maintainability Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Maintainability' })
   },
   {
     label: 'Reliability',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.reliability)), { title: 'Reliability Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Reliability' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.reliability)), { title: 'Reliability Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Reliability' })
   },
   {
     label: 'Security',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.security)), { title: 'Security Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Security' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.security)), { title: 'Security Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Security' })
   },
   {
     label: 'Code Smells',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.codeSmells)), { title: 'Code Smells', yLabel: 'Code Smells', datasetLabel: 'Code Smells' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.codeSmells)), { title: 'Code Smells', yLabel: 'Code Smells', datasetLabel: 'Code Smells' })
   },
 ];
 
 const satisfactionCharts = [
   {
     label: 'Comments per PR',
-    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.commentsPerPR)), { title: 'Comments per PR', yLabel: 'Comments per PR', datasetLabel: 'Comments/PR' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.commentsPerPR)), { title: 'Comments per PR', yLabel: 'Comments per PR', datasetLabel: 'Comments/PR' })
   },
 ];
 
@@ -176,7 +171,7 @@ const adoptionCharts = [
   },
   {
     label: 'Token Type Breakdown',
-    buffer: makeStackedBar(labels, [
+    buffer: makeStackedBar(filteredLabels, [
       {
         label: 'Input',
         data: filterTranscriptData(weeklyData.map(d => d.inputTokens)),
@@ -201,11 +196,11 @@ const adoptionCharts = [
   },
   {
     label: 'Time to Context Window',
-    buffer: makeLineChart(labels, filterTranscriptData(weeklyData.map(d => d.timeToContextWindow)), { title: 'Time to Hit Context Window', yLabel: 'Minutes', datasetLabel: 'Minutes' })
+    buffer: makeLineChart(filteredLabels, filterTranscriptData(weeklyData.map(d => d.timeToContextWindow)), { title: 'Time to Hit Context Window', yLabel: 'Minutes', datasetLabel: 'Minutes' })
   },
   {
     label: 'Compactions',
-    buffer: makeStackedBar(labels, [
+    buffer: makeStackedBar(filteredLabels, [
       {
         label: 'Auto Compactions',
         data: filterTranscriptData(weeklyData.map(d => d.autoCompactions)),
