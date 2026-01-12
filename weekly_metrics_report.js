@@ -2,16 +2,25 @@
 
 const path = require('path');
 const { weeklyData, labels } = require('./data/weeklyData');
-const { makeLineChart, makeStackedBar, makeTokensPerSPScatter, makeNKTLogScatter, makeInterruptionRateChart } = require('./charts/chartFactory');
+const { makeLineChart, makeStackedBar, makeTokensPerSPWithStdDev, makeNKTLogScatter, makeInterruptionRateChart } = require('./charts/chartFactory');
 const { createDoc, drawSectionHeader, addChartsGrid } = require('./pdf/layoutBuilder');
 
 // Filter out Week 1-3 from transcript-related metrics (incomplete transcript data)
 const TRANSCRIPT_EXCLUDE_WEEKS = ['Week 1', 'Week 2', 'Week 3'];
+// Filter out Week 11-13 from all metrics (w/c 15th, 22nd, 29th December onwards)
+const DECEMBER_EXCLUDE_WEEKS = ['Week 11', 'Week 12', 'Week 13'];
 
 function filterTranscriptData(data) {
   return data.map((value, index) => {
     const week = weeklyData[index];
     return TRANSCRIPT_EXCLUDE_WEEKS.includes(week.week) ? null : value;
+  });
+}
+
+function filterDecemberData(data) {
+  return data.map((value, index) => {
+    const week = weeklyData[index];
+    return DECEMBER_EXCLUDE_WEEKS.includes(week.week) ? null : value;
   });
 }
 
@@ -37,14 +46,22 @@ const filteredWeeklyDataForPrompts = weeklyData.map((week, index) => {
 
 const promptCategories = makePromptCategoryChart(labels, filteredWeeklyDataForPrompts);
 
-// Tokens per SP scatter chart (only weeks with transcript data)
-const tokensPerSPScatter = makeTokensPerSPScatter(weeklyData);
+// Tokens per SP bar chart with mean ± std dev (no December filtering per user request)
+const tokensPerSPScatter = makeTokensPerSPWithStdDev(weeklyData);
 
-// NK/T log scatter chart
-const nktLogScatter = makeNKTLogScatter(weeklyData);
+// Filter weeklyData for December exclusion (Week 11-13)
+const filteredWeeklyDataForDecember = weeklyData.map((week, index) => {
+  if (DECEMBER_EXCLUDE_WEEKS.includes(week.week)) {
+    return { ...week, nkt: null, cycleTime: null, totalPrompts: 0, interruptions: 0 };
+  }
+  return week;
+});
 
-// Interruption rate chart
-const interruptionRateChart = makeInterruptionRateChart(labels, weeklyData);
+// NK/T log scatter chart (exclude December weeks)
+const nktLogScatter = makeNKTLogScatter(filteredWeeklyDataForDecember);
+
+// Interruption rate chart (exclude December weeks)
+const interruptionRateChart = makeInterruptionRateChart(labels, filteredWeeklyDataForDecember);
 
 // Grouped chart definitions
 const efficiencyCharts = [
@@ -58,13 +75,13 @@ const efficiencyCharts = [
   },
   {
     label: 'LOC per Merged PR',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.locPerPR), { title: 'LOC per Merged PR', yLabel: 'LOC per Merged PR', datasetLabel: 'LOC/PR' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.locPerPR)), { title: 'LOC per Merged PR', yLabel: 'LOC per Merged PR', datasetLabel: 'LOC/PR' })
   },
   {
     label: 'LOC per Developer',
     buffer: makeLineChart(
       labels,
-      weeklyData.map(d => d.locPerDev),
+      filterDecemberData(weeklyData.map(d => d.locPerDev)),
       {
         title: 'LOC per Dev',
         yLabel: 'LOC per Dev',
@@ -83,26 +100,26 @@ const efficiencyCharts = [
   },
   {
     label: 'Cost per LoC',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.costPerLOC * 0.750), { title: 'Cost per LOC', yLabel: 'Cost per LOC (£)', datasetLabel: 'Cost/LOC' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.costPerLOC * 0.750)), { title: 'Cost per LOC', yLabel: 'Cost per LOC (£)', datasetLabel: 'Cost/LOC' })
   },
   {
     label: 'Cost per PR',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.costPerPR * 0.750), { title: 'Cost per PR', yLabel: 'Cost per PR (£)', datasetLabel: 'Cost/PR' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.costPerPR * 0.750)), { title: 'Cost per PR', yLabel: 'Cost per PR (£)', datasetLabel: 'Cost/PR' })
   },
   {
     label: 'Cost per Story Point',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.costPerSP * 0.750), { title: 'Cost per Story Point', yLabel: 'Cost per SP (£)', datasetLabel: 'Cost/SP' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.costPerSP * 0.750)), { title: 'Cost per Story Point', yLabel: 'Cost per SP (£)', datasetLabel: 'Cost/SP' })
   },
 ];
 
 const efficiencyCharts2 = [
   {
     label: 'Story Point Velocity',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.storyPoints), { title: 'Story Point Velocity', yLabel: 'Story Points', datasetLabel: 'Story Point Velocity' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.storyPoints)), { title: 'Story Point Velocity', yLabel: 'Story Points', datasetLabel: 'Story Point Velocity' })
   },
   {
     label: 'Number of PRs',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.featurePRs), { title: 'Number of PRs', yLabel: 'PRs', datasetLabel: 'Number of PRs' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.featurePRs)), { title: 'Number of PRs', yLabel: 'PRs', datasetLabel: 'Number of PRs' })
   },
   {
     label: 'Tokens per SP (by Ticket)',
@@ -117,38 +134,38 @@ const efficiencyCharts2 = [
 const qualityCharts = [
   {
     label: 'Test Coverage',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.testCoverage), { title: 'Test Coverage', yLabel: 'Test Coverage (%)', datasetLabel: 'Test Coverage (%)' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.testCoverage)), { title: 'Test Coverage', yLabel: 'Test Coverage (%)', datasetLabel: 'Test Coverage (%)' })
   },
   {
     label: 'CVEs',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.cves), { title: 'CVEs', yLabel: 'CVEs', datasetLabel: 'CVEs' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.cves)), { title: 'CVEs', yLabel: 'CVEs', datasetLabel: 'CVEs' })
   },
   {
     label: 'Duplicated Lines',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.duplicatedLines), { title: 'Duplicated Lines', yLabel: 'Duplicated Lines (%)', datasetLabel: 'Duplicated Lines (%)' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.duplicatedLines)), { title: 'Duplicated Lines', yLabel: 'Duplicated Lines (%)', datasetLabel: 'Duplicated Lines (%)' })
   },
   {
     label: 'Maintainability',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.maintainability), { title: 'Maintainability Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Maintainability' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.maintainability)), { title: 'Maintainability Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Maintainability' })
   },
   {
     label: 'Reliability',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.reliability), { title: 'Reliability Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Reliability' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.reliability)), { title: 'Reliability Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Reliability' })
   },
   {
     label: 'Security',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.security), { title: 'Security Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Security' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.security)), { title: 'Security Rating', yLabel: 'Rating (1=A,5=E)', datasetLabel: 'Security' })
   },
   {
     label: 'Code Smells',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.codeSmells), { title: 'Code Smells', yLabel: 'Code Smells', datasetLabel: 'Code Smells' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.codeSmells)), { title: 'Code Smells', yLabel: 'Code Smells', datasetLabel: 'Code Smells' })
   },
 ];
 
 const satisfactionCharts = [
   {
     label: 'Comments per PR',
-    buffer: makeLineChart(labels, weeklyData.map(d => d.commentsPerPR), { title: 'Comments per PR', yLabel: 'Comments per PR', datasetLabel: 'Comments/PR' })
+    buffer: makeLineChart(labels, filterDecemberData(weeklyData.map(d => d.commentsPerPR)), { title: 'Comments per PR', yLabel: 'Comments per PR', datasetLabel: 'Comments/PR' })
   },
 ];
 

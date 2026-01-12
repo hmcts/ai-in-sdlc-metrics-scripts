@@ -208,107 +208,151 @@ function getColorForSP(sp) {
   return SP_COLOR_MAP[sp] || SP_COLOR_MAP.default;
 }
 
-// Helper: Prepare tokens per SP scatter plot data
-function prepareTokensPerSPData(weeklyData) {
-  const spGroups = {};
+function makeTokensPerSPWithStdDev(weeklyData) {
+  // Step 1: Collect all token values grouped by story point size
+  const tokensBySP = {};
 
   weeklyData.forEach((week, weekIndex) => {
-    // Skip weeks 1-3 (incomplete transcript data)
+    // Skip weeks 1-3 (incomplete data)
     if (weekIndex < 3) return;
+
     if (!week.ticketDetails) return;
 
     Object.entries(week.ticketDetails).forEach(([ticket, details]) => {
       if (details.tokens && details.storyPoints) {
         const sp = details.storyPoints;
-
-        if (!spGroups[sp]) {
-          spGroups[sp] = {
-            label: `${sp} SP`,
-            data: [],
-            backgroundColor: getColorForSP(sp),
-            borderColor: getColorForSP(sp),
-            pointRadius: 5,
-            pointHoverRadius: 7
-          };
+        if (!tokensBySP[sp]) {
+          tokensBySP[sp] = [];
         }
-
-        // Adjust x-axis: Week 4 (index 3) becomes x=0, Week 5 becomes x=1
-        spGroups[sp].data.push({
-          x: weekIndex - 3,
-          y: details.tokens
-        });
+        tokensBySP[sp].push(details.tokens);
       }
     });
   });
 
-  // Convert spGroups to sorted datasets array
-  const sortedSPs = Object.keys(spGroups).map(Number).sort((a, b) => a - b);
-  return sortedSPs.map(sp => spGroups[sp]);
-}
+  // Step 2: Calculate statistics for each SP size
+  const stats = Object.entries(tokensBySP)
+    .map(([sp, tokens]) => {
+      const n = tokens.length;
+      const mean = tokens.reduce((sum, val) => sum + val, 0) / n;
+      const variance = tokens.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / n;
+      const stdDev = Math.sqrt(variance);
 
-function makeTokensPerSPScatter(weeklyData) {
-  const datasets = prepareTokensPerSPData(weeklyData);
+      return {
+        sp: Number(sp),
+        mean: mean,
+        stdDev: stdDev,
+        count: n
+      };
+    })
+    .sort((a, b) => a.sp - b.sp);
+
+  // Step 3: Prepare data for bar chart
+  const labels = stats.map(s => `${s.sp} SP`);
+  const meanValues = stats.map(s => s.mean);
+  const backgroundColors = stats.map(s => getColorForSP(s.sp));
+
+  // Step 4: Create error bar annotations
+  const errorBarAnnotations = {};
+  stats.forEach((stat, idx) => {
+    errorBarAnnotations[`errorBar${idx}`] = {
+      type: 'line',
+      xMin: idx,
+      xMax: idx,
+      yMin: stat.mean - stat.stdDev,
+      yMax: stat.mean + stat.stdDev,
+      borderColor: '#000',
+      borderWidth: 2
+    };
+    // Top cap
+    errorBarAnnotations[`errorBarCapTop${idx}`] = {
+      type: 'line',
+      xMin: idx - 0.1,
+      xMax: idx + 0.1,
+      yMin: stat.mean + stat.stdDev,
+      yMax: stat.mean + stat.stdDev,
+      borderColor: '#000',
+      borderWidth: 2
+    };
+    // Bottom cap
+    errorBarAnnotations[`errorBarCapBottom${idx}`] = {
+      type: 'line',
+      xMin: idx - 0.1,
+      xMax: idx + 0.1,
+      yMin: stat.mean - stat.stdDev,
+      yMax: stat.mean - stat.stdDev,
+      borderColor: '#000',
+      borderWidth: 2
+    };
+  });
 
   return renderChartToBuffer({
-    type: 'scatter',
-    data: { datasets },
-    options: mergeOptions({
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Average Tokens',
+        data: meanValues,
+        backgroundColor: backgroundColors,
+        borderColor: backgroundColors,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: false,
       plugins: {
         title: {
           display: true,
-          text: 'Tokens per Story Point (by Ticket)'
+          text: 'Tokens per Story Point (Mean ± Std Dev)'
         },
         legend: {
-          display: true,
-          position: 'right'
+          display: false  // Single dataset, no legend needed
+        },
+        annotation: {
+          annotations: errorBarAnnotations
         },
         tooltip: {
           callbacks: {
             label: function(context) {
-              const tokens = context.parsed.y;
-              const sp = context.dataset.label;
-              return `${sp}: ${tokens.toLocaleString()} tokens`;
+              const stat = stats[context.dataIndex];
+              const meanM = (stat.mean / 1000000).toFixed(1);
+              const stdDevM = (stat.stdDev / 1000000).toFixed(1);
+              return `${meanM}M ± ${stdDevM}M tokens`;
             }
           }
         },
         datalabels: {
           display: true,
-          align: function(context) {
-            return context.dataIndex % 2 === 0 ? 'top' : 'bottom';
-          },
-          offset: 8,
-          formatter: function(value) {
-            return (value.y / 1000000).toFixed(1) + 'M';
+          anchor: 'end',
+          align: 'top',
+          formatter: function(value, context) {
+            const stat = stats[context.dataIndex];
+            const meanM = (stat.mean / 1000000).toFixed(1);
+            const stdDevM = (stat.stdDev / 1000000).toFixed(1);
+            return `${meanM}M\n±${stdDevM}M`;
           },
           color: '#000',
           font: {
-            size: 8,
+            size: 9,
             weight: 'bold'
           },
           backgroundColor: 'rgba(255, 255, 255, 0.8)',
           borderRadius: 3,
-          padding: {
-            top: 2,
-            bottom: 2,
-            left: 3,
-            right: 3
-          }
+          padding: 4
         }
       },
       scales: {
         x: {
-          type: 'linear',
-          title: { display: true, text: 'Week' },
-          ticks: {
-            stepSize: 1,
-            callback: function(value) {
-              return `W${Math.floor(value) + 4}`;
-            }
+          title: {
+            display: true,
+            text: 'Story Points'
           }
         },
         y: {
           beginAtZero: true,
-          title: { display: true, text: 'Tokens' },
+          title: {
+            display: true,
+            text: 'Tokens (Mean ± Std Dev)'
+          },
           ticks: {
             callback: function(value) {
               return (value / 1000000).toFixed(0) + 'M';
@@ -316,7 +360,7 @@ function makeTokensPerSPScatter(weeklyData) {
           }
         }
       }
-    })
+    }
   });
 }
 
@@ -446,4 +490,4 @@ function makeInterruptionRateChart(labels, weeklyData) {
   });
 }
 
-module.exports = { makeLineChart, makeStackedBar, makePromptCategoryChart, makeTokensPerSPScatter, makeNKTLogScatter, makeInterruptionRateChart };
+module.exports = { makeLineChart, makeStackedBar, makePromptCategoryChart, makeTokensPerSPWithStdDev, makeNKTLogScatter, makeInterruptionRateChart };
