@@ -396,61 +396,62 @@ function makeTokensPerSPWithStdDev(weeklyData) {
   });
 }
 
-// Helper: Prepare NK vs T scatter plot data
-function prepareNKTData(weeklyData) {
+// Helper: Calculate NK/T ratio for each week
+function calculateNKTRatio(weeklyData) {
   const NK = 13; // N * K = 13 * 1
 
-  const validWeeks = weeklyData
-    .map((week, index) => ({
-      week: week.week,
-      weekIndex: index,
-      nkt: week.nkt,
-      cycleTime: week.cycleTime
-    }))
-    .filter(w => w.nkt && w.cycleTime && w.nkt > 0 && w.cycleTime > 0);
-
-  const dataPoints = validWeeks.map(w => ({
-    x: w.cycleTime, // T (cycle time in days)
-    y: NK,          // NK (constant = 13)
-    week: w.week,
-    weekIndex: w.weekIndex
-  }));
-
-  return { dataPoints, hasData: validWeeks.length > 0 };
+  return weeklyData.map(week => {
+    if (week.nkt && week.cycleTime && week.cycleTime > 0) {
+      return NK / week.cycleTime;
+    }
+    return null;
+  });
 }
 
 function makeNKTLogScatter(weeklyData) {
-  const { dataPoints, hasData } = prepareNKTData(weeklyData);
+  const NK = 13;
+  const nktRatios = calculateNKTRatio(weeklyData);
+
+  // Check if we have any data
+  const hasData = nktRatios.some(ratio => ratio !== null);
 
   if (!hasData) {
     return renderChartToBuffer({
-      type: 'scatter',
-      data: { datasets: [] },
+      type: 'line',
+      data: { labels: [], datasets: [] },
       options: mergeOptions({
         plugins: {
-          title: { display: true, text: 'NK vs T - No Data' }
+          title: { display: true, text: 'NK/T Over Time - No Data' }
         }
       })
     });
   }
 
+  // Get labels from weeklyData
+  const labels = weeklyData.map(w => w.week);
+
   return renderChartToBuffer({
-    type: 'scatter',
+    type: 'line',
     data: {
+      labels,
       datasets: [{
-        label: 'Weeks',
-        data: dataPoints,
-        backgroundColor: '#2196F3',
-        borderColor: '#2196F3',
-        pointRadius: 6,
-        pointHoverRadius: 8
+        label: 'NK/T',
+        data: nktRatios,
+        borderColor: '#7798f1ff',
+        backgroundColor: '#7798f1ff',
+        borderWidth: 2,
+        fill: false,
+        tension: 0.2,
+        pointRadius: 3,
+        pointHoverRadius: 6,
+        spanGaps: true
       }]
     },
     options: mergeOptions({
       plugins: {
         title: {
           display: true,
-          text: 'NK vs T'
+          text: 'NK/T Over Time'
         },
         legend: {
           display: false
@@ -458,48 +459,22 @@ function makeNKTLogScatter(weeklyData) {
         tooltip: {
           callbacks: {
             label: function(context) {
-              const point = dataPoints[context.dataIndex];
-              return `${point.week}: T=${context.parsed.x.toFixed(2)} days, NK=${context.parsed.y}`;
+              if (context.parsed.y === null) return 'No data';
+              return `NK/T: ${context.parsed.y.toFixed(2)}`;
             }
           }
-        },
-        datalabels: {
-          display: true,
-          align: 'top',
-          formatter: function(value, context) {
-            const point = dataPoints[context.dataIndex];
-            return point.week.replace('Week ', 'W');
-          },
-          color: '#000',
-          font: {
-            size: 10,
-            weight: 'bold'
-          },
-          backgroundColor: 'rgba(255, 255, 255, 0.7)',
-          borderRadius: 3,
-          padding: 2
         }
       },
       scales: {
         x: {
-          type: 'linear',
-          title: { display: true, text: 'T - Cycle Time (days)' },
+          title: { display: true, text: 'Week' }
+        },
+        y: {
           beginAtZero: true,
+          title: { display: true, text: 'NK/T Ratio' },
           ticks: {
             callback: function(value) {
               return value.toFixed(1);
-            }
-          }
-        },
-        y: {
-          type: 'linear',
-          title: { display: true, text: 'NK' },
-          beginAtZero: true,
-          min: 0,
-          max: 15,
-          ticks: {
-            callback: function(value) {
-              return value.toFixed(0);
             }
           }
         }
