@@ -202,15 +202,28 @@ function preparePromptCategoryData(weeklyData) {
     }
   });
 
-  return Array.from(allCategories).map(cat => ({
-    label: CATEGORY_LABELS[cat] || cat,
-    data: weeklyData.map(d =>
+  // Create datasets with total counts for sorting
+  const datasets = Array.from(allCategories).map(cat => {
+    const data = weeklyData.map(d =>
       d.promptCategories && d.promptCategories[cat]
         ? d.promptCategories[cat].count || 0
         : 0
-    ),
-    backgroundColor: CATEGORY_COLORS[cat] || '#999999',
-  }));
+    );
+    const totalCount = data.reduce((sum, val) => sum + val, 0);
+
+    return {
+      label: CATEGORY_LABELS[cat] || cat,
+      data,
+      backgroundColor: CATEGORY_COLORS[cat] || '#999999',
+      totalCount
+    };
+  });
+
+  // Sort by total count ascending (smallest first, so largest appear at top of stacked bar)
+  datasets.sort((a, b) => a.totalCount - b.totalCount);
+
+  // Remove totalCount property before returning
+  return datasets.map(({ totalCount, ...rest }) => rest);
 }
 
 function makePromptCategoryChart(labels, weeklyData) {
