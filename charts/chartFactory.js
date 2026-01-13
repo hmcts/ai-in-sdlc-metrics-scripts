@@ -408,7 +408,7 @@ function calculateNKTRatio(weeklyData) {
   });
 }
 
-function makeNKTLogScatter(weeklyData) {
+function makeNKTLogScatter(labels, weeklyData) {
   const NK = 13;
   const nktRatios = calculateNKTRatio(weeklyData);
 
@@ -426,9 +426,6 @@ function makeNKTLogScatter(weeklyData) {
       })
     });
   }
-
-  // Get labels from weeklyData
-  const labels = weeklyData.map(w => w.week);
 
   return renderChartToBuffer({
     type: 'line',

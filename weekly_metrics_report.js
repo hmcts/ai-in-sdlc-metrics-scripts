@@ -53,7 +53,7 @@ const tokensPerSPScatter = makeTokensPerSPWithStdDev(weeklyData);
 const filteredWeeklyDataForDecember = weeklyData.slice(0, 10);
 
 // NK/T log scatter chart (exclude December weeks)
-const nktLogScatter = makeNKTLogScatter(filteredWeeklyDataForDecember);
+const nktLogScatter = makeNKTLogScatter(filteredLabels, filteredWeeklyDataForDecember);
 
 // Interruption rate chart (exclude December weeks)
 const interruptionRateChart = makeInterruptionRateChart(filteredLabels, filteredWeeklyDataForDecember);
@@ -243,11 +243,6 @@ const adoptionCharts = [
         label: 'Auto Compactions',
         data: filterTranscriptData(weeklyData.map(d => d.autoCompactions)),
         backgroundColor: '#4472C4'
-      },
-      {
-        label: 'Manual Compactions',
-        data: filterTranscriptData(weeklyData.map(d => d.manualCompactions)),
-        backgroundColor: '#ED7D31'
       }
     ], { title: 'Context Window Compactions', yLabel: 'Count' })
   },
