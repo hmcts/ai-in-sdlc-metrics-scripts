@@ -58,6 +58,14 @@ const nktLogScatter = makeNKTLogScatter(filteredWeeklyDataForDecember);
 // Interruption rate chart (exclude December weeks)
 const interruptionRateChart = makeInterruptionRateChart(filteredLabels, filteredWeeklyDataForDecember);
 
+// Load PIP repos comparison data
+const pipMetrics = require('./data/comparisons/pip-metrics-output.json');
+
+// Extract week-by-week data from PIP repos (convert null to 0)
+const pipCodeSmellsPerWeek = pipMetrics.map(w => w.avgCodeSmellsPerPR !== null ? w.avgCodeSmellsPerPR : 0);
+const pipDuplicatedLinesPerWeek = pipMetrics.map(w => w.avgDuplicatedLinesPerPR !== null ? w.avgDuplicatedLinesPerPR : 0);
+const pipPRsPerWeek = pipMetrics.map(w => w.totalPRs);
+
 // Grouped chart definitions
 const efficiencyCharts = [
   {
@@ -114,7 +122,17 @@ const efficiencyCharts2 = [
   },
   {
     label: 'Number of PRs',
-    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.featurePRs)), { title: 'Number of PRs', yLabel: 'PRs', datasetLabel: 'Number of PRs' })
+    buffer: makeLineChart(
+      filteredLabels,
+      filterDecemberData(weeklyData.map(d => d.featurePRs)),
+      {
+        title: 'Number of PRs',
+        yLabel: 'PRs',
+        datasetLabel: 'Number of PRs',
+        comparisonData: pipPRsPerWeek,
+        comparisonLabel: 'Original CaTH Service'
+      }
+    )
   },
   {
     label: 'Tokens per SP (by Ticket)',
@@ -137,7 +155,17 @@ const qualityCharts = [
   },
   {
     label: 'Duplicated Lines',
-    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.duplicatedLines)), { title: 'Duplicated Lines', yLabel: 'Duplicated Lines (%)', datasetLabel: 'Duplicated Lines (%)' })
+    buffer: makeLineChart(
+      filteredLabels,
+      filterDecemberData(weeklyData.map(d => d.duplicatedLines)),
+      {
+        title: 'Duplicated Lines',
+        yLabel: 'Duplicated Lines (%)',
+        datasetLabel: 'Duplicated Lines (%)',
+        comparisonData: pipDuplicatedLinesPerWeek,
+        comparisonLabel: 'Original CaTH Service'
+      }
+    )
   },
   {
     label: 'Maintainability',
@@ -153,7 +181,17 @@ const qualityCharts = [
   },
   {
     label: 'Code Smells',
-    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.codeSmells)), { title: 'Code Smells', yLabel: 'Code Smells', datasetLabel: 'Code Smells' })
+    buffer: makeLineChart(
+      filteredLabels,
+      filterDecemberData(weeklyData.map(d => d.codeSmells)),
+      {
+        title: 'Code Smells',
+        yLabel: 'Code Smells',
+        datasetLabel: 'Code Smells',
+        comparisonData: pipCodeSmellsPerWeek,
+        comparisonLabel: 'Original CaTH Service'
+      }
+    )
   },
 ];
 

@@ -86,7 +86,7 @@ function renderChartToBuffer(config) {
 }
 
 function makeLineChart(labels, data, opts) {
-  const { title, yLabel, horizontalLines } = opts;
+  const { title, yLabel, horizontalLines, comparisonData, comparisonLabel } = opts;
   let annotationConfig = {};
   let dummyLineDatasets = [];
   if (horizontalLines && Array.isArray(horizontalLines)) {
@@ -125,27 +125,46 @@ function makeLineChart(labels, data, opts) {
       mainLineColor = palette.find(c => !usedColors.includes(c)) || '#182549';
     }
   }
+
+  const datasets = [
+    {
+      label: opts.datasetLabel || undefined,
+      data,
+      borderColor: mainLineColor,
+      borderWidth: 2,
+      fill: false,
+      tension: 0.2,
+      pointRadius: 3
+    }
+  ];
+
+  // Add comparison line if provided
+  if (comparisonData && comparisonLabel) {
+    datasets.push({
+      label: comparisonLabel,
+      data: comparisonData,
+      borderColor: '#FF8C00',
+      borderWidth: 2,
+      fill: false,
+      tension: 0.2,
+      pointRadius: 3,
+      borderDash: [5, 5],
+      spanGaps: true
+    });
+  }
+
+  datasets.push(...dummyLineDatasets);
+
   return renderChartToBuffer({
     type: 'line',
     data: {
       labels,
-      datasets: [
-        {
-          label: opts.datasetLabel || undefined,
-          data,
-          borderColor: mainLineColor,
-          borderWidth: 2,
-          fill: false,
-          tension: 0.2,
-          pointRadius: 3
-        },
-        ...dummyLineDatasets
-      ]
+      datasets
     },
     options: mergeOptions({
       plugins: {
         title: { display: !!title, text: title },
-        legend: { display: dummyLineDatasets.length > 0 },
+        legend: { display: (dummyLineDatasets.length > 0 || comparisonData) },
         ...annotationConfig
       },
       scales: {
