@@ -86,7 +86,7 @@ function renderChartToBuffer(config) {
 }
 
 function makeLineChart(labels, data, opts) {
-  const { title, yLabel, horizontalLines } = opts;
+  const { title, yLabel, horizontalLines, comparisonData, comparisonLabel } = opts;
   let annotationConfig = {};
   let dummyLineDatasets = [];
   if (horizontalLines && Array.isArray(horizontalLines)) {
@@ -125,27 +125,46 @@ function makeLineChart(labels, data, opts) {
       mainLineColor = palette.find(c => !usedColors.includes(c)) || '#182549';
     }
   }
+
+  const datasets = [
+    {
+      label: opts.datasetLabel || undefined,
+      data,
+      borderColor: mainLineColor,
+      borderWidth: 2,
+      fill: false,
+      tension: 0.2,
+      pointRadius: 3
+    }
+  ];
+
+  // Add comparison line if provided
+  if (comparisonData && comparisonLabel) {
+    datasets.push({
+      label: comparisonLabel,
+      data: comparisonData,
+      borderColor: '#FF8C00',
+      borderWidth: 2,
+      fill: false,
+      tension: 0.2,
+      pointRadius: 3,
+      borderDash: [5, 5],
+      spanGaps: true
+    });
+  }
+
+  datasets.push(...dummyLineDatasets);
+
   return renderChartToBuffer({
     type: 'line',
     data: {
       labels,
-      datasets: [
-        {
-          label: opts.datasetLabel || undefined,
-          data,
-          borderColor: mainLineColor,
-          borderWidth: 2,
-          fill: false,
-          tension: 0.2,
-          pointRadius: 3
-        },
-        ...dummyLineDatasets
-      ]
+      datasets
     },
     options: mergeOptions({
       plugins: {
         title: { display: !!title, text: title },
-        legend: { display: dummyLineDatasets.length > 0 },
+        legend: { display: (dummyLineDatasets.length > 0 || comparisonData) },
         ...annotationConfig
       },
       scales: {
@@ -183,15 +202,28 @@ function preparePromptCategoryData(weeklyData) {
     }
   });
 
-  return Array.from(allCategories).map(cat => ({
-    label: CATEGORY_LABELS[cat] || cat,
-    data: weeklyData.map(d =>
+  // Create datasets with total counts for sorting
+  const datasets = Array.from(allCategories).map(cat => {
+    const data = weeklyData.map(d =>
       d.promptCategories && d.promptCategories[cat]
         ? d.promptCategories[cat].count || 0
         : 0
-    ),
-    backgroundColor: CATEGORY_COLORS[cat] || '#999999',
-  }));
+    );
+    const totalCount = data.reduce((sum, val) => sum + val, 0);
+
+    return {
+      label: CATEGORY_LABELS[cat] || cat,
+      data,
+      backgroundColor: CATEGORY_COLORS[cat] || '#999999',
+      totalCount
+    };
+  });
+
+  // Sort by total count ascending (smallest first, so largest appear at top of stacked bar)
+  datasets.sort((a, b) => a.totalCount - b.totalCount);
+
+  // Remove totalCount property before returning
+  return datasets.map(({ totalCount, ...rest }) => rest);
 }
 
 function makePromptCategoryChart(labels, weeklyData) {
@@ -208,107 +240,151 @@ function getColorForSP(sp) {
   return SP_COLOR_MAP[sp] || SP_COLOR_MAP.default;
 }
 
-// Helper: Prepare tokens per SP scatter plot data
-function prepareTokensPerSPData(weeklyData) {
-  const spGroups = {};
+function makeTokensPerSPWithStdDev(weeklyData) {
+  // Step 1: Collect all token values grouped by story point size
+  const tokensBySP = {};
 
   weeklyData.forEach((week, weekIndex) => {
-    // Skip weeks 1-3 (incomplete transcript data)
+    // Skip weeks 1-3 (incomplete data)
     if (weekIndex < 3) return;
+
     if (!week.ticketDetails) return;
 
     Object.entries(week.ticketDetails).forEach(([ticket, details]) => {
       if (details.tokens && details.storyPoints) {
         const sp = details.storyPoints;
-
-        if (!spGroups[sp]) {
-          spGroups[sp] = {
-            label: `${sp} SP`,
-            data: [],
-            backgroundColor: getColorForSP(sp),
-            borderColor: getColorForSP(sp),
-            pointRadius: 5,
-            pointHoverRadius: 7
-          };
+        if (!tokensBySP[sp]) {
+          tokensBySP[sp] = [];
         }
-
-        // Adjust x-axis: Week 4 (index 3) becomes x=0, Week 5 becomes x=1
-        spGroups[sp].data.push({
-          x: weekIndex - 3,
-          y: details.tokens
-        });
+        tokensBySP[sp].push(details.tokens);
       }
     });
   });
 
-  // Convert spGroups to sorted datasets array
-  const sortedSPs = Object.keys(spGroups).map(Number).sort((a, b) => a - b);
-  return sortedSPs.map(sp => spGroups[sp]);
-}
+  // Step 2: Calculate statistics for each SP size
+  const stats = Object.entries(tokensBySP)
+    .map(([sp, tokens]) => {
+      const n = tokens.length;
+      const mean = tokens.reduce((sum, val) => sum + val, 0) / n;
+      const variance = tokens.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / n;
+      const stdDev = Math.sqrt(variance);
 
-function makeTokensPerSPScatter(weeklyData) {
-  const datasets = prepareTokensPerSPData(weeklyData);
+      return {
+        sp: Number(sp),
+        mean: mean,
+        stdDev: stdDev,
+        count: n
+      };
+    })
+    .sort((a, b) => a.sp - b.sp);
+
+  // Step 3: Prepare data for bar chart
+  const labels = stats.map(s => `${s.sp} SP`);
+  const meanValues = stats.map(s => s.mean);
+  const backgroundColors = stats.map(s => getColorForSP(s.sp));
+
+  // Step 4: Create error bar annotations
+  const errorBarAnnotations = {};
+  stats.forEach((stat, idx) => {
+    errorBarAnnotations[`errorBar${idx}`] = {
+      type: 'line',
+      xMin: idx,
+      xMax: idx,
+      yMin: stat.mean - stat.stdDev,
+      yMax: stat.mean + stat.stdDev,
+      borderColor: '#000',
+      borderWidth: 2
+    };
+    // Top cap
+    errorBarAnnotations[`errorBarCapTop${idx}`] = {
+      type: 'line',
+      xMin: idx - 0.1,
+      xMax: idx + 0.1,
+      yMin: stat.mean + stat.stdDev,
+      yMax: stat.mean + stat.stdDev,
+      borderColor: '#000',
+      borderWidth: 2
+    };
+    // Bottom cap
+    errorBarAnnotations[`errorBarCapBottom${idx}`] = {
+      type: 'line',
+      xMin: idx - 0.1,
+      xMax: idx + 0.1,
+      yMin: stat.mean - stat.stdDev,
+      yMax: stat.mean - stat.stdDev,
+      borderColor: '#000',
+      borderWidth: 2
+    };
+  });
 
   return renderChartToBuffer({
-    type: 'scatter',
-    data: { datasets },
-    options: mergeOptions({
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Average Tokens',
+        data: meanValues,
+        backgroundColor: backgroundColors,
+        borderColor: backgroundColors,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: false,
       plugins: {
         title: {
           display: true,
-          text: 'Tokens per Story Point (by Ticket)'
+          text: 'Tokens per Story Point (Mean ± Std Dev)'
         },
         legend: {
-          display: true,
-          position: 'right'
+          display: false  // Single dataset, no legend needed
+        },
+        annotation: {
+          annotations: errorBarAnnotations
         },
         tooltip: {
           callbacks: {
             label: function(context) {
-              const tokens = context.parsed.y;
-              const sp = context.dataset.label;
-              return `${sp}: ${tokens.toLocaleString()} tokens`;
+              const stat = stats[context.dataIndex];
+              const meanM = (stat.mean / 1000000).toFixed(1);
+              const stdDevM = (stat.stdDev / 1000000).toFixed(1);
+              return `${meanM}M ± ${stdDevM}M tokens`;
             }
           }
         },
         datalabels: {
           display: true,
-          align: function(context) {
-            return context.dataIndex % 2 === 0 ? 'top' : 'bottom';
-          },
-          offset: 8,
-          formatter: function(value) {
-            return (value.y / 1000000).toFixed(1) + 'M';
+          anchor: 'end',
+          align: 'top',
+          formatter: function(value, context) {
+            const stat = stats[context.dataIndex];
+            const meanM = (stat.mean / 1000000).toFixed(1);
+            const stdDevM = (stat.stdDev / 1000000).toFixed(1);
+            return `${meanM}M\n±${stdDevM}M`;
           },
           color: '#000',
           font: {
-            size: 8,
+            size: 9,
             weight: 'bold'
           },
           backgroundColor: 'rgba(255, 255, 255, 0.8)',
           borderRadius: 3,
-          padding: {
-            top: 2,
-            bottom: 2,
-            left: 3,
-            right: 3
-          }
+          padding: 4
         }
       },
       scales: {
         x: {
-          type: 'linear',
-          title: { display: true, text: 'Week' },
-          ticks: {
-            stepSize: 1,
-            callback: function(value) {
-              return `W${Math.floor(value) + 4}`;
-            }
+          title: {
+            display: true,
+            text: 'Story Points'
           }
         },
         y: {
           beginAtZero: true,
-          title: { display: true, text: 'Tokens' },
+          title: {
+            display: true,
+            text: 'Tokens (Mean ± Std Dev)'
+          },
           ticks: {
             callback: function(value) {
               return (value / 1000000).toFixed(0) + 'M';
@@ -316,65 +392,63 @@ function makeTokensPerSPScatter(weeklyData) {
           }
         }
       }
-    })
+    }
   });
 }
 
-// Helper: Prepare NK vs T scatter plot data
-function prepareNKTData(weeklyData) {
+// Helper: Calculate NK/T ratio for each week
+function calculateNKTRatio(weeklyData) {
   const NK = 13; // N * K = 13 * 1
 
-  const validWeeks = weeklyData
-    .map((week, index) => ({
-      week: week.week,
-      weekIndex: index,
-      nkt: week.nkt,
-      cycleTime: week.cycleTime
-    }))
-    .filter(w => w.nkt && w.cycleTime && w.nkt > 0 && w.cycleTime > 0);
-
-  const dataPoints = validWeeks.map(w => ({
-    x: w.cycleTime, // T (cycle time in days)
-    y: NK,          // NK (constant = 13)
-    week: w.week,
-    weekIndex: w.weekIndex
-  }));
-
-  return { dataPoints, hasData: validWeeks.length > 0 };
+  return weeklyData.map(week => {
+    if (week.nkt && week.cycleTime && week.cycleTime > 0) {
+      return NK / week.cycleTime;
+    }
+    return null;
+  });
 }
 
-function makeNKTLogScatter(weeklyData) {
-  const { dataPoints, hasData } = prepareNKTData(weeklyData);
+function makeNKTLogScatter(labels, weeklyData) {
+  const NK = 13;
+  const nktRatios = calculateNKTRatio(weeklyData);
+
+  // Check if we have any data
+  const hasData = nktRatios.some(ratio => ratio !== null);
 
   if (!hasData) {
     return renderChartToBuffer({
-      type: 'scatter',
-      data: { datasets: [] },
+      type: 'line',
+      data: { labels: [], datasets: [] },
       options: mergeOptions({
         plugins: {
-          title: { display: true, text: 'NK vs T - No Data' }
+          title: { display: true, text: 'NK/T Over Time - No Data' }
         }
       })
     });
   }
 
   return renderChartToBuffer({
-    type: 'scatter',
+    type: 'line',
     data: {
+      labels,
       datasets: [{
-        label: 'Weeks',
-        data: dataPoints,
-        backgroundColor: '#2196F3',
-        borderColor: '#2196F3',
-        pointRadius: 6,
-        pointHoverRadius: 8
+        label: 'NK/T',
+        data: nktRatios,
+        borderColor: '#7798f1ff',
+        backgroundColor: '#7798f1ff',
+        borderWidth: 2,
+        fill: false,
+        tension: 0.2,
+        pointRadius: 3,
+        pointHoverRadius: 6,
+        spanGaps: true
       }]
     },
     options: mergeOptions({
       plugins: {
         title: {
           display: true,
-          text: 'NK vs T'
+          text: 'NK/T Over Time'
         },
         legend: {
           display: false
@@ -382,48 +456,22 @@ function makeNKTLogScatter(weeklyData) {
         tooltip: {
           callbacks: {
             label: function(context) {
-              const point = dataPoints[context.dataIndex];
-              return `${point.week}: T=${context.parsed.x.toFixed(2)} days, NK=${context.parsed.y}`;
+              if (context.parsed.y === null) return 'No data';
+              return `NK/T: ${context.parsed.y.toFixed(2)}`;
             }
           }
-        },
-        datalabels: {
-          display: true,
-          align: 'top',
-          formatter: function(value, context) {
-            const point = dataPoints[context.dataIndex];
-            return point.week.replace('Week ', 'W');
-          },
-          color: '#000',
-          font: {
-            size: 10,
-            weight: 'bold'
-          },
-          backgroundColor: 'rgba(255, 255, 255, 0.7)',
-          borderRadius: 3,
-          padding: 2
         }
       },
       scales: {
         x: {
-          type: 'linear',
-          title: { display: true, text: 'T - Cycle Time (days)' },
+          title: { display: true, text: 'Week' }
+        },
+        y: {
           beginAtZero: true,
+          title: { display: true, text: 'NK/T Ratio' },
           ticks: {
             callback: function(value) {
               return value.toFixed(1);
-            }
-          }
-        },
-        y: {
-          type: 'linear',
-          title: { display: true, text: 'NK' },
-          beginAtZero: true,
-          min: 0,
-          max: 15,
-          ticks: {
-            callback: function(value) {
-              return value.toFixed(0);
             }
           }
         }
@@ -446,4 +494,4 @@ function makeInterruptionRateChart(labels, weeklyData) {
   });
 }
 
-module.exports = { makeLineChart, makeStackedBar, makePromptCategoryChart, makeTokensPerSPScatter, makeNKTLogScatter, makeInterruptionRateChart };
+module.exports = { makeLineChart, makeStackedBar, makePromptCategoryChart, makeTokensPerSPWithStdDev, makeNKTLogScatter, makeInterruptionRateChart };
