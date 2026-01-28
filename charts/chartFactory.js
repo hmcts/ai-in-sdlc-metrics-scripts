@@ -101,13 +101,14 @@ function makeLineChart(labels, data, opts) {
         }))
       }
     };
-    // Add dummy datasets for legend
+    // Add dummy datasets for legend with values
     dummyLineDatasets = horizontalLines.map((line, idx) => ({
-      label: line.label,
+      label: `${line.label} (${line.value})`,
       data: Array(labels.length).fill(null),
       borderColor: line.color,
       borderWidth: 2,
       pointRadius: 0,
+      pointStyle: 'circle',
       fill: false,
       borderDash: [8, 4],
       showLine: false,
@@ -131,10 +132,15 @@ function makeLineChart(labels, data, opts) {
       label: opts.datasetLabel || undefined,
       data,
       borderColor: mainLineColor,
-      borderWidth: 2,
+      borderWidth: 3,
       fill: false,
       tension: 0.2,
-      pointRadius: 3
+      pointRadius: 5,
+      pointStyle: 'circle',
+      pointBackgroundColor: mainLineColor,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 1,
+      pointHoverRadius: 7
     }
   ];
 
@@ -148,6 +154,7 @@ function makeLineChart(labels, data, opts) {
       fill: false,
       tension: 0.2,
       pointRadius: 3,
+      pointStyle: 'circle',
       borderDash: [5, 5],
       spanGaps: true
     });
@@ -164,7 +171,19 @@ function makeLineChart(labels, data, opts) {
     options: mergeOptions({
       plugins: {
         title: { display: !!title, text: title },
-        legend: { display: (dummyLineDatasets.length > 0 || comparisonData) },
+        legend: {
+          display: !!(comparisonData || dummyLineDatasets.length > 0),
+          position: 'bottom',
+          align: 'center',
+          labels: {
+            usePointStyle: false,
+            boxWidth: 30,
+            padding: 8,
+            font: {
+              size: 10
+            }
+          }
+        },
         ...annotationConfig
       },
       scales: {
@@ -440,6 +459,7 @@ function makeNKTLogScatter(labels, weeklyData) {
         fill: false,
         tension: 0.2,
         pointRadius: 3,
+        pointStyle: 'circle',
         pointHoverRadius: 6,
         spanGaps: true
       }]

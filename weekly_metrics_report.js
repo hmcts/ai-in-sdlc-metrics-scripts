@@ -60,11 +60,13 @@ const interruptionRateChart = makeInterruptionRateChart(filteredLabels, filtered
 
 // Load PIP repos comparison data
 const pipMetrics = require('./data/comparisons/pip-metrics-output.json');
+const pipComments = require('./data/comparisons/pip-comments-output.json');
 
 // Extract week-by-week data from PIP repos (convert null to 0)
 const pipCodeSmellsPerWeek = pipMetrics.map(w => w.avgCodeSmellsPerPR !== null ? w.avgCodeSmellsPerPR : 0);
 const pipDuplicatedLinesPerWeek = pipMetrics.map(w => w.avgDuplicatedLinesPerPR !== null ? w.avgDuplicatedLinesPerPR : 0);
 const pipPRsPerWeek = pipMetrics.map(w => w.totalPRs);
+const pipCommentsPerWeek = pipComments.map(w => w.avgCommentsPerPR !== null ? w.avgCommentsPerPR : 0);
 
 // Grouped chart definitions
 const efficiencyCharts = [
@@ -90,8 +92,8 @@ const efficiencyCharts = [
         yLabel: 'LOC per Dev',
         datasetLabel: 'LOC per Dev',
         horizontalLines: [
-          { value: 622, label: 'Pre-agentic CaTH', color: '#7f2c2cff' },
-          { value: 345, label: 'HMCTS Standard', color: '#256525ff' },
+          { value: 678, label: 'Original CaTH Service', color: '#7f2c2cff' },
+          { value: 301, label: 'HMCTS Standard', color: '#256525ff' },
           { value: 2280, label: 'Agentic Industry Standard', color: '#303094ff' }
         ]
       }
@@ -128,9 +130,9 @@ const efficiencyCharts2 = [
       {
         title: 'Number of PRs',
         yLabel: 'PRs',
-        datasetLabel: 'Number of PRs',
+        datasetLabel: 'Re-write',
         comparisonData: pipPRsPerWeek,
-        comparisonLabel: 'Original CaTH Service'
+        comparisonLabel: 'Original'
       }
     )
   },
@@ -198,7 +200,13 @@ const qualityCharts = [
 const satisfactionCharts = [
   {
     label: 'Comments per PR',
-    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.commentsPerPR)), { title: 'Comments per PR', yLabel: 'Comments per PR', datasetLabel: 'Comments/PR' })
+    buffer: makeLineChart(filteredLabels, filterDecemberData(weeklyData.map(d => d.commentsPerPR)), {
+      title: 'Comments per PR',
+      yLabel: 'Comments per PR',
+      datasetLabel: 'Comments/PR',
+      comparisonData: pipCommentsPerWeek,
+      comparisonLabel: 'Original CaTH Service'
+    })
   },
 ];
 
