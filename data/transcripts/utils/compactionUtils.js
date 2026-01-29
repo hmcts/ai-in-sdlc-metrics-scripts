@@ -2,6 +2,7 @@
 const CONFIG = require('../../config');
 const { findFiles, readJSONL } = require('../../shared/utils/fileUtils');
 const { isInWeek } = require('../../shared/utils/dateUtils');
+const { extractTextContent } = require('../../shared/utils/TextExtractor');
 
 function detectCompaction(entry) {
   // Check for system compaction types
@@ -16,16 +17,7 @@ function detectCompaction(entry) {
   // Check message content for compaction indicators
   if (!entry.message || !entry.message.content) return null;
 
-  let textContent = '';
-  if (typeof entry.message.content === 'string') {
-    textContent = entry.message.content;
-  } else if (Array.isArray(entry.message.content)) {
-    textContent = entry.message.content
-      .filter(c => c.type === 'text')
-      .map(c => c.text)
-      .join(' ');
-  }
-
+  const textContent = extractTextContent(entry.message.content);
   if (!textContent) return null;
 
   const lower = textContent.toLowerCase();

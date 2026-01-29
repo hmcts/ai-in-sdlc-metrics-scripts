@@ -1,6 +1,7 @@
 // JIRA API integration utilities
 const { execSync } = require('child_process');
 const CONFIG = require('../../config');
+const { extractJiraTicket } = require('../../shared/utils/jiraTicketExtractor');
 
 /**
  * Fetch story points for a single ticket from JIRA
@@ -51,14 +52,7 @@ function getStoryPointsForTickets(ticketIds) {
   return results;
 }
 
-/**
- * Extract JIRA ticket ID from text
- */
-function extractJiraTicket(text) {
-  if (!text) return null;
-  const match = text.match(/([A-Z]+-\d+)/);
-  return match ? match[1] : null;
-}
+// extractJiraTicket is now imported from shared utils (removed duplicate function)
 
 /**
  * Fetch story points completed for a week by analyzing PR merge dates

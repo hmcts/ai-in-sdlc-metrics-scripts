@@ -24,6 +24,7 @@ async function processWeeks() {
 for (const week of CONFIG.WEEKS) {
   console.log(`Processing ${week.name} (${week.period})...`);
 
+  // Initialize metrics object for this week
   const metrics = {
     week: week.name,
     period: week.period
@@ -86,22 +87,28 @@ for (const week of CONFIG.WEEKS) {
       console.log(`    ⚠ NK/T calculation: ${err.message}`);
     }
 
+    // Current metrics are directly in the metrics object
+
     // Story points completed (from JIRA - based on PRs merged this week)
     console.log(`  Fetching story points from JIRA...`);
     try {
       // Get tickets from PRs merged this week (prData should have this)
       const prTickets = metrics.prTickets || []; // We need to add this to prAnalysis
       const jiraData = getStoryPointsCompletedForWeek(week, prTickets);
-      if (jiraData && jiraData.storyPoints > 0) {
-        metrics.storyPoints = jiraData.storyPoints;
-        console.log(`    ✓ Story Points: ${jiraData.storyPoints} (${jiraData.issues.length} issues completed)`);
+      const jiraMetrics = {
+        storyPoints: jiraData && jiraData.storyPoints > 0 ? jiraData.storyPoints : 0,
+        wipSP: null  // Optional field
+      };
+      Object.assign(metrics, jiraMetrics);
+
+      if (jiraMetrics.storyPoints > 0) {
+        console.log(`    ✓ Story Points: ${jiraMetrics.storyPoints} (${jiraData.issues.length} issues completed)`);
       } else {
-        metrics.storyPoints = null;
         console.log(`    ⚠ No story points completed this week`);
       }
     } catch (err) {
       console.log(`    ⚠ JIRA fetch: ${err.message}`);
-      metrics.storyPoints = null;
+      Object.assign(metrics, { storyPoints: 0, wipSP: null });
     }
 
     // Tokens per story point (transcript-based)
@@ -109,11 +116,10 @@ for (const week of CONFIG.WEEKS) {
     try {
       const tokenSPData = await calculateTokensPerSPForWeek(week);
 
-      // Use tokens and tokensPerSP from transcript data, but NOT storyPoints (we got that from JIRA above)
+      // Add tokensPerSP, totalTokens, and ticketDetails directly to metrics
+      // (These aren't part of a specific schema, they're cross-cutting)
       metrics.tokensPerSP = tokenSPData.tokensPerSP;
       metrics.totalTokens = tokenSPData.totalTokens;
-
-      // Save ticket-level details for scatter plots and detailed analysis
       metrics.ticketDetails = tokenSPData.ticketDetails || {};
 
       // Calculate derived metrics (tokens per LOC, LOC per token, etc.)
@@ -141,10 +147,14 @@ for (const week of CONFIG.WEEKS) {
       const totalLOC = metrics.featurePRs && metrics.locPerPR ? metrics.featurePRs * metrics.locPerPR : 0;
       const costData = calculateCostMetrics(week, metrics.totalTokens, metrics.storyPoints, metrics.featurePRs, totalLOC);
 
-      metrics.totalCost = costData.totalCost;
-      metrics.costPerLOC = costData.costPerLOC;
-      metrics.costPerPR = costData.costPerPR;
-      metrics.costPerSP = costData.costPerSP;
+      const costMetrics = {
+        totalCost: costData.totalCost || 0,
+        claudeCost: costData.totalCost || 0,  // Assuming all costs are Claude for now
+        costPerLOC: costData.costPerLOC,
+        costPerPR: costData.costPerPR,
+        costPerSP: costData.costPerSP
+      };
+      Object.assign(metrics, costMetrics);
 
       if (costData.totalCost) {
         console.log(`    ✓ Total Cost: $${costData.totalCost.toFixed(2)}, Cost/SP: $${costData.costPerSP || 'N/A'}`);
@@ -153,10 +163,13 @@ for (const week of CONFIG.WEEKS) {
       }
     } catch (err) {
       console.log(`    ⚠ Cost calculation: ${err.message}`);
-      metrics.totalCost = null;
-      metrics.costPerLOC = null;
-      metrics.costPerPR = null;
-      metrics.costPerSP = null;
+      Object.assign(metrics, {
+        totalCost: 0,
+        claudeCost: 0,
+        costPerLOC: null,
+        costPerPR: null,
+        costPerSP: null
+      });
     }
 
     // Quality metrics (SonarCloud) - hardcoded for Weeks 1-8, per-PR averages for Week 9+
@@ -175,31 +188,37 @@ for (const week of CONFIG.WEEKS) {
     };
 
     try {
+      let qualityMetrics;
       // Use hardcoded values for Weeks 1-8 (per-PR averages from old system)
       if (hardcodedQualityMetrics[week.name]) {
-        const quality = hardcodedQualityMetrics[week.name];
-        metrics.testCoverage = quality.testCoverage;
-        metrics.cves = quality.cves;
-        metrics.duplicatedLines = quality.duplicatedLines;
-        metrics.maintainability = quality.maintainability;
-        metrics.reliability = quality.reliability;
-        metrics.security = quality.security;
-        metrics.codeSmells = quality.codeSmells;
+        qualityMetrics = hardcodedQualityMetrics[week.name];
 
-        if (quality.testCoverage !== null) {
-          console.log(`    ✓ Coverage: ${quality.testCoverage?.toFixed(1)}%, CVEs: ${quality.cves} (hardcoded)`);
+        if (qualityMetrics.testCoverage !== null) {
+          console.log(`    ✓ Coverage: ${qualityMetrics.testCoverage?.toFixed(1)}%, CVEs: ${qualityMetrics.cves} (hardcoded)`);
         } else {
           console.log(`    ⚠ No quality metrics available (hardcoded)`);
         }
       } else {
         // For Week 9 and beyond, use per-PR averages already calculated in analyzePRsForWeek()
-        // These were calculated using aggregateSonarMetrics() in prAnalysis.js
-        if (metrics.testCoverage !== null) {
-          console.log(`    ✓ Coverage: ${metrics.testCoverage?.toFixed(1)}%, Code Smells: ${metrics.codeSmells?.toFixed(1)} (per-PR avg)`);
+        // Extract quality metrics from prData (already in metrics)
+        qualityMetrics = {
+          testCoverage: metrics.testCoverage || null,
+          cves: metrics.cves || null,
+          duplicatedLines: metrics.duplicatedLines || null,
+          maintainability: metrics.maintainability || null,
+          reliability: metrics.reliability || null,
+          security: metrics.security || null,
+          codeSmells: metrics.codeSmells || null
+        };
+
+        if (qualityMetrics.testCoverage !== null) {
+          console.log(`    ✓ Coverage: ${qualityMetrics.testCoverage?.toFixed(1)}%, Code Smells: ${qualityMetrics.codeSmells?.toFixed(1)} (per-PR avg)`);
         } else {
           console.log(`    ⚠ No quality metrics available`);
         }
       }
+
+      Object.assign(metrics, qualityMetrics);
     } catch (err) {
       console.log(`    ⚠ Quality metrics: ${err.message}`);
     }
@@ -213,13 +232,13 @@ for (const week of CONFIG.WEEKS) {
   console.log();
 }
 
-// Auto-generate weeklyData.js
-console.log('Generating data/weeklyData.js...');
+// Auto-generate weeklyData.json
+console.log('Generating data/weeklyData.json...');
 try {
   const outputPath = buildWeeklyData(weeklyMetrics);
   console.log(`✓ Successfully generated: ${outputPath}`);
 } catch (err) {
-  console.error(`✗ Error generating weeklyData.js: ${err.message}`);
+  console.error(`✗ Error generating weeklyData.json: ${err.message}`);
   process.exit(1);
 }
 
@@ -229,7 +248,7 @@ console.log('DONE!');
 console.log('='.repeat(80));
 console.log();
 console.log('Next steps:');
-console.log('  1. Review data/weeklyData.js to verify metrics');
+console.log('  1. Review data/weeklyData.json to verify metrics');
 console.log('  2. Run: node weekly_metrics_report.js to generate PDF');
 }
 

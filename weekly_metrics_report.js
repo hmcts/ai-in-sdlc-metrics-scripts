@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const path = require('path');
-const { weeklyData, labels } = require('./data/weeklyData');
+const { weeklyData, labels } = require('./data/weeklyData.json');
 const { makeLineChart, makeStackedBar, makeTokensPerSPWithStdDev, makeNKTLogScatter, makeInterruptionRateChart } = require('./charts/chartFactory');
 const { createDoc, drawSectionHeader, addChartsGrid } = require('./pdf/layoutBuilder');
 

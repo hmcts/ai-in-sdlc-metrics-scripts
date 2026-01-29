@@ -1,6 +1,7 @@
 // PR analysis utility functions
 const { execSync } = require('child_process');
 const CONFIG = require('../../config');
+const { extractJiraTicket } = require('../../shared/utils/jiraTicketExtractor');
 
 // Exclude these developers (infrastructure/setup work)
 const EXCLUDED_DEVELOPERS = [
@@ -11,15 +12,6 @@ const EXCLUDED_DEVELOPERS = [
   'melvchance',
   'jla1002'
 ];
-
-/**
- * Extract JIRA ticket ID from text
- */
-function extractJiraTicket(text) {
-  if (!text) return null;
-  const match = text.match(/([A-Z]+-\d+)/);
-  return match ? match[1] : null;
-}
 
 /**
  * Check if PR is a dependency update
@@ -179,7 +171,7 @@ function calculateLocPerDev(prs) {
 }
 
 module.exports = {
-  extractJiraTicket,
+  extractJiraTicket,  // Re-export from jiraTicketExtractor for backward compatibility
   isDependencyUpdate,
   isExcludedTicket,
   isExcludedDeveloper,

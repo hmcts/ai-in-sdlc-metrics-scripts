@@ -2,6 +2,7 @@
 const CONFIG = require('../../config');
 const { findFiles, readJSONL } = require('../../shared/utils/fileUtils');
 const { isInWeek } = require('../../shared/utils/dateUtils');
+const { extractTextContent } = require('../../shared/utils/TextExtractor');
 
 // Category patterns
 const CATEGORIES = {
@@ -65,15 +66,7 @@ function analyzePromptCategoriesForWeek(week) {
       if (!entry.message || entry.message.role !== 'user') return;
       if (!entry.message.content) return;
 
-      let textContent = '';
-      if (typeof entry.message.content === 'string') {
-        textContent = entry.message.content;
-      } else if (Array.isArray(entry.message.content)) {
-        textContent = entry.message.content
-          .filter(c => c.type === 'text')
-          .map(c => c.text)
-          .join(' ');
-      }
+      const textContent = extractTextContent(entry.message.content);
 
       // Skip empty content and "Warmup" prompts
       if (!textContent || textContent.trim().length === 0 || textContent === 'Warmup') return;

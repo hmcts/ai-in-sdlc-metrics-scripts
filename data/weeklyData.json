@@ -1,0 +1,2556 @@
+{
+  "weeklyData": [
+    {
+      "week": "Week 1",
+      "period": "Oct 7-10",
+      "manualCompactions": 0,
+      "autoCompactions": 0,
+      "avgTimeToContextWindow": null,
+      "totalPrompts": 0,
+      "avgPromptLength": 0,
+      "topCategory": null,
+      "topCategoryCount": 0,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {},
+      "interruptions": 0,
+      "toolUses": 0,
+      "toolErrors": 0,
+      "prompts": 0,
+      "filesProcessed": 0,
+      "interruptionRate": 0,
+      "errorRate": 0,
+      "inputTokens": 0,
+      "cacheCreationTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "totalTokensBreakdown": 0,
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "nkt": null,
+      "cycleTime": null,
+      "storyPoints": 0,
+      "wipSP": null,
+      "tokensPerSP": null,
+      "ticketDetails": {},
+      "totalCost": 37.28,
+      "claudeCost": 37.28,
+      "costPerLOC": null,
+      "costPerPR": null,
+      "costPerSP": null,
+      "timeToContextWindow": null,
+      "interruptionPrompts": 0
+    },
+    {
+      "week": "Week 2",
+      "period": "Oct 13-17",
+      "manualCompactions": 0,
+      "autoCompactions": 26,
+      "avgTimeToContextWindow": 3.621,
+      "totalPrompts": 5,
+      "avgPromptLength": 144,
+      "topCategory": "general",
+      "topCategoryCount": 3,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "general": {
+          "count": 3
+        },
+        "testing": {
+          "count": 1
+        },
+        "bug_fix": {
+          "count": 1
+        }
+      },
+      "interruptions": 0,
+      "toolUses": 105,
+      "toolErrors": 10,
+      "prompts": 8,
+      "filesProcessed": 1,
+      "interruptionRate": 0,
+      "errorRate": 9.52,
+      "inputTokens": 4334,
+      "cacheCreationTokens": 1143953,
+      "cacheReadTokens": 12386188,
+      "outputTokens": 27215,
+      "totalTokensBreakdown": 13561690,
+      "featurePRs": 4,
+      "locPerPR": 2954,
+      "locPerDev": 5909,
+      "commentsPerPR": 1,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "prTickets": [
+        "VIBE-153",
+        "VIBE-150",
+        "VIBE-146",
+        "VIBE-149"
+      ],
+      "nkt": 7.43,
+      "cycleTime": 1.75,
+      "storyPoints": 12,
+      "wipSP": null,
+      "tokensPerSP": 47569876,
+      "totalTokens": 142709628,
+      "ticketDetails": {
+        "VIBE-153": {
+          "prNumber": 19,
+          "createdAt": "2025-10-17T16:46:04Z",
+          "mergedAt": "2025-10-22T16:32:41Z",
+          "week": "Week 2",
+          "storyPoints": 3,
+          "tokens": 142709628
+        },
+        "VIBE-150": {
+          "prNumber": 13,
+          "createdAt": "2025-10-15T17:48:33Z",
+          "mergedAt": "2025-10-16T12:11:56Z",
+          "week": "Week 2",
+          "storyPoints": 2
+        },
+        "VIBE-146": {
+          "prNumber": 12,
+          "createdAt": "2025-10-15T16:24:48Z",
+          "mergedAt": "2025-10-16T12:11:34Z",
+          "week": "Week 2",
+          "storyPoints": 5
+        },
+        "VIBE-149": {
+          "prNumber": 8,
+          "createdAt": "2025-10-14T12:32:06Z",
+          "mergedAt": "2025-10-15T14:16:29Z",
+          "week": "Week 2",
+          "storyPoints": 2
+        }
+      },
+      "locPerToken": 0.0000828,
+      "tokensPerCycleTime": 81548359,
+      "totalCost": 162.52,
+      "claudeCost": 162.52,
+      "costPerLOC": 0.0138,
+      "costPerPR": 40.63,
+      "costPerSP": 13.54,
+      "timeToContextWindow": 3.621,
+      "interruptionPrompts": 8
+    },
+    {
+      "week": "Week 3",
+      "period": "Oct 20-24",
+      "manualCompactions": 0,
+      "autoCompactions": 66,
+      "avgTimeToContextWindow": 13.264061111111113,
+      "totalPrompts": 165,
+      "avgPromptLength": 1457,
+      "topCategory": "feature_development",
+      "topCategoryCount": 65,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "refactoring": {
+          "count": 1
+        },
+        "general": {
+          "count": 60
+        },
+        "code_review": {
+          "count": 1
+        },
+        "bug_fix": {
+          "count": 22
+        },
+        "feature_development": {
+          "count": 65
+        },
+        "testing": {
+          "count": 14
+        },
+        "version_control": {
+          "count": 2
+        }
+      },
+      "interruptions": 1,
+      "toolUses": 2128,
+      "toolErrors": 134,
+      "prompts": 329,
+      "filesProcessed": 32,
+      "interruptionRate": 0.3,
+      "errorRate": 6.3,
+      "inputTokens": 315601,
+      "cacheCreationTokens": 33223788,
+      "cacheReadTokens": 308080895,
+      "outputTokens": 1084012,
+      "totalTokensBreakdown": 342704296,
+      "featurePRs": 6,
+      "locPerPR": 1536,
+      "locPerDev": 4608,
+      "commentsPerPR": 1,
+      "testCoverage": 79.86,
+      "cves": 0,
+      "duplicatedLines": 0,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 5.2,
+      "prTickets": [
+        "VIBE-159",
+        "VIBE-157",
+        "VIBE-155",
+        "VIBE-191",
+        "VIBE-139",
+        "VIBE-154"
+      ],
+      "nkt": 2.36,
+      "cycleTime": 5.5,
+      "storyPoints": 20,
+      "wipSP": null,
+      "tokensPerSP": 48498050,
+      "totalTokens": 484980495,
+      "ticketDetails": {
+        "VIBE-159": {
+          "prNumber": 43,
+          "createdAt": "2025-10-24T12:53:46Z",
+          "mergedAt": "2025-11-06T12:08:49Z",
+          "week": "Week 3",
+          "storyPoints": 2,
+          "tokens": 183217158
+        },
+        "VIBE-157": {
+          "prNumber": 38,
+          "createdAt": "2025-10-23T15:30:59Z",
+          "mergedAt": "2025-10-29T13:12:27Z",
+          "week": "Week 3",
+          "storyPoints": 2,
+          "tokens": 12868936
+        },
+        "VIBE-155": {
+          "prNumber": 36,
+          "createdAt": "2025-10-23T09:39:39Z",
+          "mergedAt": "2025-10-29T11:09:17Z",
+          "week": "Week 3",
+          "storyPoints": 3,
+          "tokens": 209592967
+        },
+        "VIBE-191": {
+          "prNumber": 33,
+          "createdAt": "2025-10-22T15:07:37Z",
+          "mergedAt": "2025-10-30T12:12:51Z",
+          "week": "Week 3",
+          "storyPoints": 2
+        },
+        "VIBE-139": {
+          "prNumber": 27,
+          "createdAt": "2025-10-21T14:54:38Z",
+          "mergedAt": "2025-10-23T09:20:34Z",
+          "week": "Week 3",
+          "storyPoints": 3,
+          "tokens": 79301434
+        },
+        "VIBE-154": {
+          "prNumber": 26,
+          "createdAt": "2025-10-21T10:44:23Z",
+          "mergedAt": "2025-10-29T16:45:40Z",
+          "week": "Week 3",
+          "storyPoints": 8
+        }
+      },
+      "locPerToken": 0.000019,
+      "tokensPerCycleTime": 88178272,
+      "totalCost": 182.19,
+      "claudeCost": 182.19,
+      "costPerLOC": 0.0198,
+      "costPerPR": 30.36,
+      "costPerSP": 9.11,
+      "timeToContextWindow": 13.264061111111113,
+      "interruptionPrompts": 329
+    },
+    {
+      "week": "Week 4",
+      "period": "Oct 27-31",
+      "manualCompactions": 0,
+      "autoCompactions": 19,
+      "avgTimeToContextWindow": 81.70869666666667,
+      "totalPrompts": 135,
+      "avgPromptLength": 968,
+      "topCategory": "general",
+      "topCategoryCount": 55,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "general": {
+          "count": 55
+        },
+        "bug_fix": {
+          "count": 35
+        },
+        "testing": {
+          "count": 11
+        },
+        "feature_development": {
+          "count": 17
+        },
+        "code_review": {
+          "count": 1
+        },
+        "documentation": {
+          "count": 2
+        },
+        "version_control": {
+          "count": 3
+        },
+        "configuration": {
+          "count": 8
+        },
+        "refactoring": {
+          "count": 3
+        }
+      },
+      "interruptions": 14,
+      "toolUses": 1548,
+      "toolErrors": 90,
+      "prompts": 261,
+      "filesProcessed": 27,
+      "interruptionRate": 5.36,
+      "errorRate": 5.81,
+      "inputTokens": 212398,
+      "cacheCreationTokens": 27277399,
+      "cacheReadTokens": 277072083,
+      "outputTokens": 632408,
+      "totalTokensBreakdown": 305194288,
+      "featurePRs": 4,
+      "locPerPR": 1441,
+      "locPerDev": 1921,
+      "commentsPerPR": 1,
+      "testCoverage": 85.23,
+      "cves": 0,
+      "duplicatedLines": 0,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 2.2,
+      "prTickets": [
+        "VIBE-149",
+        "VIBE-153",
+        "VIBE-204",
+        "VIBE-158"
+      ],
+      "nkt": 2.89,
+      "cycleTime": 4.5,
+      "storyPoints": 10,
+      "wipSP": null,
+      "tokensPerSP": 69250342,
+      "totalTokens": 554002732,
+      "ticketDetails": {
+        "VIBE-149": {
+          "prNumber": 59,
+          "createdAt": "2025-10-30T14:47:15Z",
+          "mergedAt": "2025-11-04T08:45:07Z",
+          "week": "Week 4",
+          "storyPoints": 2
+        },
+        "VIBE-150": {
+          "prNumber": 58,
+          "createdAt": "2025-10-30T11:59:34Z",
+          "mergedAt": "2025-10-30T14:51:52Z",
+          "week": "Week 4",
+          "storyPoints": 2
+        },
+        "VIBE-153": {
+          "prNumber": 57,
+          "createdAt": "2025-10-30T09:19:59Z",
+          "mergedAt": "2025-10-31T13:57:59Z",
+          "week": "Week 4",
+          "storyPoints": 3,
+          "tokens": 142709628
+        },
+        "VIBE-204": {
+          "prNumber": 56,
+          "createdAt": "2025-10-29T15:52:27Z",
+          "mergedAt": "2025-11-05T16:37:41Z",
+          "week": "Week 4",
+          "storyPoints": 2,
+          "tokens": 167244804
+        },
+        "VIBE-158": {
+          "prNumber": 54,
+          "createdAt": "2025-10-29T10:57:51Z",
+          "mergedAt": "2025-11-06T11:53:00Z",
+          "week": "Week 4",
+          "storyPoints": 3,
+          "tokens": 244048300
+        }
+      },
+      "locPerToken": 0.0000104,
+      "tokensPerCycleTime": 123111718,
+      "totalCost": 227.07,
+      "claudeCost": 227.07,
+      "costPerLOC": 0.0394,
+      "costPerPR": 56.77,
+      "costPerSP": 22.71,
+      "timeToContextWindow": 81.70869666666667,
+      "interruptionPrompts": 261
+    },
+    {
+      "week": "Week 5",
+      "period": "Nov 3-7",
+      "manualCompactions": 0,
+      "autoCompactions": 52,
+      "avgTimeToContextWindow": 100.85209722222221,
+      "totalPrompts": 804,
+      "avgPromptLength": 1523,
+      "topCategory": "general",
+      "topCategoryCount": 216,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "bug_fix": {
+          "count": 138
+        },
+        "version_control": {
+          "count": 42
+        },
+        "testing": {
+          "count": 156
+        },
+        "general": {
+          "count": 216
+        },
+        "feature_development": {
+          "count": 205
+        },
+        "code_review": {
+          "count": 3
+        },
+        "configuration": {
+          "count": 24
+        },
+        "code_understanding": {
+          "count": 2
+        },
+        "documentation": {
+          "count": 18
+        }
+      },
+      "interruptions": 100,
+      "toolUses": 11427,
+      "toolErrors": 792,
+      "prompts": 1184,
+      "filesProcessed": 76,
+      "interruptionRate": 8.45,
+      "errorRate": 6.93,
+      "inputTokens": 974208,
+      "cacheCreationTokens": 217342040,
+      "cacheReadTokens": 2237251981,
+      "outputTokens": 3802152,
+      "totalTokensBreakdown": 2459370381,
+      "featurePRs": 3,
+      "locPerPR": 2494,
+      "locPerDev": 3741,
+      "commentsPerPR": 1,
+      "testCoverage": 89.77,
+      "cves": 0,
+      "duplicatedLines": 0,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 3.25,
+      "prTickets": [
+        "VIBE-203",
+        "VIBE-201",
+        "VIBE-160"
+      ],
+      "nkt": 5.57,
+      "cycleTime": 2.33,
+      "storyPoints": 14,
+      "wipSP": null,
+      "tokensPerSP": 138729083,
+      "totalTokens": 1942207158,
+      "ticketDetails": {
+        "VIBE-203": {
+          "prNumber": 74,
+          "createdAt": "2025-11-06T11:59:35Z",
+          "mergedAt": "2025-11-10T10:28:11Z",
+          "week": "Week 5",
+          "storyPoints": 1,
+          "tokens": 966809
+        },
+        "VIBE-201": {
+          "prNumber": 67,
+          "createdAt": "2025-11-04T16:41:10Z",
+          "mergedAt": "2025-11-07T09:27:15Z",
+          "week": "Week 5",
+          "storyPoints": 8,
+          "tokens": 1848830747
+        },
+        "VIBE-160": {
+          "prNumber": 66,
+          "createdAt": "2025-11-04T15:49:34Z",
+          "mergedAt": "2025-11-06T14:56:09Z",
+          "week": "Week 5",
+          "storyPoints": 5,
+          "tokens": 92409602
+        }
+      },
+      "locPerToken": 0.00000385,
+      "tokensPerCycleTime": 833565304,
+      "totalCost": 383.43,
+      "claudeCost": 383.43,
+      "costPerLOC": 0.0512,
+      "costPerPR": 127.81,
+      "costPerSP": 27.39,
+      "timeToContextWindow": 100.85209722222221,
+      "interruptionPrompts": 1184
+    },
+    {
+      "week": "Week 6",
+      "period": "Nov 10-14",
+      "manualCompactions": 0,
+      "autoCompactions": 29,
+      "avgTimeToContextWindow": 67.13704583333333,
+      "totalPrompts": 517,
+      "avgPromptLength": 2007,
+      "topCategory": "feature_development",
+      "topCategoryCount": 202,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 202
+        },
+        "configuration": {
+          "count": 8
+        },
+        "bug_fix": {
+          "count": 122
+        },
+        "general": {
+          "count": 140
+        },
+        "testing": {
+          "count": 38
+        },
+        "code_review": {
+          "count": 3
+        },
+        "version_control": {
+          "count": 4
+        }
+      },
+      "interruptions": 65,
+      "toolUses": 7770,
+      "toolErrors": 558,
+      "prompts": 849,
+      "filesProcessed": 89,
+      "interruptionRate": 7.66,
+      "errorRate": 7.18,
+      "inputTokens": 853990,
+      "cacheCreationTokens": 125263588,
+      "cacheReadTokens": 1422301521,
+      "outputTokens": 4599024,
+      "totalTokensBreakdown": 1553018123,
+      "featurePRs": 3,
+      "locPerPR": 2609,
+      "locPerDev": 3914,
+      "commentsPerPR": 1.67,
+      "testCoverage": 87.5,
+      "cves": 0,
+      "duplicatedLines": 0,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 2,
+      "prTickets": [
+        "VIBE-216",
+        "VIBE-140",
+        "VIBE-222"
+      ],
+      "nkt": 3.9,
+      "cycleTime": 3.33,
+      "storyPoints": 16,
+      "wipSP": null,
+      "tokensPerSP": 29778871,
+      "totalTokens": 476461938,
+      "ticketDetails": {
+        "VIBE-216": {
+          "prNumber": 99,
+          "createdAt": "2025-11-13T16:36:24Z",
+          "mergedAt": "2025-11-20T16:33:13Z",
+          "week": "Week 6",
+          "storyPoints": 8,
+          "tokens": 128161460
+        },
+        "VIBE-140": {
+          "prNumber": 92,
+          "createdAt": "2025-11-11T11:07:43Z",
+          "mergedAt": "2025-11-17T09:14:54Z",
+          "week": "Week 6",
+          "storyPoints": 8,
+          "tokens": 348300478
+        },
+        "VIBE-222": {
+          "prNumber": 88,
+          "createdAt": "2025-11-10T11:18:57Z",
+          "mergedAt": "2025-11-10T14:06:10Z",
+          "week": "Week 6"
+        }
+      },
+      "locPerToken": 0.00001643,
+      "tokensPerCycleTime": 143081663,
+      "totalCost": 260.86,
+      "claudeCost": 260.86,
+      "costPerLOC": 0.0333,
+      "costPerPR": 86.95,
+      "costPerSP": 16.3,
+      "timeToContextWindow": 67.13704583333333,
+      "interruptionPrompts": 849
+    },
+    {
+      "week": "Week 7",
+      "period": "Nov 17-21",
+      "manualCompactions": 0,
+      "autoCompactions": 105,
+      "avgTimeToContextWindow": 93.859665,
+      "totalPrompts": 928,
+      "avgPromptLength": 1907,
+      "topCategory": "feature_development",
+      "topCategoryCount": 294,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 294
+        },
+        "general": {
+          "count": 177
+        },
+        "testing": {
+          "count": 125
+        },
+        "bug_fix": {
+          "count": 289
+        },
+        "code_review": {
+          "count": 12
+        },
+        "version_control": {
+          "count": 23
+        },
+        "documentation": {
+          "count": 8
+        }
+      },
+      "interruptions": 96,
+      "toolUses": 16875,
+      "toolErrors": 1063,
+      "prompts": 1459,
+      "filesProcessed": 90,
+      "interruptionRate": 6.58,
+      "errorRate": 6.3,
+      "inputTokens": 2426131,
+      "cacheCreationTokens": 298429171,
+      "cacheReadTokens": 3671279693,
+      "outputTokens": 6568521,
+      "totalTokensBreakdown": 3978703516,
+      "featurePRs": 3,
+      "locPerPR": 5018,
+      "locPerDev": 15053,
+      "commentsPerPR": 1.33,
+      "testCoverage": 92.13,
+      "cves": 0,
+      "duplicatedLines": 0.23,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 5.33,
+      "prTickets": [
+        "VIBE-143",
+        "VIBE-180",
+        "VIBE-169"
+      ],
+      "nkt": 3.25,
+      "cycleTime": 4,
+      "storyPoints": 16,
+      "wipSP": null,
+      "tokensPerSP": 246864285,
+      "totalTokens": 3949828560,
+      "ticketDetails": {
+        "VIBE-240": {
+          "prNumber": 121,
+          "createdAt": "2025-11-20T17:14:14Z",
+          "mergedAt": "2025-11-21T14:26:25Z",
+          "week": "Week 7"
+        },
+        "VIBE-143": {
+          "prNumber": 116,
+          "createdAt": "2025-11-20T16:02:04Z",
+          "mergedAt": "2025-11-24T14:36:33Z",
+          "week": "Week 7",
+          "storyPoints": 3,
+          "tokens": 378488164
+        },
+        "VIBE-180": {
+          "prNumber": 106,
+          "createdAt": "2025-11-18T14:32:45Z",
+          "mergedAt": "2025-11-26T09:30:40Z",
+          "week": "Week 7",
+          "storyPoints": 8,
+          "tokens": 3156918464
+        },
+        "VIBE-169": {
+          "prNumber": 102,
+          "createdAt": "2025-11-17T11:32:25Z",
+          "mergedAt": "2025-11-20T16:34:15Z",
+          "week": "Week 7",
+          "storyPoints": 5,
+          "tokens": 414421932
+        }
+      },
+      "locPerToken": 0.00000381,
+      "tokensPerCycleTime": 987457140,
+      "totalCost": 367.46,
+      "claudeCost": 367.46,
+      "costPerLOC": 0.0244,
+      "costPerPR": 122.49,
+      "costPerSP": 22.97,
+      "timeToContextWindow": 93.859665,
+      "interruptionPrompts": 1459
+    },
+    {
+      "week": "Week 8",
+      "period": "Nov 24-28",
+      "manualCompactions": 0,
+      "autoCompactions": 64,
+      "avgTimeToContextWindow": 62.28805952380952,
+      "totalPrompts": 708,
+      "avgPromptLength": 1427,
+      "topCategory": "feature_development",
+      "topCategoryCount": 220,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "testing": {
+          "count": 76
+        },
+        "bug_fix": {
+          "count": 178
+        },
+        "feature_development": {
+          "count": 220
+        },
+        "general": {
+          "count": 175
+        },
+        "documentation": {
+          "count": 4
+        },
+        "code_review": {
+          "count": 37
+        },
+        "version_control": {
+          "count": 15
+        },
+        "configuration": {
+          "count": 3
+        }
+      },
+      "interruptions": 57,
+      "toolUses": 11955,
+      "toolErrors": 989,
+      "prompts": 1128,
+      "filesProcessed": 135,
+      "interruptionRate": 5.05,
+      "errorRate": 8.27,
+      "inputTokens": 1259297,
+      "cacheCreationTokens": 189952549,
+      "cacheReadTokens": 2123030122,
+      "outputTokens": 4733307,
+      "totalTokensBreakdown": 2318975275,
+      "featurePRs": 5,
+      "locPerPR": 4192,
+      "locPerDev": 6987,
+      "commentsPerPR": 1.2,
+      "testCoverage": 89.83,
+      "cves": 0,
+      "duplicatedLines": 0.83,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 5.25,
+      "prTickets": [
+        "VIBE-236",
+        "VIBE-215",
+        "VIBE-175",
+        "VIBE-209",
+        "VIBE-192"
+      ],
+      "nkt": 1.03,
+      "cycleTime": 12.6,
+      "storyPoints": 16,
+      "wipSP": null,
+      "tokensPerSP": 184263462,
+      "totalTokens": 2579688463,
+      "ticketDetails": {
+        "VIBE-236": {
+          "prNumber": 146,
+          "createdAt": "2025-11-28T14:45:01Z",
+          "mergedAt": "2025-12-15T13:42:51Z",
+          "week": "Week 8",
+          "storyPoints": 2
+        },
+        "VIBE-215": {
+          "prNumber": 141,
+          "createdAt": "2025-11-27T16:05:03Z",
+          "mergedAt": "2026-01-29T15:34:16Z",
+          "week": "Week 8",
+          "storyPoints": 3,
+          "tokens": 371319131
+        },
+        "VIBE-175": {
+          "prNumber": 137,
+          "createdAt": "2025-11-27T12:51:14Z",
+          "mergedAt": "2025-12-01T10:16:26Z",
+          "week": "Week 8",
+          "storyPoints": 3,
+          "tokens": 338549691
+        },
+        "VIBE-209": {
+          "prNumber": 136,
+          "createdAt": "2025-11-26T18:04:20Z",
+          "mergedAt": "2025-11-28T11:36:10Z",
+          "week": "Week 8",
+          "storyPoints": 3,
+          "tokens": 609828438
+        },
+        "VIBE-192": {
+          "prNumber": 130,
+          "createdAt": "2025-11-24T17:13:56Z",
+          "mergedAt": "2025-11-27T17:11:26Z",
+          "week": "Week 8",
+          "storyPoints": 5,
+          "tokens": 1259991203
+        }
+      },
+      "locPerToken": 0.00000813,
+      "tokensPerCycleTime": 204737180,
+      "totalCost": 392.78,
+      "claudeCost": 392.78,
+      "costPerLOC": 0.0187,
+      "costPerPR": 78.56,
+      "costPerSP": 24.55,
+      "timeToContextWindow": 62.28805952380952,
+      "interruptionPrompts": 1128
+    },
+    {
+      "week": "Week 9",
+      "period": "Dec 1-5",
+      "manualCompactions": 0,
+      "autoCompactions": 183,
+      "avgTimeToContextWindow": 74.8940378787879,
+      "totalPrompts": 575,
+      "avgPromptLength": 1855,
+      "topCategory": "feature_development",
+      "topCategoryCount": 186,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "general": {
+          "count": 125
+        },
+        "version_control": {
+          "count": 5
+        },
+        "code_review": {
+          "count": 12
+        },
+        "configuration": {
+          "count": 12
+        },
+        "code_understanding": {
+          "count": 3
+        },
+        "feature_development": {
+          "count": 186
+        },
+        "bug_fix": {
+          "count": 154
+        },
+        "testing": {
+          "count": 73
+        },
+        "documentation": {
+          "count": 5
+        }
+      },
+      "interruptions": 38,
+      "toolUses": 10076,
+      "toolErrors": 836,
+      "prompts": 871,
+      "filesProcessed": 79,
+      "interruptionRate": 4.36,
+      "errorRate": 8.3,
+      "inputTokens": 1850786,
+      "cacheCreationTokens": 172208102,
+      "cacheReadTokens": 1869326501,
+      "outputTokens": 4395339,
+      "totalTokensBreakdown": 2047780728,
+      "featurePRs": 9,
+      "locPerPR": 3011,
+      "locPerDev": 9034,
+      "commentsPerPR": 1.11,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "prTickets": [
+        "VIBE-209",
+        "VIBE-166",
+        "VIBE-175",
+        "VIBE-229",
+        "VIBE-241",
+        "VIBE-247",
+        "VIBE-221",
+        "VIBE-162",
+        "VIBE-228"
+      ],
+      "nkt": 0.87,
+      "cycleTime": 15,
+      "storyPoints": 32,
+      "wipSP": null,
+      "tokensPerSP": 98419002,
+      "totalTokens": 3149408059,
+      "ticketDetails": {
+        "VIBE-209": {
+          "prNumber": 168,
+          "createdAt": "2025-12-04T17:00:53Z",
+          "mergedAt": "2025-12-15T13:41:37Z",
+          "week": "Week 9",
+          "storyPoints": 3,
+          "tokens": 609828438
+        },
+        "VIBE-166": {
+          "prNumber": 167,
+          "createdAt": "2025-12-04T13:23:45Z",
+          "mergedAt": "2025-12-15T18:34:46Z",
+          "week": "Week 9",
+          "storyPoints": 5,
+          "tokens": 365218594
+        },
+        "VIBE-175": {
+          "prNumber": 164,
+          "createdAt": "2025-12-03T16:03:23Z",
+          "mergedAt": "2025-12-15T13:42:27Z",
+          "week": "Week 9",
+          "storyPoints": 3,
+          "tokens": 338549691
+        },
+        "VIBE-229": {
+          "prNumber": 161,
+          "createdAt": "2025-12-02T13:46:16Z",
+          "mergedAt": "2025-12-23T15:00:51Z",
+          "week": "Week 9",
+          "storyPoints": 3,
+          "tokens": 223153091
+        },
+        "VIBE-241": {
+          "prNumber": 157,
+          "createdAt": "2025-12-01T16:23:36Z",
+          "mergedAt": "2025-12-24T15:48:52Z",
+          "week": "Week 9",
+          "storyPoints": 2,
+          "tokens": 4369342
+        },
+        "VIBE-247": {
+          "prNumber": 156,
+          "createdAt": "2025-12-01T15:58:58Z",
+          "mergedAt": "2026-01-19T14:08:42Z",
+          "week": "Week 9",
+          "storyPoints": 5,
+          "tokens": 215769233
+        },
+        "VIBE-221": {
+          "prNumber": 155,
+          "createdAt": "2025-12-01T14:33:44Z",
+          "mergedAt": "2025-12-23T12:32:41Z",
+          "week": "Week 9",
+          "storyPoints": 5,
+          "tokens": 804635026
+        },
+        "VIBE-162": {
+          "prNumber": 153,
+          "createdAt": "2025-12-01T13:31:11Z",
+          "mergedAt": "2025-12-15T13:38:09Z",
+          "week": "Week 9",
+          "storyPoints": 3,
+          "tokens": 256965789
+        },
+        "VIBE-228": {
+          "prNumber": 151,
+          "createdAt": "2025-12-01T11:54:13Z",
+          "mergedAt": "2025-12-23T13:02:20Z",
+          "week": "Week 9",
+          "storyPoints": 3,
+          "tokens": 330918855
+        }
+      },
+      "locPerToken": 0.0000086,
+      "tokensPerCycleTime": 209960537,
+      "totalCost": 406.21,
+      "claudeCost": 406.21,
+      "costPerLOC": 0.015,
+      "costPerPR": 45.13,
+      "costPerSP": 12.69,
+      "timeToContextWindow": 74.8940378787879,
+      "interruptionPrompts": 871
+    },
+    {
+      "week": "Week 10",
+      "period": "Dec 8-12",
+      "manualCompactions": 0,
+      "autoCompactions": 220,
+      "avgTimeToContextWindow": 11.671435964912279,
+      "totalPrompts": 224,
+      "avgPromptLength": 975,
+      "topCategory": "general",
+      "topCategoryCount": 72,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 58
+        },
+        "general": {
+          "count": 72
+        },
+        "bug_fix": {
+          "count": 49
+        },
+        "refactoring": {
+          "count": 4
+        },
+        "testing": {
+          "count": 29
+        },
+        "code_review": {
+          "count": 6
+        },
+        "configuration": {
+          "count": 2
+        },
+        "version_control": {
+          "count": 4
+        }
+      },
+      "interruptions": 18,
+      "toolUses": 4190,
+      "toolErrors": 438,
+      "prompts": 340,
+      "filesProcessed": 47,
+      "interruptionRate": 5.29,
+      "errorRate": 10.45,
+      "inputTokens": 523840,
+      "cacheCreationTokens": 57143162,
+      "cacheReadTokens": 553959749,
+      "outputTokens": 1268938,
+      "totalTokensBreakdown": 612895689,
+      "featurePRs": 2,
+      "locPerPR": 3856,
+      "locPerDev": 7711,
+      "commentsPerPR": 1,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "prTickets": [
+        "VIBE-310",
+        "VIBE-306"
+      ],
+      "nkt": 0.76,
+      "cycleTime": 17,
+      "storyPoints": 8,
+      "wipSP": null,
+      "tokensPerSP": 63130154,
+      "totalTokens": 505041228,
+      "ticketDetails": {
+        "VIBE-310": {
+          "prNumber": 178,
+          "createdAt": "2025-12-12T16:46:22Z",
+          "mergedAt": "2026-01-19T14:08:14Z",
+          "week": "Week 10",
+          "storyPoints": 5,
+          "tokens": 170646456
+        },
+        "VIBE-306": {
+          "prNumber": 177,
+          "createdAt": "2025-12-11T15:44:55Z",
+          "mergedAt": "2025-12-23T12:20:52Z",
+          "week": "Week 10",
+          "storyPoints": 3,
+          "tokens": 334394772
+        }
+      },
+      "locPerToken": 0.00001527,
+      "tokensPerCycleTime": 29708308,
+      "totalCost": 164.09,
+      "claudeCost": 164.09,
+      "costPerLOC": 0.0213,
+      "costPerPR": 82.05,
+      "costPerSP": 20.51,
+      "timeToContextWindow": 11.671435964912279,
+      "interruptionPrompts": 340
+    },
+    {
+      "week": "Week 11",
+      "period": "Dec 15-19",
+      "manualCompactions": 0,
+      "autoCompactions": 81,
+      "avgTimeToContextWindow": 44.11105984848485,
+      "totalPrompts": 365,
+      "avgPromptLength": 1577,
+      "topCategory": "bug_fix",
+      "topCategoryCount": 115,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "documentation": {
+          "count": 8
+        },
+        "general": {
+          "count": 92
+        },
+        "feature_development": {
+          "count": 75
+        },
+        "bug_fix": {
+          "count": 115
+        },
+        "testing": {
+          "count": 42
+        },
+        "configuration": {
+          "count": 7
+        },
+        "code_review": {
+          "count": 11
+        },
+        "refactoring": {
+          "count": 3
+        },
+        "version_control": {
+          "count": 12
+        }
+      },
+      "interruptions": 24,
+      "toolUses": 6042,
+      "toolErrors": 367,
+      "prompts": 497,
+      "filesProcessed": 52,
+      "interruptionRate": 4.83,
+      "errorRate": 6.07,
+      "inputTokens": 899818,
+      "cacheCreationTokens": 122123906,
+      "cacheReadTokens": 1161667378,
+      "outputTokens": 2255971,
+      "totalTokensBreakdown": 1286947073,
+      "featurePRs": 1,
+      "locPerPR": 2878,
+      "locPerDev": 2878,
+      "commentsPerPR": 2,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "prTickets": [
+        "VIBE-312"
+      ],
+      "nkt": 1.86,
+      "cycleTime": 7,
+      "storyPoints": 5,
+      "wipSP": null,
+      "tokensPerSP": 41102199,
+      "totalTokens": 205510996,
+      "ticketDetails": {
+        "VIBE-312": {
+          "prNumber": 185,
+          "createdAt": "2025-12-16T13:23:24Z",
+          "mergedAt": "2025-12-24T14:47:42Z",
+          "week": "Week 11",
+          "storyPoints": 5,
+          "tokens": 205510996
+        }
+      },
+      "locPerToken": 0.000014,
+      "tokensPerCycleTime": 29358714,
+      "totalCost": 0,
+      "claudeCost": 0,
+      "costPerLOC": null,
+      "costPerPR": null,
+      "costPerSP": null,
+      "timeToContextWindow": 44.11105984848485,
+      "interruptionPrompts": 497
+    },
+    {
+      "week": "Week 12",
+      "period": "Dec 22-26",
+      "manualCompactions": 0,
+      "autoCompactions": 16,
+      "avgTimeToContextWindow": 48.860216666666666,
+      "totalPrompts": 50,
+      "avgPromptLength": 950,
+      "topCategory": "bug_fix",
+      "topCategoryCount": 14,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "bug_fix": {
+          "count": 14
+        },
+        "feature_development": {
+          "count": 11
+        },
+        "general": {
+          "count": 9
+        },
+        "testing": {
+          "count": 7
+        },
+        "configuration": {
+          "count": 3
+        },
+        "refactoring": {
+          "count": 1
+        },
+        "version_control": {
+          "count": 4
+        },
+        "code_review": {
+          "count": 1
+        }
+      },
+      "interruptions": 3,
+      "toolUses": 708,
+      "toolErrors": 53,
+      "prompts": 88,
+      "filesProcessed": 10,
+      "interruptionRate": 3.41,
+      "errorRate": 7.49,
+      "inputTokens": 93085,
+      "cacheCreationTokens": 12747610,
+      "cacheReadTokens": 129168639,
+      "outputTokens": 231893,
+      "totalTokensBreakdown": 142241227,
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "nkt": null,
+      "cycleTime": null,
+      "storyPoints": 0,
+      "wipSP": null,
+      "tokensPerSP": null,
+      "ticketDetails": {},
+      "totalCost": 0,
+      "claudeCost": 0,
+      "costPerLOC": null,
+      "costPerPR": null,
+      "costPerSP": null,
+      "timeToContextWindow": 48.860216666666666,
+      "interruptionPrompts": 88
+    },
+    {
+      "week": "Week 13",
+      "period": "Dec 29-Jan 2",
+      "manualCompactions": 0,
+      "autoCompactions": 7,
+      "avgTimeToContextWindow": 39.0275,
+      "totalPrompts": 9,
+      "avgPromptLength": 1943,
+      "topCategory": "feature_development",
+      "topCategoryCount": 4,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 4
+        },
+        "general": {
+          "count": 2
+        },
+        "testing": {
+          "count": 1
+        },
+        "bug_fix": {
+          "count": 2
+        }
+      },
+      "interruptions": 1,
+      "toolUses": 161,
+      "toolErrors": 5,
+      "prompts": 17,
+      "filesProcessed": 1,
+      "interruptionRate": 5.88,
+      "errorRate": 3.11,
+      "inputTokens": 15538,
+      "cacheCreationTokens": 2923938,
+      "cacheReadTokens": 32756135,
+      "outputTokens": 44913,
+      "totalTokensBreakdown": 35740524,
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "nkt": null,
+      "cycleTime": null,
+      "storyPoints": 0,
+      "wipSP": null,
+      "tokensPerSP": null,
+      "ticketDetails": {},
+      "totalCost": 0,
+      "claudeCost": 0,
+      "costPerLOC": null,
+      "costPerPR": null,
+      "costPerSP": null,
+      "timeToContextWindow": 39.0275,
+      "interruptionPrompts": 17
+    }
+  ],
+  "labels": [
+    "Oct 7-10",
+    "Oct 13-17",
+    "Oct 20-24",
+    "Oct 27-31",
+    "Nov 3-7",
+    "Nov 10-14",
+    "Nov 17-21",
+    "Nov 24-28",
+    "Dec 1-5",
+    "Dec 8-12",
+    "Dec 15-19",
+    "Dec 22-26",
+    "Dec 29-Jan 2"
+  ],
+  "validWeeks": [
+    {
+      "week": "Week 2",
+      "period": "Oct 13-17",
+      "manualCompactions": 0,
+      "autoCompactions": 26,
+      "avgTimeToContextWindow": 3.621,
+      "totalPrompts": 5,
+      "avgPromptLength": 144,
+      "topCategory": "general",
+      "topCategoryCount": 3,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "general": {
+          "count": 3
+        },
+        "testing": {
+          "count": 1
+        },
+        "bug_fix": {
+          "count": 1
+        }
+      },
+      "interruptions": 0,
+      "toolUses": 105,
+      "toolErrors": 10,
+      "prompts": 8,
+      "filesProcessed": 1,
+      "interruptionRate": 0,
+      "errorRate": 9.52,
+      "inputTokens": 4334,
+      "cacheCreationTokens": 1143953,
+      "cacheReadTokens": 12386188,
+      "outputTokens": 27215,
+      "totalTokensBreakdown": 13561690,
+      "featurePRs": 4,
+      "locPerPR": 2954,
+      "locPerDev": 5909,
+      "commentsPerPR": 1,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "prTickets": [
+        "VIBE-153",
+        "VIBE-150",
+        "VIBE-146",
+        "VIBE-149"
+      ],
+      "nkt": 7.43,
+      "cycleTime": 1.75,
+      "storyPoints": 12,
+      "wipSP": null,
+      "tokensPerSP": 47569876,
+      "totalTokens": 142709628,
+      "ticketDetails": {
+        "VIBE-153": {
+          "prNumber": 19,
+          "createdAt": "2025-10-17T16:46:04Z",
+          "mergedAt": "2025-10-22T16:32:41Z",
+          "week": "Week 2",
+          "storyPoints": 3,
+          "tokens": 142709628
+        },
+        "VIBE-150": {
+          "prNumber": 13,
+          "createdAt": "2025-10-15T17:48:33Z",
+          "mergedAt": "2025-10-16T12:11:56Z",
+          "week": "Week 2",
+          "storyPoints": 2
+        },
+        "VIBE-146": {
+          "prNumber": 12,
+          "createdAt": "2025-10-15T16:24:48Z",
+          "mergedAt": "2025-10-16T12:11:34Z",
+          "week": "Week 2",
+          "storyPoints": 5
+        },
+        "VIBE-149": {
+          "prNumber": 8,
+          "createdAt": "2025-10-14T12:32:06Z",
+          "mergedAt": "2025-10-15T14:16:29Z",
+          "week": "Week 2",
+          "storyPoints": 2
+        }
+      },
+      "locPerToken": 0.0000828,
+      "tokensPerCycleTime": 81548359,
+      "totalCost": 162.52,
+      "claudeCost": 162.52,
+      "costPerLOC": 0.0138,
+      "costPerPR": 40.63,
+      "costPerSP": 13.54,
+      "timeToContextWindow": 3.621,
+      "interruptionPrompts": 8
+    },
+    {
+      "week": "Week 3",
+      "period": "Oct 20-24",
+      "manualCompactions": 0,
+      "autoCompactions": 66,
+      "avgTimeToContextWindow": 13.264061111111113,
+      "totalPrompts": 165,
+      "avgPromptLength": 1457,
+      "topCategory": "feature_development",
+      "topCategoryCount": 65,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "refactoring": {
+          "count": 1
+        },
+        "general": {
+          "count": 60
+        },
+        "code_review": {
+          "count": 1
+        },
+        "bug_fix": {
+          "count": 22
+        },
+        "feature_development": {
+          "count": 65
+        },
+        "testing": {
+          "count": 14
+        },
+        "version_control": {
+          "count": 2
+        }
+      },
+      "interruptions": 1,
+      "toolUses": 2128,
+      "toolErrors": 134,
+      "prompts": 329,
+      "filesProcessed": 32,
+      "interruptionRate": 0.3,
+      "errorRate": 6.3,
+      "inputTokens": 315601,
+      "cacheCreationTokens": 33223788,
+      "cacheReadTokens": 308080895,
+      "outputTokens": 1084012,
+      "totalTokensBreakdown": 342704296,
+      "featurePRs": 6,
+      "locPerPR": 1536,
+      "locPerDev": 4608,
+      "commentsPerPR": 1,
+      "testCoverage": 79.86,
+      "cves": 0,
+      "duplicatedLines": 0,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 5.2,
+      "prTickets": [
+        "VIBE-159",
+        "VIBE-157",
+        "VIBE-155",
+        "VIBE-191",
+        "VIBE-139",
+        "VIBE-154"
+      ],
+      "nkt": 2.36,
+      "cycleTime": 5.5,
+      "storyPoints": 20,
+      "wipSP": null,
+      "tokensPerSP": 48498050,
+      "totalTokens": 484980495,
+      "ticketDetails": {
+        "VIBE-159": {
+          "prNumber": 43,
+          "createdAt": "2025-10-24T12:53:46Z",
+          "mergedAt": "2025-11-06T12:08:49Z",
+          "week": "Week 3",
+          "storyPoints": 2,
+          "tokens": 183217158
+        },
+        "VIBE-157": {
+          "prNumber": 38,
+          "createdAt": "2025-10-23T15:30:59Z",
+          "mergedAt": "2025-10-29T13:12:27Z",
+          "week": "Week 3",
+          "storyPoints": 2,
+          "tokens": 12868936
+        },
+        "VIBE-155": {
+          "prNumber": 36,
+          "createdAt": "2025-10-23T09:39:39Z",
+          "mergedAt": "2025-10-29T11:09:17Z",
+          "week": "Week 3",
+          "storyPoints": 3,
+          "tokens": 209592967
+        },
+        "VIBE-191": {
+          "prNumber": 33,
+          "createdAt": "2025-10-22T15:07:37Z",
+          "mergedAt": "2025-10-30T12:12:51Z",
+          "week": "Week 3",
+          "storyPoints": 2
+        },
+        "VIBE-139": {
+          "prNumber": 27,
+          "createdAt": "2025-10-21T14:54:38Z",
+          "mergedAt": "2025-10-23T09:20:34Z",
+          "week": "Week 3",
+          "storyPoints": 3,
+          "tokens": 79301434
+        },
+        "VIBE-154": {
+          "prNumber": 26,
+          "createdAt": "2025-10-21T10:44:23Z",
+          "mergedAt": "2025-10-29T16:45:40Z",
+          "week": "Week 3",
+          "storyPoints": 8
+        }
+      },
+      "locPerToken": 0.000019,
+      "tokensPerCycleTime": 88178272,
+      "totalCost": 182.19,
+      "claudeCost": 182.19,
+      "costPerLOC": 0.0198,
+      "costPerPR": 30.36,
+      "costPerSP": 9.11,
+      "timeToContextWindow": 13.264061111111113,
+      "interruptionPrompts": 329
+    },
+    {
+      "week": "Week 4",
+      "period": "Oct 27-31",
+      "manualCompactions": 0,
+      "autoCompactions": 19,
+      "avgTimeToContextWindow": 81.70869666666667,
+      "totalPrompts": 135,
+      "avgPromptLength": 968,
+      "topCategory": "general",
+      "topCategoryCount": 55,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "general": {
+          "count": 55
+        },
+        "bug_fix": {
+          "count": 35
+        },
+        "testing": {
+          "count": 11
+        },
+        "feature_development": {
+          "count": 17
+        },
+        "code_review": {
+          "count": 1
+        },
+        "documentation": {
+          "count": 2
+        },
+        "version_control": {
+          "count": 3
+        },
+        "configuration": {
+          "count": 8
+        },
+        "refactoring": {
+          "count": 3
+        }
+      },
+      "interruptions": 14,
+      "toolUses": 1548,
+      "toolErrors": 90,
+      "prompts": 261,
+      "filesProcessed": 27,
+      "interruptionRate": 5.36,
+      "errorRate": 5.81,
+      "inputTokens": 212398,
+      "cacheCreationTokens": 27277399,
+      "cacheReadTokens": 277072083,
+      "outputTokens": 632408,
+      "totalTokensBreakdown": 305194288,
+      "featurePRs": 4,
+      "locPerPR": 1441,
+      "locPerDev": 1921,
+      "commentsPerPR": 1,
+      "testCoverage": 85.23,
+      "cves": 0,
+      "duplicatedLines": 0,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 2.2,
+      "prTickets": [
+        "VIBE-149",
+        "VIBE-153",
+        "VIBE-204",
+        "VIBE-158"
+      ],
+      "nkt": 2.89,
+      "cycleTime": 4.5,
+      "storyPoints": 10,
+      "wipSP": null,
+      "tokensPerSP": 69250342,
+      "totalTokens": 554002732,
+      "ticketDetails": {
+        "VIBE-149": {
+          "prNumber": 59,
+          "createdAt": "2025-10-30T14:47:15Z",
+          "mergedAt": "2025-11-04T08:45:07Z",
+          "week": "Week 4",
+          "storyPoints": 2
+        },
+        "VIBE-150": {
+          "prNumber": 58,
+          "createdAt": "2025-10-30T11:59:34Z",
+          "mergedAt": "2025-10-30T14:51:52Z",
+          "week": "Week 4",
+          "storyPoints": 2
+        },
+        "VIBE-153": {
+          "prNumber": 57,
+          "createdAt": "2025-10-30T09:19:59Z",
+          "mergedAt": "2025-10-31T13:57:59Z",
+          "week": "Week 4",
+          "storyPoints": 3,
+          "tokens": 142709628
+        },
+        "VIBE-204": {
+          "prNumber": 56,
+          "createdAt": "2025-10-29T15:52:27Z",
+          "mergedAt": "2025-11-05T16:37:41Z",
+          "week": "Week 4",
+          "storyPoints": 2,
+          "tokens": 167244804
+        },
+        "VIBE-158": {
+          "prNumber": 54,
+          "createdAt": "2025-10-29T10:57:51Z",
+          "mergedAt": "2025-11-06T11:53:00Z",
+          "week": "Week 4",
+          "storyPoints": 3,
+          "tokens": 244048300
+        }
+      },
+      "locPerToken": 0.0000104,
+      "tokensPerCycleTime": 123111718,
+      "totalCost": 227.07,
+      "claudeCost": 227.07,
+      "costPerLOC": 0.0394,
+      "costPerPR": 56.77,
+      "costPerSP": 22.71,
+      "timeToContextWindow": 81.70869666666667,
+      "interruptionPrompts": 261
+    },
+    {
+      "week": "Week 5",
+      "period": "Nov 3-7",
+      "manualCompactions": 0,
+      "autoCompactions": 52,
+      "avgTimeToContextWindow": 100.85209722222221,
+      "totalPrompts": 804,
+      "avgPromptLength": 1523,
+      "topCategory": "general",
+      "topCategoryCount": 216,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "bug_fix": {
+          "count": 138
+        },
+        "version_control": {
+          "count": 42
+        },
+        "testing": {
+          "count": 156
+        },
+        "general": {
+          "count": 216
+        },
+        "feature_development": {
+          "count": 205
+        },
+        "code_review": {
+          "count": 3
+        },
+        "configuration": {
+          "count": 24
+        },
+        "code_understanding": {
+          "count": 2
+        },
+        "documentation": {
+          "count": 18
+        }
+      },
+      "interruptions": 100,
+      "toolUses": 11427,
+      "toolErrors": 792,
+      "prompts": 1184,
+      "filesProcessed": 76,
+      "interruptionRate": 8.45,
+      "errorRate": 6.93,
+      "inputTokens": 974208,
+      "cacheCreationTokens": 217342040,
+      "cacheReadTokens": 2237251981,
+      "outputTokens": 3802152,
+      "totalTokensBreakdown": 2459370381,
+      "featurePRs": 3,
+      "locPerPR": 2494,
+      "locPerDev": 3741,
+      "commentsPerPR": 1,
+      "testCoverage": 89.77,
+      "cves": 0,
+      "duplicatedLines": 0,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 3.25,
+      "prTickets": [
+        "VIBE-203",
+        "VIBE-201",
+        "VIBE-160"
+      ],
+      "nkt": 5.57,
+      "cycleTime": 2.33,
+      "storyPoints": 14,
+      "wipSP": null,
+      "tokensPerSP": 138729083,
+      "totalTokens": 1942207158,
+      "ticketDetails": {
+        "VIBE-203": {
+          "prNumber": 74,
+          "createdAt": "2025-11-06T11:59:35Z",
+          "mergedAt": "2025-11-10T10:28:11Z",
+          "week": "Week 5",
+          "storyPoints": 1,
+          "tokens": 966809
+        },
+        "VIBE-201": {
+          "prNumber": 67,
+          "createdAt": "2025-11-04T16:41:10Z",
+          "mergedAt": "2025-11-07T09:27:15Z",
+          "week": "Week 5",
+          "storyPoints": 8,
+          "tokens": 1848830747
+        },
+        "VIBE-160": {
+          "prNumber": 66,
+          "createdAt": "2025-11-04T15:49:34Z",
+          "mergedAt": "2025-11-06T14:56:09Z",
+          "week": "Week 5",
+          "storyPoints": 5,
+          "tokens": 92409602
+        }
+      },
+      "locPerToken": 0.00000385,
+      "tokensPerCycleTime": 833565304,
+      "totalCost": 383.43,
+      "claudeCost": 383.43,
+      "costPerLOC": 0.0512,
+      "costPerPR": 127.81,
+      "costPerSP": 27.39,
+      "timeToContextWindow": 100.85209722222221,
+      "interruptionPrompts": 1184
+    },
+    {
+      "week": "Week 6",
+      "period": "Nov 10-14",
+      "manualCompactions": 0,
+      "autoCompactions": 29,
+      "avgTimeToContextWindow": 67.13704583333333,
+      "totalPrompts": 517,
+      "avgPromptLength": 2007,
+      "topCategory": "feature_development",
+      "topCategoryCount": 202,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 202
+        },
+        "configuration": {
+          "count": 8
+        },
+        "bug_fix": {
+          "count": 122
+        },
+        "general": {
+          "count": 140
+        },
+        "testing": {
+          "count": 38
+        },
+        "code_review": {
+          "count": 3
+        },
+        "version_control": {
+          "count": 4
+        }
+      },
+      "interruptions": 65,
+      "toolUses": 7770,
+      "toolErrors": 558,
+      "prompts": 849,
+      "filesProcessed": 89,
+      "interruptionRate": 7.66,
+      "errorRate": 7.18,
+      "inputTokens": 853990,
+      "cacheCreationTokens": 125263588,
+      "cacheReadTokens": 1422301521,
+      "outputTokens": 4599024,
+      "totalTokensBreakdown": 1553018123,
+      "featurePRs": 3,
+      "locPerPR": 2609,
+      "locPerDev": 3914,
+      "commentsPerPR": 1.67,
+      "testCoverage": 87.5,
+      "cves": 0,
+      "duplicatedLines": 0,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 2,
+      "prTickets": [
+        "VIBE-216",
+        "VIBE-140",
+        "VIBE-222"
+      ],
+      "nkt": 3.9,
+      "cycleTime": 3.33,
+      "storyPoints": 16,
+      "wipSP": null,
+      "tokensPerSP": 29778871,
+      "totalTokens": 476461938,
+      "ticketDetails": {
+        "VIBE-216": {
+          "prNumber": 99,
+          "createdAt": "2025-11-13T16:36:24Z",
+          "mergedAt": "2025-11-20T16:33:13Z",
+          "week": "Week 6",
+          "storyPoints": 8,
+          "tokens": 128161460
+        },
+        "VIBE-140": {
+          "prNumber": 92,
+          "createdAt": "2025-11-11T11:07:43Z",
+          "mergedAt": "2025-11-17T09:14:54Z",
+          "week": "Week 6",
+          "storyPoints": 8,
+          "tokens": 348300478
+        },
+        "VIBE-222": {
+          "prNumber": 88,
+          "createdAt": "2025-11-10T11:18:57Z",
+          "mergedAt": "2025-11-10T14:06:10Z",
+          "week": "Week 6"
+        }
+      },
+      "locPerToken": 0.00001643,
+      "tokensPerCycleTime": 143081663,
+      "totalCost": 260.86,
+      "claudeCost": 260.86,
+      "costPerLOC": 0.0333,
+      "costPerPR": 86.95,
+      "costPerSP": 16.3,
+      "timeToContextWindow": 67.13704583333333,
+      "interruptionPrompts": 849
+    },
+    {
+      "week": "Week 7",
+      "period": "Nov 17-21",
+      "manualCompactions": 0,
+      "autoCompactions": 105,
+      "avgTimeToContextWindow": 93.859665,
+      "totalPrompts": 928,
+      "avgPromptLength": 1907,
+      "topCategory": "feature_development",
+      "topCategoryCount": 294,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 294
+        },
+        "general": {
+          "count": 177
+        },
+        "testing": {
+          "count": 125
+        },
+        "bug_fix": {
+          "count": 289
+        },
+        "code_review": {
+          "count": 12
+        },
+        "version_control": {
+          "count": 23
+        },
+        "documentation": {
+          "count": 8
+        }
+      },
+      "interruptions": 96,
+      "toolUses": 16875,
+      "toolErrors": 1063,
+      "prompts": 1459,
+      "filesProcessed": 90,
+      "interruptionRate": 6.58,
+      "errorRate": 6.3,
+      "inputTokens": 2426131,
+      "cacheCreationTokens": 298429171,
+      "cacheReadTokens": 3671279693,
+      "outputTokens": 6568521,
+      "totalTokensBreakdown": 3978703516,
+      "featurePRs": 3,
+      "locPerPR": 5018,
+      "locPerDev": 15053,
+      "commentsPerPR": 1.33,
+      "testCoverage": 92.13,
+      "cves": 0,
+      "duplicatedLines": 0.23,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 5.33,
+      "prTickets": [
+        "VIBE-143",
+        "VIBE-180",
+        "VIBE-169"
+      ],
+      "nkt": 3.25,
+      "cycleTime": 4,
+      "storyPoints": 16,
+      "wipSP": null,
+      "tokensPerSP": 246864285,
+      "totalTokens": 3949828560,
+      "ticketDetails": {
+        "VIBE-240": {
+          "prNumber": 121,
+          "createdAt": "2025-11-20T17:14:14Z",
+          "mergedAt": "2025-11-21T14:26:25Z",
+          "week": "Week 7"
+        },
+        "VIBE-143": {
+          "prNumber": 116,
+          "createdAt": "2025-11-20T16:02:04Z",
+          "mergedAt": "2025-11-24T14:36:33Z",
+          "week": "Week 7",
+          "storyPoints": 3,
+          "tokens": 378488164
+        },
+        "VIBE-180": {
+          "prNumber": 106,
+          "createdAt": "2025-11-18T14:32:45Z",
+          "mergedAt": "2025-11-26T09:30:40Z",
+          "week": "Week 7",
+          "storyPoints": 8,
+          "tokens": 3156918464
+        },
+        "VIBE-169": {
+          "prNumber": 102,
+          "createdAt": "2025-11-17T11:32:25Z",
+          "mergedAt": "2025-11-20T16:34:15Z",
+          "week": "Week 7",
+          "storyPoints": 5,
+          "tokens": 414421932
+        }
+      },
+      "locPerToken": 0.00000381,
+      "tokensPerCycleTime": 987457140,
+      "totalCost": 367.46,
+      "claudeCost": 367.46,
+      "costPerLOC": 0.0244,
+      "costPerPR": 122.49,
+      "costPerSP": 22.97,
+      "timeToContextWindow": 93.859665,
+      "interruptionPrompts": 1459
+    },
+    {
+      "week": "Week 8",
+      "period": "Nov 24-28",
+      "manualCompactions": 0,
+      "autoCompactions": 64,
+      "avgTimeToContextWindow": 62.28805952380952,
+      "totalPrompts": 708,
+      "avgPromptLength": 1427,
+      "topCategory": "feature_development",
+      "topCategoryCount": 220,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "testing": {
+          "count": 76
+        },
+        "bug_fix": {
+          "count": 178
+        },
+        "feature_development": {
+          "count": 220
+        },
+        "general": {
+          "count": 175
+        },
+        "documentation": {
+          "count": 4
+        },
+        "code_review": {
+          "count": 37
+        },
+        "version_control": {
+          "count": 15
+        },
+        "configuration": {
+          "count": 3
+        }
+      },
+      "interruptions": 57,
+      "toolUses": 11955,
+      "toolErrors": 989,
+      "prompts": 1128,
+      "filesProcessed": 135,
+      "interruptionRate": 5.05,
+      "errorRate": 8.27,
+      "inputTokens": 1259297,
+      "cacheCreationTokens": 189952549,
+      "cacheReadTokens": 2123030122,
+      "outputTokens": 4733307,
+      "totalTokensBreakdown": 2318975275,
+      "featurePRs": 5,
+      "locPerPR": 4192,
+      "locPerDev": 6987,
+      "commentsPerPR": 1.2,
+      "testCoverage": 89.83,
+      "cves": 0,
+      "duplicatedLines": 0.83,
+      "maintainability": 1,
+      "reliability": 1,
+      "security": 1,
+      "bugs": null,
+      "codeSmells": 5.25,
+      "prTickets": [
+        "VIBE-236",
+        "VIBE-215",
+        "VIBE-175",
+        "VIBE-209",
+        "VIBE-192"
+      ],
+      "nkt": 1.03,
+      "cycleTime": 12.6,
+      "storyPoints": 16,
+      "wipSP": null,
+      "tokensPerSP": 184263462,
+      "totalTokens": 2579688463,
+      "ticketDetails": {
+        "VIBE-236": {
+          "prNumber": 146,
+          "createdAt": "2025-11-28T14:45:01Z",
+          "mergedAt": "2025-12-15T13:42:51Z",
+          "week": "Week 8",
+          "storyPoints": 2
+        },
+        "VIBE-215": {
+          "prNumber": 141,
+          "createdAt": "2025-11-27T16:05:03Z",
+          "mergedAt": "2026-01-29T15:34:16Z",
+          "week": "Week 8",
+          "storyPoints": 3,
+          "tokens": 371319131
+        },
+        "VIBE-175": {
+          "prNumber": 137,
+          "createdAt": "2025-11-27T12:51:14Z",
+          "mergedAt": "2025-12-01T10:16:26Z",
+          "week": "Week 8",
+          "storyPoints": 3,
+          "tokens": 338549691
+        },
+        "VIBE-209": {
+          "prNumber": 136,
+          "createdAt": "2025-11-26T18:04:20Z",
+          "mergedAt": "2025-11-28T11:36:10Z",
+          "week": "Week 8",
+          "storyPoints": 3,
+          "tokens": 609828438
+        },
+        "VIBE-192": {
+          "prNumber": 130,
+          "createdAt": "2025-11-24T17:13:56Z",
+          "mergedAt": "2025-11-27T17:11:26Z",
+          "week": "Week 8",
+          "storyPoints": 5,
+          "tokens": 1259991203
+        }
+      },
+      "locPerToken": 0.00000813,
+      "tokensPerCycleTime": 204737180,
+      "totalCost": 392.78,
+      "claudeCost": 392.78,
+      "costPerLOC": 0.0187,
+      "costPerPR": 78.56,
+      "costPerSP": 24.55,
+      "timeToContextWindow": 62.28805952380952,
+      "interruptionPrompts": 1128
+    },
+    {
+      "week": "Week 9",
+      "period": "Dec 1-5",
+      "manualCompactions": 0,
+      "autoCompactions": 183,
+      "avgTimeToContextWindow": 74.8940378787879,
+      "totalPrompts": 575,
+      "avgPromptLength": 1855,
+      "topCategory": "feature_development",
+      "topCategoryCount": 186,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "general": {
+          "count": 125
+        },
+        "version_control": {
+          "count": 5
+        },
+        "code_review": {
+          "count": 12
+        },
+        "configuration": {
+          "count": 12
+        },
+        "code_understanding": {
+          "count": 3
+        },
+        "feature_development": {
+          "count": 186
+        },
+        "bug_fix": {
+          "count": 154
+        },
+        "testing": {
+          "count": 73
+        },
+        "documentation": {
+          "count": 5
+        }
+      },
+      "interruptions": 38,
+      "toolUses": 10076,
+      "toolErrors": 836,
+      "prompts": 871,
+      "filesProcessed": 79,
+      "interruptionRate": 4.36,
+      "errorRate": 8.3,
+      "inputTokens": 1850786,
+      "cacheCreationTokens": 172208102,
+      "cacheReadTokens": 1869326501,
+      "outputTokens": 4395339,
+      "totalTokensBreakdown": 2047780728,
+      "featurePRs": 9,
+      "locPerPR": 3011,
+      "locPerDev": 9034,
+      "commentsPerPR": 1.11,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "prTickets": [
+        "VIBE-209",
+        "VIBE-166",
+        "VIBE-175",
+        "VIBE-229",
+        "VIBE-241",
+        "VIBE-247",
+        "VIBE-221",
+        "VIBE-162",
+        "VIBE-228"
+      ],
+      "nkt": 0.87,
+      "cycleTime": 15,
+      "storyPoints": 32,
+      "wipSP": null,
+      "tokensPerSP": 98419002,
+      "totalTokens": 3149408059,
+      "ticketDetails": {
+        "VIBE-209": {
+          "prNumber": 168,
+          "createdAt": "2025-12-04T17:00:53Z",
+          "mergedAt": "2025-12-15T13:41:37Z",
+          "week": "Week 9",
+          "storyPoints": 3,
+          "tokens": 609828438
+        },
+        "VIBE-166": {
+          "prNumber": 167,
+          "createdAt": "2025-12-04T13:23:45Z",
+          "mergedAt": "2025-12-15T18:34:46Z",
+          "week": "Week 9",
+          "storyPoints": 5,
+          "tokens": 365218594
+        },
+        "VIBE-175": {
+          "prNumber": 164,
+          "createdAt": "2025-12-03T16:03:23Z",
+          "mergedAt": "2025-12-15T13:42:27Z",
+          "week": "Week 9",
+          "storyPoints": 3,
+          "tokens": 338549691
+        },
+        "VIBE-229": {
+          "prNumber": 161,
+          "createdAt": "2025-12-02T13:46:16Z",
+          "mergedAt": "2025-12-23T15:00:51Z",
+          "week": "Week 9",
+          "storyPoints": 3,
+          "tokens": 223153091
+        },
+        "VIBE-241": {
+          "prNumber": 157,
+          "createdAt": "2025-12-01T16:23:36Z",
+          "mergedAt": "2025-12-24T15:48:52Z",
+          "week": "Week 9",
+          "storyPoints": 2,
+          "tokens": 4369342
+        },
+        "VIBE-247": {
+          "prNumber": 156,
+          "createdAt": "2025-12-01T15:58:58Z",
+          "mergedAt": "2026-01-19T14:08:42Z",
+          "week": "Week 9",
+          "storyPoints": 5,
+          "tokens": 215769233
+        },
+        "VIBE-221": {
+          "prNumber": 155,
+          "createdAt": "2025-12-01T14:33:44Z",
+          "mergedAt": "2025-12-23T12:32:41Z",
+          "week": "Week 9",
+          "storyPoints": 5,
+          "tokens": 804635026
+        },
+        "VIBE-162": {
+          "prNumber": 153,
+          "createdAt": "2025-12-01T13:31:11Z",
+          "mergedAt": "2025-12-15T13:38:09Z",
+          "week": "Week 9",
+          "storyPoints": 3,
+          "tokens": 256965789
+        },
+        "VIBE-228": {
+          "prNumber": 151,
+          "createdAt": "2025-12-01T11:54:13Z",
+          "mergedAt": "2025-12-23T13:02:20Z",
+          "week": "Week 9",
+          "storyPoints": 3,
+          "tokens": 330918855
+        }
+      },
+      "locPerToken": 0.0000086,
+      "tokensPerCycleTime": 209960537,
+      "totalCost": 406.21,
+      "claudeCost": 406.21,
+      "costPerLOC": 0.015,
+      "costPerPR": 45.13,
+      "costPerSP": 12.69,
+      "timeToContextWindow": 74.8940378787879,
+      "interruptionPrompts": 871
+    },
+    {
+      "week": "Week 10",
+      "period": "Dec 8-12",
+      "manualCompactions": 0,
+      "autoCompactions": 220,
+      "avgTimeToContextWindow": 11.671435964912279,
+      "totalPrompts": 224,
+      "avgPromptLength": 975,
+      "topCategory": "general",
+      "topCategoryCount": 72,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 58
+        },
+        "general": {
+          "count": 72
+        },
+        "bug_fix": {
+          "count": 49
+        },
+        "refactoring": {
+          "count": 4
+        },
+        "testing": {
+          "count": 29
+        },
+        "code_review": {
+          "count": 6
+        },
+        "configuration": {
+          "count": 2
+        },
+        "version_control": {
+          "count": 4
+        }
+      },
+      "interruptions": 18,
+      "toolUses": 4190,
+      "toolErrors": 438,
+      "prompts": 340,
+      "filesProcessed": 47,
+      "interruptionRate": 5.29,
+      "errorRate": 10.45,
+      "inputTokens": 523840,
+      "cacheCreationTokens": 57143162,
+      "cacheReadTokens": 553959749,
+      "outputTokens": 1268938,
+      "totalTokensBreakdown": 612895689,
+      "featurePRs": 2,
+      "locPerPR": 3856,
+      "locPerDev": 7711,
+      "commentsPerPR": 1,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "prTickets": [
+        "VIBE-310",
+        "VIBE-306"
+      ],
+      "nkt": 0.76,
+      "cycleTime": 17,
+      "storyPoints": 8,
+      "wipSP": null,
+      "tokensPerSP": 63130154,
+      "totalTokens": 505041228,
+      "ticketDetails": {
+        "VIBE-310": {
+          "prNumber": 178,
+          "createdAt": "2025-12-12T16:46:22Z",
+          "mergedAt": "2026-01-19T14:08:14Z",
+          "week": "Week 10",
+          "storyPoints": 5,
+          "tokens": 170646456
+        },
+        "VIBE-306": {
+          "prNumber": 177,
+          "createdAt": "2025-12-11T15:44:55Z",
+          "mergedAt": "2025-12-23T12:20:52Z",
+          "week": "Week 10",
+          "storyPoints": 3,
+          "tokens": 334394772
+        }
+      },
+      "locPerToken": 0.00001527,
+      "tokensPerCycleTime": 29708308,
+      "totalCost": 164.09,
+      "claudeCost": 164.09,
+      "costPerLOC": 0.0213,
+      "costPerPR": 82.05,
+      "costPerSP": 20.51,
+      "timeToContextWindow": 11.671435964912279,
+      "interruptionPrompts": 340
+    },
+    {
+      "week": "Week 11",
+      "period": "Dec 15-19",
+      "manualCompactions": 0,
+      "autoCompactions": 81,
+      "avgTimeToContextWindow": 44.11105984848485,
+      "totalPrompts": 365,
+      "avgPromptLength": 1577,
+      "topCategory": "bug_fix",
+      "topCategoryCount": 115,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "documentation": {
+          "count": 8
+        },
+        "general": {
+          "count": 92
+        },
+        "feature_development": {
+          "count": 75
+        },
+        "bug_fix": {
+          "count": 115
+        },
+        "testing": {
+          "count": 42
+        },
+        "configuration": {
+          "count": 7
+        },
+        "code_review": {
+          "count": 11
+        },
+        "refactoring": {
+          "count": 3
+        },
+        "version_control": {
+          "count": 12
+        }
+      },
+      "interruptions": 24,
+      "toolUses": 6042,
+      "toolErrors": 367,
+      "prompts": 497,
+      "filesProcessed": 52,
+      "interruptionRate": 4.83,
+      "errorRate": 6.07,
+      "inputTokens": 899818,
+      "cacheCreationTokens": 122123906,
+      "cacheReadTokens": 1161667378,
+      "outputTokens": 2255971,
+      "totalTokensBreakdown": 1286947073,
+      "featurePRs": 1,
+      "locPerPR": 2878,
+      "locPerDev": 2878,
+      "commentsPerPR": 2,
+      "testCoverage": null,
+      "cves": null,
+      "duplicatedLines": null,
+      "maintainability": null,
+      "reliability": null,
+      "security": null,
+      "bugs": null,
+      "codeSmells": null,
+      "prTickets": [
+        "VIBE-312"
+      ],
+      "nkt": 1.86,
+      "cycleTime": 7,
+      "storyPoints": 5,
+      "wipSP": null,
+      "tokensPerSP": 41102199,
+      "totalTokens": 205510996,
+      "ticketDetails": {
+        "VIBE-312": {
+          "prNumber": 185,
+          "createdAt": "2025-12-16T13:23:24Z",
+          "mergedAt": "2025-12-24T14:47:42Z",
+          "week": "Week 11",
+          "storyPoints": 5,
+          "tokens": 205510996
+        }
+      },
+      "locPerToken": 0.000014,
+      "tokensPerCycleTime": 29358714,
+      "totalCost": 0,
+      "claudeCost": 0,
+      "costPerLOC": null,
+      "costPerPR": null,
+      "costPerSP": null,
+      "timeToContextWindow": 44.11105984848485,
+      "interruptionPrompts": 497
+    }
+  ]
+}
