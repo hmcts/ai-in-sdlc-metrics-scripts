@@ -1,0 +1,805 @@
+{
+  "weeks": [
+    {
+      "week": "Week 1",
+      "period": "Oct 7-10",
+      "manualCompactions": 0,
+      "autoCompactions": 0,
+      "avgTimeToContextWindow": null,
+      "totalPrompts": 0,
+      "avgPromptLength": 0,
+      "topCategory": null,
+      "topCategoryCount": 0,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {},
+      "interruptions": 0,
+      "interruptionRate": 0,
+      "interruptionPrompts": 0,
+      "toolUses": 0,
+      "toolErrors": 0,
+      "errorRate": 0,
+      "inputTokens": 0,
+      "cacheCreationTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0
+    },
+    {
+      "week": "Week 2",
+      "period": "Oct 13-17",
+      "manualCompactions": 0,
+      "autoCompactions": 26,
+      "avgTimeToContextWindow": 3.621,
+      "totalPrompts": 5,
+      "avgPromptLength": 144,
+      "topCategory": "general",
+      "topCategoryCount": 3,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "general": {
+          "count": 3
+        },
+        "testing": {
+          "count": 1
+        },
+        "bug_fix": {
+          "count": 1
+        }
+      },
+      "interruptions": 0,
+      "interruptionRate": 0,
+      "interruptionPrompts": 8,
+      "toolUses": 105,
+      "toolErrors": 10,
+      "errorRate": 9.52,
+      "inputTokens": 4334,
+      "cacheCreationTokens": 1143953,
+      "cacheReadTokens": 12386188,
+      "outputTokens": 27215,
+      "totalTokens": 13561690
+    },
+    {
+      "week": "Week 3",
+      "period": "Oct 20-24",
+      "manualCompactions": 0,
+      "autoCompactions": 66,
+      "avgTimeToContextWindow": 13.264061111111113,
+      "totalPrompts": 165,
+      "avgPromptLength": 1457,
+      "topCategory": "feature_development",
+      "topCategoryCount": 65,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "refactoring": {
+          "count": 1
+        },
+        "general": {
+          "count": 60
+        },
+        "code_review": {
+          "count": 1
+        },
+        "bug_fix": {
+          "count": 22
+        },
+        "feature_development": {
+          "count": 65
+        },
+        "testing": {
+          "count": 14
+        },
+        "version_control": {
+          "count": 2
+        }
+      },
+      "interruptions": 1,
+      "interruptionRate": 0.3,
+      "interruptionPrompts": 329,
+      "toolUses": 2128,
+      "toolErrors": 134,
+      "errorRate": 6.3,
+      "inputTokens": 315601,
+      "cacheCreationTokens": 33223788,
+      "cacheReadTokens": 308080895,
+      "outputTokens": 1084012,
+      "totalTokens": 342704296
+    },
+    {
+      "week": "Week 4",
+      "period": "Oct 27-31",
+      "manualCompactions": 0,
+      "autoCompactions": 19,
+      "avgTimeToContextWindow": 81.70869666666667,
+      "totalPrompts": 135,
+      "avgPromptLength": 968,
+      "topCategory": "general",
+      "topCategoryCount": 55,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "general": {
+          "count": 55
+        },
+        "bug_fix": {
+          "count": 35
+        },
+        "testing": {
+          "count": 11
+        },
+        "feature_development": {
+          "count": 17
+        },
+        "code_review": {
+          "count": 1
+        },
+        "documentation": {
+          "count": 2
+        },
+        "version_control": {
+          "count": 3
+        },
+        "configuration": {
+          "count": 8
+        },
+        "refactoring": {
+          "count": 3
+        }
+      },
+      "interruptions": 14,
+      "interruptionRate": 5.36,
+      "interruptionPrompts": 261,
+      "toolUses": 1548,
+      "toolErrors": 90,
+      "errorRate": 5.81,
+      "inputTokens": 212398,
+      "cacheCreationTokens": 27277399,
+      "cacheReadTokens": 277072083,
+      "outputTokens": 632408,
+      "totalTokens": 305194288
+    },
+    {
+      "week": "Week 5",
+      "period": "Nov 3-7",
+      "manualCompactions": 0,
+      "autoCompactions": 52,
+      "avgTimeToContextWindow": 100.85209722222221,
+      "totalPrompts": 804,
+      "avgPromptLength": 1523,
+      "topCategory": "general",
+      "topCategoryCount": 216,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "bug_fix": {
+          "count": 138
+        },
+        "version_control": {
+          "count": 42
+        },
+        "testing": {
+          "count": 156
+        },
+        "general": {
+          "count": 216
+        },
+        "feature_development": {
+          "count": 205
+        },
+        "code_review": {
+          "count": 3
+        },
+        "configuration": {
+          "count": 24
+        },
+        "code_understanding": {
+          "count": 2
+        },
+        "documentation": {
+          "count": 18
+        }
+      },
+      "interruptions": 100,
+      "interruptionRate": 8.45,
+      "interruptionPrompts": 1184,
+      "toolUses": 11427,
+      "toolErrors": 792,
+      "errorRate": 6.93,
+      "inputTokens": 974208,
+      "cacheCreationTokens": 217342040,
+      "cacheReadTokens": 2237251981,
+      "outputTokens": 3802152,
+      "totalTokens": 2459370381
+    },
+    {
+      "week": "Week 6",
+      "period": "Nov 10-14",
+      "manualCompactions": 0,
+      "autoCompactions": 29,
+      "avgTimeToContextWindow": 67.13704583333333,
+      "totalPrompts": 517,
+      "avgPromptLength": 2007,
+      "topCategory": "feature_development",
+      "topCategoryCount": 202,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 202
+        },
+        "configuration": {
+          "count": 8
+        },
+        "bug_fix": {
+          "count": 122
+        },
+        "general": {
+          "count": 140
+        },
+        "testing": {
+          "count": 38
+        },
+        "code_review": {
+          "count": 3
+        },
+        "version_control": {
+          "count": 4
+        }
+      },
+      "interruptions": 65,
+      "interruptionRate": 7.66,
+      "interruptionPrompts": 849,
+      "toolUses": 7770,
+      "toolErrors": 558,
+      "errorRate": 7.18,
+      "inputTokens": 853990,
+      "cacheCreationTokens": 125263588,
+      "cacheReadTokens": 1422301521,
+      "outputTokens": 4599024,
+      "totalTokens": 1553018123
+    },
+    {
+      "week": "Week 7",
+      "period": "Nov 17-21",
+      "manualCompactions": 0,
+      "autoCompactions": 105,
+      "avgTimeToContextWindow": 93.859665,
+      "totalPrompts": 928,
+      "avgPromptLength": 1907,
+      "topCategory": "feature_development",
+      "topCategoryCount": 294,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 294
+        },
+        "general": {
+          "count": 177
+        },
+        "testing": {
+          "count": 125
+        },
+        "bug_fix": {
+          "count": 289
+        },
+        "code_review": {
+          "count": 12
+        },
+        "version_control": {
+          "count": 23
+        },
+        "documentation": {
+          "count": 8
+        }
+      },
+      "interruptions": 96,
+      "interruptionRate": 6.58,
+      "interruptionPrompts": 1459,
+      "toolUses": 16875,
+      "toolErrors": 1063,
+      "errorRate": 6.3,
+      "inputTokens": 2426131,
+      "cacheCreationTokens": 298429171,
+      "cacheReadTokens": 3671279693,
+      "outputTokens": 6568521,
+      "totalTokens": 3978703516
+    },
+    {
+      "week": "Week 8",
+      "period": "Nov 24-28",
+      "manualCompactions": 0,
+      "autoCompactions": 64,
+      "avgTimeToContextWindow": 62.28805952380952,
+      "totalPrompts": 708,
+      "avgPromptLength": 1427,
+      "topCategory": "feature_development",
+      "topCategoryCount": 220,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "testing": {
+          "count": 76
+        },
+        "bug_fix": {
+          "count": 178
+        },
+        "feature_development": {
+          "count": 220
+        },
+        "general": {
+          "count": 175
+        },
+        "documentation": {
+          "count": 4
+        },
+        "code_review": {
+          "count": 37
+        },
+        "version_control": {
+          "count": 15
+        },
+        "configuration": {
+          "count": 3
+        }
+      },
+      "interruptions": 57,
+      "interruptionRate": 5.05,
+      "interruptionPrompts": 1128,
+      "toolUses": 11955,
+      "toolErrors": 989,
+      "errorRate": 8.27,
+      "inputTokens": 1259297,
+      "cacheCreationTokens": 189952549,
+      "cacheReadTokens": 2123030122,
+      "outputTokens": 4733307,
+      "totalTokens": 2318975275
+    },
+    {
+      "week": "Week 9",
+      "period": "Dec 1-5",
+      "manualCompactions": 0,
+      "autoCompactions": 183,
+      "avgTimeToContextWindow": 74.8940378787879,
+      "totalPrompts": 575,
+      "avgPromptLength": 1855,
+      "topCategory": "feature_development",
+      "topCategoryCount": 186,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "general": {
+          "count": 125
+        },
+        "version_control": {
+          "count": 5
+        },
+        "code_review": {
+          "count": 12
+        },
+        "configuration": {
+          "count": 12
+        },
+        "code_understanding": {
+          "count": 3
+        },
+        "feature_development": {
+          "count": 186
+        },
+        "bug_fix": {
+          "count": 154
+        },
+        "testing": {
+          "count": 73
+        },
+        "documentation": {
+          "count": 5
+        }
+      },
+      "interruptions": 38,
+      "interruptionRate": 4.36,
+      "interruptionPrompts": 871,
+      "toolUses": 10076,
+      "toolErrors": 836,
+      "errorRate": 8.3,
+      "inputTokens": 1850786,
+      "cacheCreationTokens": 172208102,
+      "cacheReadTokens": 1869326501,
+      "outputTokens": 4395339,
+      "totalTokens": 2047780728
+    },
+    {
+      "week": "Week 10",
+      "period": "Dec 8-12",
+      "manualCompactions": 0,
+      "autoCompactions": 220,
+      "avgTimeToContextWindow": 11.671435964912279,
+      "totalPrompts": 224,
+      "avgPromptLength": 975,
+      "topCategory": "general",
+      "topCategoryCount": 72,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 58
+        },
+        "general": {
+          "count": 72
+        },
+        "bug_fix": {
+          "count": 49
+        },
+        "refactoring": {
+          "count": 4
+        },
+        "testing": {
+          "count": 29
+        },
+        "code_review": {
+          "count": 6
+        },
+        "configuration": {
+          "count": 2
+        },
+        "version_control": {
+          "count": 4
+        }
+      },
+      "interruptions": 18,
+      "interruptionRate": 5.29,
+      "interruptionPrompts": 340,
+      "toolUses": 4190,
+      "toolErrors": 438,
+      "errorRate": 10.45,
+      "inputTokens": 523840,
+      "cacheCreationTokens": 57143162,
+      "cacheReadTokens": 553959749,
+      "outputTokens": 1268938,
+      "totalTokens": 612895689
+    },
+    {
+      "week": "Week 11",
+      "period": "Dec 15-19",
+      "manualCompactions": 0,
+      "autoCompactions": 81,
+      "avgTimeToContextWindow": 44.11105984848485,
+      "totalPrompts": 365,
+      "avgPromptLength": 1577,
+      "topCategory": "bug_fix",
+      "topCategoryCount": 115,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "documentation": {
+          "count": 8
+        },
+        "general": {
+          "count": 92
+        },
+        "feature_development": {
+          "count": 75
+        },
+        "bug_fix": {
+          "count": 115
+        },
+        "testing": {
+          "count": 42
+        },
+        "configuration": {
+          "count": 7
+        },
+        "code_review": {
+          "count": 11
+        },
+        "refactoring": {
+          "count": 3
+        },
+        "version_control": {
+          "count": 12
+        }
+      },
+      "interruptions": 24,
+      "interruptionRate": 4.83,
+      "interruptionPrompts": 497,
+      "toolUses": 6042,
+      "toolErrors": 367,
+      "errorRate": 6.07,
+      "inputTokens": 899818,
+      "cacheCreationTokens": 122123906,
+      "cacheReadTokens": 1161667378,
+      "outputTokens": 2255971,
+      "totalTokens": 1286947073
+    },
+    {
+      "week": "Week 12",
+      "period": "Dec 22-26",
+      "manualCompactions": 0,
+      "autoCompactions": 16,
+      "avgTimeToContextWindow": 48.860216666666666,
+      "totalPrompts": 50,
+      "avgPromptLength": 950,
+      "topCategory": "bug_fix",
+      "topCategoryCount": 14,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "bug_fix": {
+          "count": 14
+        },
+        "feature_development": {
+          "count": 11
+        },
+        "general": {
+          "count": 9
+        },
+        "testing": {
+          "count": 7
+        },
+        "configuration": {
+          "count": 3
+        },
+        "refactoring": {
+          "count": 1
+        },
+        "version_control": {
+          "count": 4
+        },
+        "code_review": {
+          "count": 1
+        }
+      },
+      "interruptions": 3,
+      "interruptionRate": 3.41,
+      "interruptionPrompts": 88,
+      "toolUses": 708,
+      "toolErrors": 53,
+      "errorRate": 7.49,
+      "inputTokens": 93085,
+      "cacheCreationTokens": 12747610,
+      "cacheReadTokens": 129168639,
+      "outputTokens": 231893,
+      "totalTokens": 142241227
+    },
+    {
+      "week": "Week 13",
+      "period": "Dec 29-Jan 2",
+      "manualCompactions": 0,
+      "autoCompactions": 7,
+      "avgTimeToContextWindow": 39.0275,
+      "totalPrompts": 9,
+      "avgPromptLength": 1943,
+      "topCategory": "feature_development",
+      "topCategoryCount": 4,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {
+        "feature_development": {
+          "count": 4
+        },
+        "general": {
+          "count": 2
+        },
+        "testing": {
+          "count": 1
+        },
+        "bug_fix": {
+          "count": 2
+        }
+      },
+      "interruptions": 1,
+      "interruptionRate": 5.88,
+      "interruptionPrompts": 17,
+      "toolUses": 161,
+      "toolErrors": 5,
+      "errorRate": 3.11,
+      "inputTokens": 15538,
+      "cacheCreationTokens": 2923938,
+      "cacheReadTokens": 32756135,
+      "outputTokens": 44913,
+      "totalTokens": 35740524
+    },
+    {
+      "week": "Week 14",
+      "period": "Jan 5-9",
+      "manualCompactions": 0,
+      "autoCompactions": 13,
+      "avgTimeToContextWindow": 0.06683333333333333,
+      "totalPrompts": 0,
+      "avgPromptLength": 0,
+      "topCategory": null,
+      "topCategoryCount": 0,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {},
+      "interruptions": 2,
+      "interruptionRate": 50,
+      "interruptionPrompts": 4,
+      "toolUses": 0,
+      "toolErrors": 0,
+      "errorRate": 0,
+      "inputTokens": 0,
+      "cacheCreationTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0
+    },
+    {
+      "week": "Week 15",
+      "period": "Jan 12-16",
+      "manualCompactions": 0,
+      "autoCompactions": 0,
+      "avgTimeToContextWindow": null,
+      "totalPrompts": 0,
+      "avgPromptLength": 0,
+      "topCategory": null,
+      "topCategoryCount": 0,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {},
+      "interruptions": 0,
+      "interruptionRate": 0,
+      "interruptionPrompts": 0,
+      "toolUses": 0,
+      "toolErrors": 0,
+      "errorRate": 0,
+      "inputTokens": 0,
+      "cacheCreationTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0
+    },
+    {
+      "week": "Week 16",
+      "period": "Jan 19-23",
+      "manualCompactions": 0,
+      "autoCompactions": 0,
+      "avgTimeToContextWindow": null,
+      "totalPrompts": 0,
+      "avgPromptLength": 0,
+      "topCategory": null,
+      "topCategoryCount": 0,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {},
+      "interruptions": 0,
+      "interruptionRate": 0,
+      "interruptionPrompts": 0,
+      "toolUses": 0,
+      "toolErrors": 0,
+      "errorRate": 0,
+      "inputTokens": 0,
+      "cacheCreationTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0
+    },
+    {
+      "week": "Week 17",
+      "period": "Jan 26-30",
+      "manualCompactions": 0,
+      "autoCompactions": 0,
+      "avgTimeToContextWindow": null,
+      "totalPrompts": 0,
+      "avgPromptLength": 0,
+      "topCategory": null,
+      "topCategoryCount": 0,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {},
+      "interruptions": 0,
+      "interruptionRate": 0,
+      "interruptionPrompts": 0,
+      "toolUses": 0,
+      "toolErrors": 0,
+      "errorRate": 0,
+      "inputTokens": 0,
+      "cacheCreationTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0
+    },
+    {
+      "week": "Week 18",
+      "period": "Feb 2-6",
+      "manualCompactions": 0,
+      "autoCompactions": 0,
+      "avgTimeToContextWindow": null,
+      "totalPrompts": 0,
+      "avgPromptLength": 0,
+      "topCategory": null,
+      "topCategoryCount": 0,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {},
+      "interruptions": 0,
+      "interruptionRate": 0,
+      "interruptionPrompts": 0,
+      "toolUses": 0,
+      "toolErrors": 0,
+      "errorRate": 0,
+      "inputTokens": 0,
+      "cacheCreationTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0
+    },
+    {
+      "week": "Week 19",
+      "period": "Feb 9-13",
+      "manualCompactions": 0,
+      "autoCompactions": 0,
+      "avgTimeToContextWindow": null,
+      "totalPrompts": 0,
+      "avgPromptLength": 0,
+      "topCategory": null,
+      "topCategoryCount": 0,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {},
+      "interruptions": 0,
+      "interruptionRate": 0,
+      "interruptionPrompts": 0,
+      "toolUses": 0,
+      "toolErrors": 0,
+      "errorRate": 0,
+      "inputTokens": 0,
+      "cacheCreationTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0
+    },
+    {
+      "week": "Week 20",
+      "period": "Feb 16-20",
+      "manualCompactions": 0,
+      "autoCompactions": 0,
+      "avgTimeToContextWindow": null,
+      "totalPrompts": 0,
+      "avgPromptLength": 0,
+      "topCategory": null,
+      "topCategoryCount": 0,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {},
+      "interruptions": 0,
+      "interruptionRate": 0,
+      "interruptionPrompts": 0,
+      "toolUses": 0,
+      "toolErrors": 0,
+      "errorRate": 0,
+      "inputTokens": 0,
+      "cacheCreationTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0
+    },
+    {
+      "week": "Week 21",
+      "period": "Feb 23-27",
+      "manualCompactions": 0,
+      "autoCompactions": 0,
+      "avgTimeToContextWindow": null,
+      "totalPrompts": 0,
+      "avgPromptLength": 0,
+      "topCategory": null,
+      "topCategoryCount": 0,
+      "topSubcategory": null,
+      "topSubcategoryCount": 0,
+      "promptCategories": {},
+      "interruptions": 0,
+      "interruptionRate": 0,
+      "interruptionPrompts": 0,
+      "toolUses": 0,
+      "toolErrors": 0,
+      "errorRate": 0,
+      "inputTokens": 0,
+      "cacheCreationTokens": 0,
+      "cacheReadTokens": 0,
+      "outputTokens": 0,
+      "totalTokens": 0
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "weeks": [
+    {
+      "week": "Week 1",
+      "period": "Oct 7-10",
+      "totalCost": 37.28
+    },
+    {
+      "week": "Week 2",
+      "period": "Oct 13-17",
+      "totalCost": 162.52
+    },
+    {
+      "week": "Week 3",
+      "period": "Oct 20-24",
+      "totalCost": 182.19
+    },
+    {
+      "week": "Week 4",
+      "period": "Oct 27-31",
+      "totalCost": 227.07
+    },
+    {
+      "week": "Week 5",
+      "period": "Nov 3-7",
+      "totalCost": 383.43
+    },
+    {
+      "week": "Week 6",
+      "period": "Nov 10-14",
+      "totalCost": 260.86
+    },
+    {
+      "week": "Week 7",
+      "period": "Nov 17-21",
+      "totalCost": 367.46
+    },
+    {
+      "week": "Week 8",
+      "period": "Nov 24-28",
+      "totalCost": 392.78
+    },
+    {
+      "week": "Week 9",
+      "period": "Dec 1-5",
+      "totalCost": 406.21
+    },
+    {
+      "week": "Week 10",
+      "period": "Dec 8-12",
+      "totalCost": 164.09
+    },
+    {
+      "week": "Week 11",
+      "period": "Dec 15-19",
+      "totalCost": null
+    },
+    {
+      "week": "Week 12",
+      "period": "Dec 22-26",
+      "totalCost": null
+    },
+    {
+      "week": "Week 13",
+      "period": "Dec 29-Jan 2",
+      "totalCost": null
+    },
+    {
+      "week": "Week 14",
+      "period": "Jan 5-9",
+      "totalCost": null
+    },
+    {
+      "week": "Week 15",
+      "period": "Jan 12-16",
+      "totalCost": null
+    },
+    {
+      "week": "Week 16",
+      "period": "Jan 19-23",
+      "totalCost": null
+    },
+    {
+      "week": "Week 17",
+      "period": "Jan 26-30",
+      "totalCost": null
+    },
+    {
+      "week": "Week 18",
+      "period": "Feb 2-6",
+      "totalCost": null
+    },
+    {
+      "week": "Week 19",
+      "period": "Feb 9-13",
+      "totalCost": null
+    },
+    {
+      "week": "Week 20",
+      "period": "Feb 16-20",
+      "totalCost": null
+    },
+    {
+      "week": "Week 21",
+      "period": "Feb 23-27",
+      "totalCost": null
+    }
+  ]
+}

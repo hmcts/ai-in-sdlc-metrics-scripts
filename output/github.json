@@ -1,0 +1,453 @@
+{
+  "weeks": [
+    {
+      "week": "Week 1",
+      "period": "Oct 7-10",
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "prTickets": [],
+      "prDates": []
+    },
+    {
+      "week": "Week 2",
+      "period": "Oct 13-17",
+      "featurePRs": 4,
+      "locPerPR": 2954,
+      "locPerDev": 5909,
+      "commentsPerPR": 1,
+      "prTickets": [
+        "VIBE-153",
+        "VIBE-150",
+        "VIBE-146",
+        "VIBE-149"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2025-10-17T16:46:04Z",
+          "mergedAt": "2025-10-22T16:32:41Z"
+        },
+        {
+          "createdAt": "2025-10-15T17:48:33Z",
+          "mergedAt": "2025-10-16T12:11:56Z"
+        },
+        {
+          "createdAt": "2025-10-15T16:24:48Z",
+          "mergedAt": "2025-10-16T12:11:34Z"
+        },
+        {
+          "createdAt": "2025-10-14T12:32:06Z",
+          "mergedAt": "2025-10-15T14:16:29Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 3",
+      "period": "Oct 20-24",
+      "featurePRs": 6,
+      "locPerPR": 1536,
+      "locPerDev": 4608,
+      "commentsPerPR": 1,
+      "prTickets": [
+        "VIBE-159",
+        "VIBE-157",
+        "VIBE-155",
+        "VIBE-191",
+        "VIBE-139",
+        "VIBE-154"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2025-10-24T12:53:46Z",
+          "mergedAt": "2025-11-06T12:08:49Z"
+        },
+        {
+          "createdAt": "2025-10-23T15:30:59Z",
+          "mergedAt": "2025-10-29T13:12:27Z"
+        },
+        {
+          "createdAt": "2025-10-23T09:39:39Z",
+          "mergedAt": "2025-10-29T11:09:17Z"
+        },
+        {
+          "createdAt": "2025-10-22T15:07:37Z",
+          "mergedAt": "2025-10-30T12:12:51Z"
+        },
+        {
+          "createdAt": "2025-10-21T14:54:38Z",
+          "mergedAt": "2025-10-23T09:20:34Z"
+        },
+        {
+          "createdAt": "2025-10-21T10:44:23Z",
+          "mergedAt": "2025-10-29T16:45:40Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 4",
+      "period": "Oct 27-31",
+      "featurePRs": 4,
+      "locPerPR": 1441,
+      "locPerDev": 1921,
+      "commentsPerPR": 1,
+      "prTickets": [
+        "VIBE-149",
+        "VIBE-153",
+        "VIBE-204",
+        "VIBE-158"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2025-10-30T14:47:15Z",
+          "mergedAt": "2025-11-04T08:45:07Z"
+        },
+        {
+          "createdAt": "2025-10-30T09:19:59Z",
+          "mergedAt": "2025-10-31T13:57:59Z"
+        },
+        {
+          "createdAt": "2025-10-29T15:52:27Z",
+          "mergedAt": "2025-11-05T16:37:41Z"
+        },
+        {
+          "createdAt": "2025-10-29T10:57:51Z",
+          "mergedAt": "2025-11-06T11:53:00Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 5",
+      "period": "Nov 3-7",
+      "featurePRs": 3,
+      "locPerPR": 2494,
+      "locPerDev": 3741,
+      "commentsPerPR": 1,
+      "prTickets": [
+        "VIBE-203",
+        "VIBE-201",
+        "VIBE-160"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2025-11-06T11:59:35Z",
+          "mergedAt": "2025-11-10T10:28:11Z"
+        },
+        {
+          "createdAt": "2025-11-04T16:41:10Z",
+          "mergedAt": "2025-11-07T09:27:15Z"
+        },
+        {
+          "createdAt": "2025-11-04T15:49:34Z",
+          "mergedAt": "2025-11-06T14:56:09Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 6",
+      "period": "Nov 10-14",
+      "featurePRs": 3,
+      "locPerPR": 2609,
+      "locPerDev": 3914,
+      "commentsPerPR": 1.67,
+      "prTickets": [
+        "VIBE-216",
+        "VIBE-140",
+        "VIBE-222"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2025-11-13T16:36:24Z",
+          "mergedAt": "2025-11-20T16:33:13Z"
+        },
+        {
+          "createdAt": "2025-11-11T11:07:43Z",
+          "mergedAt": "2025-11-17T09:14:54Z"
+        },
+        {
+          "createdAt": "2025-11-10T11:18:57Z",
+          "mergedAt": "2025-11-10T14:06:10Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 7",
+      "period": "Nov 17-21",
+      "featurePRs": 3,
+      "locPerPR": 5018,
+      "locPerDev": 15053,
+      "commentsPerPR": 1.33,
+      "prTickets": [
+        "VIBE-143",
+        "VIBE-180",
+        "VIBE-169"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2025-11-20T16:02:04Z",
+          "mergedAt": "2025-11-24T14:36:33Z"
+        },
+        {
+          "createdAt": "2025-11-18T14:32:45Z",
+          "mergedAt": "2025-11-26T09:30:40Z"
+        },
+        {
+          "createdAt": "2025-11-17T11:32:25Z",
+          "mergedAt": "2025-11-20T16:34:15Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 8",
+      "period": "Nov 24-28",
+      "featurePRs": 5,
+      "locPerPR": 4192,
+      "locPerDev": 6987,
+      "commentsPerPR": 1.2,
+      "prTickets": [
+        "VIBE-236",
+        "VIBE-215",
+        "VIBE-175",
+        "VIBE-209",
+        "VIBE-192"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2025-11-28T14:45:01Z",
+          "mergedAt": "2025-12-15T13:42:51Z"
+        },
+        {
+          "createdAt": "2025-11-27T16:05:03Z",
+          "mergedAt": "2026-01-29T15:34:16Z"
+        },
+        {
+          "createdAt": "2025-11-27T12:51:14Z",
+          "mergedAt": "2025-12-01T10:16:26Z"
+        },
+        {
+          "createdAt": "2025-11-26T18:04:20Z",
+          "mergedAt": "2025-11-28T11:36:10Z"
+        },
+        {
+          "createdAt": "2025-11-24T17:13:56Z",
+          "mergedAt": "2025-11-27T17:11:26Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 9",
+      "period": "Dec 1-5",
+      "featurePRs": 9,
+      "locPerPR": 3011,
+      "locPerDev": 9034,
+      "commentsPerPR": 1.11,
+      "prTickets": [
+        "VIBE-209",
+        "VIBE-166",
+        "VIBE-175",
+        "VIBE-229",
+        "VIBE-241",
+        "VIBE-247",
+        "VIBE-221",
+        "VIBE-162",
+        "VIBE-228"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2025-12-04T17:00:53Z",
+          "mergedAt": "2025-12-15T13:41:37Z"
+        },
+        {
+          "createdAt": "2025-12-04T13:23:45Z",
+          "mergedAt": "2025-12-15T18:34:46Z"
+        },
+        {
+          "createdAt": "2025-12-03T16:03:23Z",
+          "mergedAt": "2025-12-15T13:42:27Z"
+        },
+        {
+          "createdAt": "2025-12-02T13:46:16Z",
+          "mergedAt": "2025-12-23T15:00:51Z"
+        },
+        {
+          "createdAt": "2025-12-01T16:23:36Z",
+          "mergedAt": "2025-12-24T15:48:52Z"
+        },
+        {
+          "createdAt": "2025-12-01T15:58:58Z",
+          "mergedAt": "2026-01-19T14:08:42Z"
+        },
+        {
+          "createdAt": "2025-12-01T14:33:44Z",
+          "mergedAt": "2025-12-23T12:32:41Z"
+        },
+        {
+          "createdAt": "2025-12-01T13:31:11Z",
+          "mergedAt": "2025-12-15T13:38:09Z"
+        },
+        {
+          "createdAt": "2025-12-01T11:54:13Z",
+          "mergedAt": "2025-12-23T13:02:20Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 10",
+      "period": "Dec 8-12",
+      "featurePRs": 2,
+      "locPerPR": 3856,
+      "locPerDev": 7711,
+      "commentsPerPR": 1,
+      "prTickets": [
+        "VIBE-310",
+        "VIBE-306"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2025-12-12T16:46:22Z",
+          "mergedAt": "2026-01-19T14:08:14Z"
+        },
+        {
+          "createdAt": "2025-12-11T15:44:55Z",
+          "mergedAt": "2025-12-23T12:20:52Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 11",
+      "period": "Dec 15-19",
+      "featurePRs": 1,
+      "locPerPR": 2878,
+      "locPerDev": 2878,
+      "commentsPerPR": 2,
+      "prTickets": [
+        "VIBE-312"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2025-12-16T13:23:24Z",
+          "mergedAt": "2025-12-24T14:47:42Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 12",
+      "period": "Dec 22-26",
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "prTickets": [],
+      "prDates": []
+    },
+    {
+      "week": "Week 13",
+      "period": "Dec 29-Jan 2",
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "prTickets": [],
+      "prDates": []
+    },
+    {
+      "week": "Week 14",
+      "period": "Jan 5-9",
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "prTickets": [],
+      "prDates": []
+    },
+    {
+      "week": "Week 15",
+      "period": "Jan 12-16",
+      "featurePRs": 2,
+      "locPerPR": 6127,
+      "locPerDev": 12254,
+      "commentsPerPR": 1,
+      "prTickets": [
+        "VIBE-323",
+        "VIBE-317"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2026-01-16T12:07:57Z",
+          "mergedAt": "2026-02-13T14:59:33Z"
+        },
+        {
+          "createdAt": "2026-01-14T15:58:35Z",
+          "mergedAt": "2026-02-13T14:54:11Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 16",
+      "period": "Jan 19-23",
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "prTickets": [],
+      "prDates": []
+    },
+    {
+      "week": "Week 17",
+      "period": "Jan 26-30",
+      "featurePRs": 1,
+      "locPerPR": 3231,
+      "locPerDev": 3231,
+      "commentsPerPR": 1,
+      "prTickets": [
+        "VIBE-357"
+      ],
+      "prDates": [
+        {
+          "createdAt": "2026-01-27T11:13:38Z",
+          "mergedAt": "2026-02-13T15:41:35Z"
+        }
+      ]
+    },
+    {
+      "week": "Week 18",
+      "period": "Feb 2-6",
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "prTickets": [],
+      "prDates": []
+    },
+    {
+      "week": "Week 19",
+      "period": "Feb 9-13",
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "prTickets": [],
+      "prDates": []
+    },
+    {
+      "week": "Week 20",
+      "period": "Feb 16-20",
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "prTickets": [],
+      "prDates": []
+    },
+    {
+      "week": "Week 21",
+      "period": "Feb 23-27",
+      "featurePRs": 0,
+      "locPerPR": null,
+      "locPerDev": 0,
+      "commentsPerPR": null,
+      "prTickets": [],
+      "prDates": []
+    }
+  ]
+}
